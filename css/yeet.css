@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway|Roboto|Fira+Code&display=swap');
+/** Variables **/
+
+:root {
+    --bg: #23272A;
+    --lite-bg: #2C2F33;
+    --color-blu: #7289DA;
+    --color-fg: #ccc;
+    --color-em: #da7289;
+    --color-fg-bright: #fff;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+html {
+    --scroll-behavior: smooth;
+    scroll-behavior: smooth;
+    background-color: var(--bg);
+    color: var(--color-fg);
+}
+
+a {
+    transition: 0.3s ease-in-out;
+    color: var(--color-blu);
+    text-decoration: none;
+}
+
+a:hover {
+    transition: 0.3s ease-in-out;
+    color: var(--color-fg);
+}
+
+a:visited {
+    color: var(--color-blu);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: "Raleway";
+    font-weight: lighter;
+    margin: 5px;
+}
+hr {
+    border-style: solid;
+    border-bottom: 1px;
+    color: var(--lite-bg);
+    margin-top: 50px;
+    margin-bottom: 50px;
+} 
+code {
+    font-family: "Fira Code", monospace;
+    font-size: 0.85em;
+    background: var(--bg);
+    color: var(--color-fg-bright);
+    padding: 3px;
+    border: 1px solid var(--color-blu);
+    box-shadow: 5px 3px 5px black;
+    border-radius: 3px;
+}
+.noteBox {
+    width: 450px;
+    background: var(--bg);
+    border-radius: 5px;
+    margin: 5px;
+    padding: 10px;
+    border: 2px solid var(--color-em);
+}
+#ul-lmi-pro > li {
+    list-style-image: url(lmi.png);
+}
+#ul-lmi-av > li {
+    list-style-image: url(lmiav.png);
+}
+#ul-hamachi > li {
+    list-style-image: url(hamachi.png);
+}
+#ul-g2p > li {
+    list-style-image: url(g2p.png);
+}
+li {
+    padding: 0.3em 0 0.5em 0;
+}
+
+img {
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.em {
+    color: var(--color-em);
+    font-variant: sm;
+}
+
+#sectionPro,
+#sectionLMIAV,
+#sectionHamachi,
+#sectionG2P,
+#sectionEscalationFmt {
+    height: auto;
+    padding: 80px 10px 10px 10px;
+    background-color: var(--lite-bg);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#cpbtn {
+    position: relative;
+    border-radius: 3px;
+    padding: 10px 30px 10px 30px;
+    font: 15px "Roboto", sans-serif;
+    background: var(--bg);
+    color: var(--color-fg);
+    border: 1px solid var(--color-blu);
+    box-shadow: 3px 3px 5px black;
+    transition: 0.3s ease-in-out;
+}
+
+#cpbtn:hover {
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    box-shadow: none;
+}
+
+#hidden-items-img,
+#hamachi-folder-img {
+    width: 700px;
+}
+#logo {
+    width: 100px;
+    margin: auto;
+    align-self: right;
+    float: right;
+    margin-right: 10px;
+    vertical-align: bottom;
+}
+#footer {
+    padding: 20px;
+}
+.sidebar {
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 5px;
+    position: fixed;
+    z-index: 1;
+    background-color: var(--bg);
+    overflow-x: hidden;
+    padding: 5px;
+}
+
+.sidebar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    display: inline-block;
+}
+
+.sidebar a:hover {
+    color: var(--color-fg);
+}
+
+.main {
+    margin: auto;
+    /* Same as the width of the sidenav */
+    display: flex;
+    width: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    min-height: 100vh;
+    padding: 0px 10px;
+}

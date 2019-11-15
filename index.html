@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/yeet.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/favicon.png"/>
+    <title>So you want to escalate, eh?</title>
+    <script src="scripts/smoothscroll.min.js"></script>
+    <script src="scripts/index.min.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/clipboard.min.js"></script>
+</head>
+
+<body>
+    <div class="sidebar">
+        <a href="#home"><i class="fa fa-fw fa-home"></i> Home</a>
+        <a href="#sectionPro"><i class="fa fa-fw fa-desktop"></i> LogMeIn Pro</a>
+        <a href="#sectionLMIAV"><i class="fa fa-fw fa-lock"></i> LogMeIn AV</a>
+        <a href="#sectionHamachi"><i class="fa fa-fw fa-globe"></i> Hamachi</a>
+        <a href="#sectionG2P"><i class="fa fa-fw fa-laptop"></i> GoToMyPC</a>
+        <a href="#sectionEscalationFmt"><i class="fa fa-fw fa-sticky-note"></i> Escy Format</a>
+        <img id="logo" src="images/SageLogo.png"/>
+    </div>
+    <div class="main" id="home">
+        <h1>I need to escalate a case for...</h1>
+        <p>Use the links above to jump to your issue</p>
+        <p><note class="em">Always get approval from an L2 before escalating a case</note></p>
+    </div>
+    <div class="main" id="sectionPro">
+        <a href="#sectionPro"><h2>LogMeIn Pro</h2></a>
+        <ul id="ul-lmi-pro">
+            <li>First, enable debug-level logging</li>
+            <ol>
+                <li>Open the LogMeIn Control Panel on the host machine</li>
+                <li>Navigate to <code>Options</code> &rarr; <code>Preferences</code> &rarr; <code>Advanced</code></li>
+                <li>Check off <code>Enable debug-level logging</code> and press <code>OK</code></li>
+                <img src="https://i.imgur.com/9AJRNLp.png" />
+            </ol>
+            <li>
+                <note class="em">Important!</note> Recreate the issue you are escalating <strong>after</strong> you have enabled debug</li>
+            <li>Now, to collect the log files</li>
+            <ol>
+                <li>Open Windows Explorer</li>
+                <li>In the address bar, type <code>%programdata%</code>, and press Enter</li>
+                <img src="https://i.imgur.com/AqP0WWj.png" />
+                <li>Right click the <code>LogMeIn</code> folder &rarr; <code>Send to</code> &rarr; <code>Compressed (zipped) folder</code></li>
+                <img src="https://i.imgur.com/PMwHdSy.png" />
+                <li>Use the file-transfer option in LogMeIn Rescue to transfer the <code>LogMeIn.zip</code> file to your machine</li>
+            </ol>
+            <li>Now, upload the file to your SalesForce case</li>
+            <li>Be sure to fill out the <a href="#sectionEscalationFmt">escalation format</a> in your case notes</li>
+            <li>Once you have finished your case <note class="em">do not close it!</note>&mdash;change the case owner to <code>IAM Sage Advanced</code></li>
+        </ul>
+    </div>
+    <hr/>
+    <div class="main" id="sectionLMIAV">
+        <a href="#sectionLMIAV"><h2>LogMeIn AV</h2></a>
+        <ul id="ul-lmi-av">
+            <li>First, enable debug-level logging</li>
+            <ol>
+                <li>Open the LogMeIn Control Panel on the host machine</li>
+                <li>Navigate to <code>Options</code> &rarr; <code>Preferences</code> &rarr; <code>Advanced</code></li>
+                <li>Check off <code>Enable debug-level logging</code> and press <code>OK</code></li>
+                <img src="https://i.imgur.com/9AJRNLp.png" />
+            </ol>
+            <li><note class="em">Important!</note> Recreate the issue you are escalating <strong>after</strong> you have enabled debug</li>
+            <li>Now, gather the Support Tool logs</li>
+            <ol>
+                <li>Download the LogMeIn AV Support Tool on the customer's machine. You can find it <a href="http://download.bitdefender.com/oem/logmein/BEST/sptool/SupportTool_x64_silent.exe">here</a></li>
+                <li>Once the tool is downloaded, double-click it and allow it to run</li>
+                <div class="noteBox">
+                    <p><note class="em">Note!</note> The tool will run <em>silently</em> (you won't see it doing anything)</p>
+                    <p>It will place a zipped folder on the customer's desktop</p>
+                </div>
+            </ol>
+            <li>Once the tool has finished running, collect the debug-level logs and Support Tool logs</li>
+            <li>To collect the debug logs</li>
+            <ol>
+                <li>Open Windows Explorer</li>
+                <li>In the address bar, type <code>%programdata%</code>, and press Enter</li>
+                <img src="https://i.imgur.com/AqP0WWj.png" />
+                <li>Right click the <code>LogMeIn</code> folder &rarr; <code>Send to</code> &rarr; <code>Compressed (zipped) folder</code></li>
+                <img src="https://i.imgur.com/PMwHdSy.png" />
+                <li>Use the file-transfer option in LogMeIn Rescue to transfer the <code>LogMeIn.zip</code> file to your machine</li>
+            </ol>
+            <li>To collect the support tool logs</li>
+            <ul id="ul-lmi-av"><li>Use the file-transfer option in LogMeIn Rescue to transfer the <code>supporttoolXXXXX.zip</code> from their desktop</li></ul>
+            <li>Now, upload the files to your SalesForce case</li>
+            <li>Be sure to fill out the <a href="#sectionEscalationFmt">escalation format</a> in your case notes</li>
+            <li>Once you have finished your case <note class="em">do not close it!</note>&mdash;change the case owner to <code>IAM Sage Advanced</code></li>
+        </ul>
+    </div>
+    <hr/>
+    <div class="main" id="sectionHamachi">
+        <a href="#sectionHamachi"><h2>LogMeIn Hamachi</h2></a>
+        <ul id="ul-hamachi">
+            <li>Hamachi logs are a bit tricky to get to</li>
+            <li>They are located in <code>C:\Windows\ServiceProfiles\LocalService\AppData\Local\LogMeIn Hamachi</code></li>
+            <li><note class="em">Important!</note> You will need to <b>manually</b> navigate to this location</li>
+            <ol>
+                <li>Open Windows Explorer</li>
+                <li>Select <code>View</code> &rarr; <code>Hidden items</code> (click the checkbox)</li>
+                <img id="hidden-items-img" src="https://i.imgur.com/tz3yBXq.png"/>
+                <li>Start in <code>C:\Windows</code> and click each folder in the path</li>
+                <p><code>ServiceProfiles</code> &rarr; <code>LocalService</code> &rarr; <code>AppData</code> &rarr; <code>Local</code> &rarr; <code>LogMeIn Hamachi</code></p>
+                <div class="noteBox">
+                    <p><note class="em">Note!</note></p>
+                    <p>You will likely receive admin prompts clicking on each of these folders&mdash;just click <code>OK</code></p>
+                </div>
+            </ol>
+            <li>
+                <p>Now, locate the file that says <code>h2-engine</code> or <code>h2-engine.log</code></p>
+                <img id="hamachi-folder-img" src="https://i.imgur.com/onFbFTD.png"/>
+            </li>
+            <li>Drag this file to the desktop</li>
+            <li>Use the file-transfer feature in LogMeIn Rescue to transfer the file to your machine</li>
+            <li>Upload the file to your SalesForce case</li>
+            <li>Be sure to fill out the <a href="#sectionEscalationFmt">escalation format</a> in your case notes</li>
+            <li>Once you have finished your case <note class="em">do not close it!</note>&mdash;change the case owner to <code>IAM Sage Advanced</code></li>
+        </ul>
+    </div>
+    <hr/>
+    <div class="main" id="sectionG2P">
+        <a href="#sectionG2P"><h2>GoToMyPC</h2></a>
+        <ul id="ul-g2p">
+            <li><note class="em">Important!</note> In order to gather logs, there must be <b>no</b> active sessions</li>
+            <li>Ensure you are <b>directly </b>connected to the computer that is experiencing the problem before continuing</li>
+            <li>To collect GoToMyPC logs</li>
+            <ol>
+                <li>Download <a href="https://assets.cdngetgo.com/19/13/3dac3d14482c99b6c47a90df6b86/gotologfiles.zip">GoToLogFiles</a> on the customer's computer</li>
+                <li>
+                    <p>Right click the downloaded file and select <code>Extract All...</code></p>
+                    <img src="https://i.imgur.com/QfP9b6I.png"/>
+                </li>
+                <li>Now double-click the <code>GoToLogFiles</code> file to run it</li>
+                <li>
+                    <p>Check off any item that says <em>"GoToMyPC"</em></p>
+                    <img src="https://i.imgur.com/adoo4yu.png"/>
+                </li>
+                <li>Click <code>Archive logs to ZIP</code></li>
+            </ol>
+            <li>The logs will automatically be collected and placed on the customer's desktop</li>
+            <li>
+                <p>Collect the <code>GoToLogFilesXXXXX.zip</code> file from the customer's desktop using Rescue's file-transfer option</p>
+                <img src="https://i.imgur.com/ALoYXje.png"/>
+            </li>
+            <li>Upload the file to your SalesForce case</li>
+            <li>Be sure to fill out the <a href="#sectionEscalationFmt">escalation format</a> in your case notes</li>
+            <li>Once you have finished your case <note class="em">do not close it!</note>&mdash;change the case owner to <code>IAM Sage Advanced</code></li>
+        </ul>
+    </div>
+    <hr/>
+    <div class="main" id="sectionEscalationFmt">
+        <a href="#sectionEscalationFmt"><h2>Escalation Format</h2></a>
+        <pre id="escyfmt">
+1) Description of Issue:
+
+2) Expected Results:
+
+3) Troubleshooting Steps Taken:
+
+4) Additional Details:
+- Does it work in Safe Mode?
+- Is the issue impacting a single user or multiple?
+- When did the problem start?
+- Does it happen every time or intermittent?
+- Can you recreate?
+- Did the user (or you) find a workaround? What is it?
+- Anything else important involving this issue?
+
+5) MAH Email:
+-User Email:
+
+6) Date/Time/Time zone:
+
+7) OS (Host):
+OS (Client):
+- Web Browser(s):
+
+8) Did you make sure to Attach Logs to the Case? (Ask SME how to enable and gather Debug logs if its for LMI Pro/Central or Gather HAR Logs):
+            </pre>
+        <button id="cpbtn" data-clipboard-target="#escyfmt">Copy</button>
+        <script>
+            var cpbtn = document.getElementById('cpbtn');
+            var clipboard = new ClipboardJS(cpbtn);
+
+            clipboard.on('success', function(e) {
+                console.log(e);
+            });
+
+            clipboard.on('error', function(e) {
+                console.log(e);
+            });
+        </script>
+    </div>
+    <div id="footer">
+        <a href="http://sageoutsource.com/">Property of Sage Outsource Solutions&reg; <img id="logo" src="images/SageLogo.png"/></a>
+    </div>
+</body>
+
+</html>
