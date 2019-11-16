@@ -71,16 +71,16 @@ code {
     border: 2px solid var(--color-em);
 }
 #ul-lmi-pro > li {
-    list-style-image: url(images/lmi.png);
+    list-style-image: url(../images/lmi.png);
 }
 #ul-lmi-av > li {
-    list-style-image: url(images/lmiav.png);
+    list-style-image: url(../images/lmiav.png);
 }
 #ul-hamachi > li {
-    list-style-image: url(images/hamachi.png);
+    list-style-image: url(../images/hamachi.png);
 }
 #ul-g2p > li {
-    list-style-image: url(images/g2p.png);
+    list-style-image: url(../images/g2p.png);
 }
 li {
     padding: 0.3em 0 0.5em 0;
