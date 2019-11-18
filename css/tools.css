@@ -1,0 +1,44 @@
+@import "yeet.css";
+
+.main {
+    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.result {
+    width: auto;
+    background: var(--bg);
+    padding: 5px;
+    margin: 20px;
+    color: var(--color-blu);
+}
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+.date-picker,
+input {
+    font-family: "Roboto", sans-serif;
+    font-size: 1em;
+    border: 0;
+    padding: 5px;
+    color: var(--color-fg);
+    background: var(--bg);
+    margin: 20px;
+}
+
+#calculator {
+    margin-top: 50px;
+    flex-direction: column;
+    min-height: auto;
+}
+
+#calc-container {
+    text-align: right;
+    left: 0;
+}
+
+#prorate-button {
+    margin: 20px;
+}
