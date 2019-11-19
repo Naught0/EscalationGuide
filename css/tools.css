@@ -1,6 +1,6 @@
 @import "yeet.css";
 
-.main {
+#calculator {
     flex-direction: column;
     display: flex;
     flex-wrap: wrap;
@@ -31,7 +31,6 @@ input {
 #calculator {
     margin-top: 50px;
     flex-direction: column;
-    min-height: auto;
 }
 
 #calc-container {
@@ -41,4 +40,86 @@ input {
 
 #prorate-button {
     margin: 20px;
+}
+
+h1 {
+    padding-top: 80px;
+}
+
+code {
+    padding: 10px;
+}
+
+/* Log Analyzer bits ---------------------------------- */
+
+#log-analyzer-container {
+    padding: 10px;
+    margin: 10px;
+    height: 100%;
+    width: 100%;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-center;
+}
+#editor-container {
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-height: 50vh;
+}
+
+#la-options-right {
+    order: 1;
+    padding: 10px;
+    margin: 10px;
+}
+
+#editor-sidebar-container {
+    padding: 10px;
+    margin: 10px;
+    height: 80vh;
+    width: 30vw;
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    flex-direction: row;
+    float: left;
+}
+
+#editor-sidebar-left,
+#editor-sidebar-right {
+    flex-direction: column;
+    display: flex;
+    flex-grow: 1;
+    height: fit-content;
+    width: fit-content;
+    min-width: 170px;
+    margin-left: 10px;
+}
+
+#editor-sidebar-bottom {
+    float: left;
+    flex-direction: column;
+    flex-grow: 1;
+    display: flex;
+    margin: 10px;
+}
+
+#la-filters-main,
+#la-filters-more {
+    padding: 5px;
+    background-color: var(--bg);
+    border: 0;
+    border-radius: 3px;
+    color: var(--color-fg);
+}
+
+#la-fopen {
+    padding: 10px;
+}
+select option{
+    padding: 5px;
 }

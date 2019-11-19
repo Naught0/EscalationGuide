@@ -121,8 +121,9 @@ img {
     margin-bottom: 10px;
 }
 
-button,
-#cpbtn {
+#prorate-button,
+#cpbtn,
+button {
     position: relative;
     border-radius: 3px;
     padding: 10px 30px 10px 30px;
@@ -175,7 +176,7 @@ button,
     transition: 0.5s ease-in-out;
 }
 
-button:hover,
+#prorate-button:hover,
 #cpbtn:hover {
     cursor: pointer;
     transition: 0.3s ease-in-out;
@@ -234,6 +235,11 @@ button:hover,
     align-items: center;
     text-align: left;
     min-height: 100vh;
+    height: auto;
     padding: 0px 10px;
     background: var(--lite-bg);
+}
+
+#menu {
+    box-shadow: none;
 }

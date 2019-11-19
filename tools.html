@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/yeet.css" rel="stylesheet">
@@ -10,31 +11,117 @@
         <link href="css/tools.css" rel="stylesheet">
         <link rel="icon" type="image/png" href="images/favicon.png"/>
         <title>Sage Tools</title>
+        <script src="scripts/show-menu.js" type="text/javascript"></script>
+        <script src="scripts/simpleSnackbar.min.js" type="text/javascript"></script>
         <script src="scripts/prorate-calculator.js" type="text/javascript"></script>
         <script src="scripts/smoothscroll.min.js" type="text/javascript"></script>
         <script src="scripts/index.min.js" type="text/javascript"></script>
         <script src="scripts/jquery.min.js" type="text/javascript"></script>
     </head>
     <div class="top-menu">
-        <a href="#"><i class="fa fa-fw fa-calendar"></i>Proration Calculator</a>
+        <a href="#"><i class="fa fa-fw fa-calendar"></i> Proration Calculator</a>
+        <a href="#log-analyzer"><i class="fa fa-fw fa-file-text"></i> Log Analyzer</a>
+        <button id="menu" class="hamburger hamburger--spin" type="button" onclick="showMenu()">
+            <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+            </span>
+        </button>
+    </div>
+    <div id="sidebar-menu">
+        <h2>Some fun bits</h2>
+        <a href="index.html">Escalation Guides</a>
+        <a href="#">Known-issues</a>
+        <a href="#">Helpful links</a>
+        <a href="#">Troubleshooting guides</a>
     </div>
     <div class="main" id="calculator">
         <h1><a href="#calculator">Proration Calculator</a></h1>
-        <div id="calc-container"> 
+        <div id="calc-container">
             <div id="start-date-container">
-                    Start Date: <input type="date" name="start-date" id="start-date" class="date-picker">
+                Renewal Date: <input type="date" name="start-date" id="start-date" class="date-picker">
+            </div>
+            <div id="end-date-container">
+                End Date: <input type="date" name="end-date" id="end-date" class="date-picker">
+            </div>
+            <div class="break"></div>
+            Amount ($): <input type="number" id="calc-amount">
+            <div id="calc-result">
+                Refund: <span id="prorate-result" class="result">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+            <button id="prorate-button" onclick="prorateClick()">Calculate</button>
+        </div>
+    </div>
+    <hr/>
+    <div class="main" id="log-analyzer">
+        <h1><a href="#log-analyzer">Log Analyzer</a></h1>
+        <div id="log-analyzer-container">
+            <div id="editor-sidebar-container">
+                <h2>Filters</h2>
+                <div id="editor-sidebar-left">
+                    <!--                stuff -->
+                    <select id="la-filters-main" multiple="multiple" size=10>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                    </select>
                 </div>
-                <div id="end-date-container">
-                    End Date: <input type="date" name="end-date" id="end-date" class="date-picker">
+                <div id="editor-sidebar-right">
+                    <!--                stuff -->
+                    <select id="la-filters-more" multiple="multiple" size=10>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                        <option>Test</option>
+                    </select>
                 </div>
-                <div class="break"></div>
-                <div id="calc-amount">
-                    Amount ($): <input type="number">
+                <div id="editor-sidebar-bottom">
+                    <!--                        stuff -->
+                    <h2>Analysis</h2>
+                    <code>
+                        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
+                    </code>
                 </div>
-                <div id="calc-result">
-                    Refund: <span id="prorate-result" class="result">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+            <div id="editor-container">
+                <script src="scripts/monaco-editor/min/vs/loader.js"></script>
+                <script>
+                    window.onload=function(){
+                        require.config({ paths: { 'vs': 'scripts/monaco-editor/min/vs' }});
+                        require(['vs/editor/editor.main'], function() {
+                            var editor = monaco.editor.create(document.getElementById('editor-container'), {
+                                value: '',
+                                language: 'auto'
+                            });
+                        });
+                    }
+                </script>
+                <div id="la-options-right">
+                    <input type="file" id="la-fopen"/>
+                    <button>Clear Filters</button>
                 </div>
-                <button id="prorate-button" onclick="onClick()">Calculate</button>
             </div>
         </div>
     </div>
