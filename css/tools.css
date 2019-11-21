@@ -1,4 +1,4 @@
-@import "yeet.css";
+@import "yeet.css"; 
 
 #calculator {
     flex-direction: column;
@@ -51,75 +51,60 @@ code {
 }
 
 /* Log Analyzer bits ---------------------------------- */
+#log-analyzer h2 {
+    text-align: left;
+}
+#log-analyzer-container,
+#editor-sidebar-container,
+#editor-sidebar-top,
+#editor-conatainer{
+    display: flex;
+    align-items: stretch;
+    margin: 3vh;
+}
 
-#log-analyzer-container {
-    padding: 10px;
-    margin: 10px;
-    height: 100%;
-    width: 100%;
-    flex-wrap: wrap;
+#log-analyzer-container,
+#editor-sidebar-container-top {
+    flex-direction: row;
+    align-items: stretch;
+}
+
+#editor-sidebar-container{
     flex-direction: column;
     align-items: stretch;
-    justify-content: flex-center;
-}
-#editor-container {
-    margin: 10px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    min-height: 50vh;
-}
-
-#la-options-right {
-    order: 1;
-    padding: 10px;
-    margin: 10px;
 }
 
 #editor-sidebar-container {
-    padding: 10px;
-    margin: 10px;
-    height: 80vh;
-    width: 30vw;
-    display: flex;
-    flex-grow: 1;
-    flex-wrap: wrap;
-    flex-direction: row;
-    float: left;
+    max-width: 25vw;
+    align-items: stretch;
 }
 
-#editor-sidebar-left,
-#editor-sidebar-right {
-    flex-direction: column;
-    display: flex;
-    flex-grow: 1;
-    height: fit-content;
-    width: fit-content;
-    min-width: 170px;
-    margin-left: 10px;
+#editor-sidebar-container-top {
+    justify-content: flex-start;
+    align-items: stretch;
 }
-
 #editor-sidebar-bottom {
-    float: left;
-    flex-direction: column;
-    flex-grow: 1;
+    width: 100%;
+    align-items: stretch;
+}
+
+#log-analyzer pre {
     display: flex;
-    margin: 10px;
+    text-align: left;
 }
 
-#la-filters-main,
-#la-filters-more {
-    padding: 5px;
+.la-filter-list {
+    width: 100%;
+    margin: 1vh;
+}
+
+#editor-container {
+    max-width: 75vw;
+    min-width: 50vw;
+}
+
+#la-file-upload {
+    width: 200px;
+    height: 50px;
     background-color: var(--bg);
-    border: 0;
-    border-radius: 3px;
-    color: var(--color-fg);
-}
-
-#la-fopen {
-    padding: 10px;
-}
-select option{
-    padding: 5px;
 }
