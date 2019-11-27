@@ -1,0 +1,65 @@
+/* @import "yeet.css";  */
+html{
+    background-image: url("../images/tile-bg.png")!important;
+    background-repeat: round;
+    /* background-size: 150px 50px; */
+    background-color: var(--bg);
+}
+
+body div {
+    border-radius: 0.5em;
+}
+
+#main-center-me {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.break {
+    flex-basis: 100%;
+}
+
+h1{
+    padding-bottom: 50px;
+    font-size: 3em;
+    text-align: center;
+    font-weight: 100;
+    /* text-shadow: 5px 5px 5px black; */
+}
+
+#footer {
+    background: var(--bg);
+}
+
+#main-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    height: 50vh;
+    min-height: unset;
+    border: 3px solid var(--color-blu);
+}
+
+.rainbow-text {
+    background-image: linear-gradient(to right, var(--color-blu), var(--color-em));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+#main-linkbox {
+    background: var(--bg);
+    max-width: 70vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+}
+
+#main-linkbox a{
+    display: inline-flex;
+    font-size: 1.2em;
+    padding: 15px;
+    margin: 5px;
+    flex-grow: 1;
+}

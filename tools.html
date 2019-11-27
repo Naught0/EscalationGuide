@@ -12,16 +12,17 @@
         <link rel="icon" type="image/png" href="images/favicon.png"/>
         <title>Sage Tools</title>
         <script src="scripts/show-menu.js" type="text/javascript"></script>
-        <script src="scripts/simpleSnackbar.min.js" type="text/javascript"></script>
+        <!-- <script src="scripts/simpleSnackbar.min.js" type="text/javascript"></script> -->
         <script src="scripts/prorate-calculator.js" type="text/javascript"></script>
         <script src="scripts/smoothscroll.min.js" type="text/javascript"></script>
         <script src="scripts/index.min.js" type="text/javascript"></script>
         <script src="scripts/jquery.min.js" type="text/javascript"></script>
-        <script type="text/javascript" src="scripts/filereader.js"></script>
+        <!-- <script type="text/javascript" src="scripts/filereader.js"></script> -->
     </head>
     <div class="top-menu">
+        <a href="index.html"><i class="fa fa-fw fa-home"></i>&nbsp;Home</a>
         <a href="#"><i class="fa fa-fw fa-calendar"></i> Proration Calculator</a>
-        <a href="#log-analyzer"><i class="fa fa-fw fa-file-text"></i> Log Analyzer</a>
+        <!-- <a href="#log-analyzer"><i class="fa fa-fw fa-file-text"></i> Log Analyzer</a> -->
         <button id="menu" class="hamburger hamburger--spin" type="button" onclick="showMenu()">
             <span class="hamburger-box">
             <span class="hamburger-inner"></span>
@@ -30,10 +31,10 @@
     </div>
     <div id="sidebar-menu">
         <h2>Some fun bits</h2>
-        <a href="index.html">Escalation Guides</a>
-        <a href="#">Known-issues</a>
-        <a href="#">Helpful links</a>
-        <a href="#">Troubleshooting guides</a>
+        <a href="escalation.html">Escalation Guides</a>
+        <a href="#">Known-issues (Coming soon&trade;)</a>
+        <a href="#">Helpful links (Coming soon&trade;)</a>
+        <a href="#">Troubleshooting guides <br>(Coming soon&trade;)</a>
     </div>
     <div class="main" id="calculator">
         <h1><a href="#calculator">Proration Calculator</a></h1>
@@ -47,21 +48,21 @@
             <div class="break"></div>
             Amount ($): <input type="number" id="calc-amount">
             <div id="calc-result">
-                Refund: <span id="prorate-result" class="result">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                Refund: <span id="prorate-result" class="result">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
             </div>
             <button id="prorate-button" onclick="prorateClick()">Calculate</button>
         </div>
     </div>
     <hr/>
-    <div class="main" id="log-analyzer">
+    <!-- <div class="main" id="log-analyzer">
         <h1><a href="#log-analyzer">Log Analyzer</a></h1>
         <div id="log-analyzer-container">
-            <!-- Flex row L - R -->
+            <!-- Flex row L - R 
             <div id="editor-sidebar-container">
-                <!-- Flex Col -->
+                <!-- Flex Col 
                 <h2>Filters</h2>
                 <div id="editor-sidebar-container-top">
-                    <!-- Flex row L - R -->
+                    <!-- Flex row L - R 
                     <div class="la-filter-list-wrapper">
                         <select class="la-filter-list" id="la-filters-main" multiple="multiple" size=10>
                             <option>Test</option>
@@ -102,7 +103,7 @@
                     </div>
                 </div>
                 <div id="editor-sidebar-bottom">
-                    <!--                        stuff -->
+                    <!--                        stuff 
                     <h2>Analysis</h2>
                         <pre>
 At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
@@ -110,7 +111,7 @@ At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praese
                 </div>
             </div>
             <div id="editor-container">
-                <!-- This would be flex-column to stack the divs -->
+                <!-- This would be flex-column to stack the divs 
                 <script src="scripts/monaco-editor/min/vs/loader.js"></script>
                 <script>
                     window.onload=function(){
@@ -133,5 +134,9 @@ At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praese
                 </div>
             </div>
         </div>
+    </div> -->
+    <div id="footer">
+        <p><a href="http://sageoutsource.com/">Property of Sage Outsource Solutions&reg; <img class="logo" id="logo-footer" src="images/SageLogo.png"/></a></p>
+        <p>Made with &#10084; by <a href="https://github.com/naught0">James</a></p>
     </div>
 </html>

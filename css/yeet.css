@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway|Roboto|Fira+Code&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway:200,400|Roboto|Fira+Code&display=swap');
 /** Variables **/
 
 :root {
@@ -27,7 +27,8 @@ a {
     text-decoration: none;
 }
 
-a:hover {
+a:hover,
+a:visited:hover {
     transition: 0.3s ease-in-out;
     color: var(--color-fg);
 }
@@ -93,6 +94,10 @@ pre {
 }
 #ul-g2p > li {
     list-style-image: url(../images/g2p.png);
+}
+
+#home {
+    min-height: 100vh;
 }
 
 li {
@@ -230,6 +235,7 @@ button {
     /* Same as the width of the sidenav */
     display: flex;
     width: auto;
+    border-radius: 0.5em;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -242,4 +248,8 @@ button {
 
 #menu {
     box-shadow: none;
+}
+
+.shadow {
+    box-shadow: 5px 5px 5px black;
 }
