@@ -61,7 +61,7 @@ code {
     padding: 3px;
     border: 1px solid var(--color-blu);
     box-shadow: 5px 3px 5px black;
-    border-radius: 3px;
+    border-radius: 0.5em;
 }
 pre {
     white-space: pre-wrap;       /* Since CSS 2.1 */
@@ -70,7 +70,7 @@ pre {
     white-space: -o-pre-wrap;    /* Opera 7 */
     word-wrap: break-word;       /* Internet Explorer 5.5+ */
     background: var(--bg);
-    border-radius: 5px;
+    border-radius: 0.5em;
     padding: 10px;
     font-size: 0.7em;
     font-family: "Fira Code", monospace;
@@ -78,7 +78,7 @@ pre {
 .noteBox {
     width: 450px;
     background: var(--bg);
-    border-radius: 5px;
+    border-radius: 0.5em;
     margin: 5px;
     padding: 10px;
     border: 2px solid var(--color-em);
@@ -106,7 +106,7 @@ li {
 
 img {
     margin: 10px;
-    border-radius: 5px;
+    border-radius: 0.5em;
 }
 
 .em {
@@ -122,7 +122,7 @@ img {
     height: auto;
     padding: 80px 10px 10px 10px;
     background-color: var(--lite-bg);
-    border-radius: 5px;
+    border-radius: 0.5em;
     margin-bottom: 10px;
 }
 
@@ -130,7 +130,7 @@ img {
 #cpbtn,
 button {
     position: relative;
-    border-radius: 3px;
+    border-radius: 0.5em;
     padding: 10px 30px 10px 30px;
     font: 15px "Roboto", sans-serif;
     background: var(--bg);
@@ -169,7 +169,7 @@ button {
     height: 100vh;
     transition: 0.5s ease-in-out;
     box-shadow: -2px 5px 5px black;
-    border-radius: 5px;
+    border-radius: 0.5em;
 }
 #sidebar-menu a {
     display: block;
@@ -211,7 +211,7 @@ button {
     width: 100%;
     top: 0;
     left: 0;
-    border-radius: 5px;
+    border-radius: 0.5em;
     position: fixed;
     z-index: 2;
     background-color: var(--bg);
@@ -252,4 +252,9 @@ button {
 
 .shadow {
     box-shadow: 5px 5px 5px black;
+}
+
+#footer {
+    background: var(--lite-bg);
+    border-radius: 0.5em;
 }
