@@ -1,9 +1,20 @@
-@import "yeet.css"; 
+@import "main.css"; 
 
 #calculator {
     flex-direction: column;
     display: flex;
     flex-wrap: wrap;
+}
+
+label {
+    font-family: "Roboto";
+    color: var(--color-blu);
+}
+input,
+textarea,
+select {
+    padding: 5px;
+    border-radius: 0.2em;
 }
 
 .result {
@@ -22,7 +33,6 @@ input {
     font-family: "Roboto", sans-serif;
     font-size: 1em;
     border: 0;
-    padding: 5px;
     color: var(--color-fg);
     background: var(--bg);
     margin: 20px;
@@ -107,4 +117,39 @@ code {
     width: 200px;
     height: 50px;
     background-color: var(--bg);
+}
+
+/* Escy formatter bits */
+
+#escy-formatter-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+#escy-formatter-wrapper * {
+    margin: 10px;
+}
+
+#escy-formatter-wrapper textarea {
+    min-width: 400px;
+    max-width: 400px;
+    min-height: 70px;
+    max-height: 300px;
+    background-color: var(--bg);
+    /* resize: none; */
+    color: var(--color-fg);
+    border: 0;
+}
+
+#escy-formatter-wrapper select {
+    background: var(--bg);
+    border: 0;
+    color: var(--color-fg);
+}
+
+#escy-formatter-wrapper-left,
+#escy-formatter-wrapper-right {
+    display: flex;
+    flex-direction: column;
 }
