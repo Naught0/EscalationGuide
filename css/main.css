@@ -11,6 +11,7 @@
     --color-fg-faded: #999;
     --color-yellow: #dac372;
     --color-cyan: #72dac3;
+    --color-green: #89da72;
 }
 
 body {
@@ -153,7 +154,7 @@ img {
 button {
     position: relative;
     border-radius: 0.3em;
-    padding: 10px 30px 10px 30px;
+    padding: 0.5em;
     font: 15px "Roboto", sans-serif;
     background: var(--bg);
     color: var(--color-fg);

@@ -51,11 +51,11 @@
                 End Date: <input type="date" name="end-date" id="end-date" class="date-picker">
             </div>
             <div class="break"></div>
-            Amount ($): <input type="number" id="calc-amount">
+            Amount (<i class="fa fa-fw fa-dollar" style="color:var(--color-green);"></i>): <input type="number" id="calc-amount">
             <div id="calc-result">
                 Refund: <span id="prorate-result" class="result">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
             </div>
-            <button id="prorate-button" onclick="prorateClick()">Calculate</button>
+            <button id="prorate-button" onclick="prorateClick()"><i class="fa fa-fw fa-calculator fa-lg"></i>    Calculate</button>
         </div>
     </div>
     <hr/>
@@ -68,7 +68,7 @@
         <div id="escy-formatter-wrapper">
             <div id="escy-formatter-wrapper-left">
                 <label for="escy-desc">Description of Issue</label>
-                <textarea name ="escy-desc" id="escy-desc" placeholder="Well, what happened?"></textarea>
+                <textarea spellcheck="true" id="escy-desc" id="escy-desc" placeholder="Well, what happened?"></textarea>
                 <label for="escy-expected">Expected Results</label>
                 <textarea name="escy-expected" id="escy-expected" placeholder="What shoulda happened?"></textarea>
                 <label for="escy-email">User Email</label>
@@ -114,7 +114,7 @@
             </div>
         </div>
         <div id="escy-formatter-wrapper-bottom">
-                <button id="escyCopyBtn" onclick="copyEscyForm()">Copy</button>
+                <button id="escyCopyBtn" onclick="copyEscyForm()"><i class="fa fa-fw fa-clone"></i>  Copy</button>
                 <script>
                     function clearEscyForm() {
                         container = document.getElementById("escy-formatter");
@@ -124,7 +124,7 @@
                         });
                     }
                 </script>
-                <button id="escyClearBtn" onclick="clearEscyForm()">Clear</button>
+                <button id="escyClearBtn" onclick="clearEscyForm()"><i class="fa fa-fw fa-trash-o"></i>  Clear</button>
         </div>
         <textarea id="escy-toCopy" style="position: absolute;left:-300px;"></textarea>
     </div>

@@ -9,6 +9,8 @@
         <link href="css/hamburger.min.css" rel="stylesheet">
         <link rel="icon" type="image/png" href="images/favicon.png"/>
         <title>So you want to escalate, eh?</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="scripts/article-toggle.js" type="text/javascript"></script>
         <script src="scripts/show-menu.js" type="text/javascript"></script>
         <script src="scripts/smoothscroll.min.js" type="text/javascript"></script>
         <script src="scripts/index.min.js" type="text/javascript"></script>
@@ -49,6 +51,7 @@
             <a href="#sectionPro">
                 <h2>LogMeIn Pro</h2>
             </a>
+            <button class="btn-icon"><i class="fa fa-fw fa-lg fa-windows"></i>  <i id="pro-toggle" class="fa fa-fw fa-lg fa-toggle-on fa-rotate-180"></i> <i class="fa fa-fw fa-lg fa-apple"></i></button>
             <ul id="ul-lmi-pro">
                 <li>First, enable debug-level logging</li>
                 <ol>
@@ -241,9 +244,8 @@
 OS (Client):
 - Web Browser(s):
 
-8) Did you make sure to Attach Logs to the Case? (Ask SME how to enable and gather Debug logs if its for LMI Pro/Central or Gather HAR Logs):
-            </pre>
-            <button id="cpbtn" data-clipboard-target="#escyfmt">Copy</button>
+8) Did you make sure to Attach Logs to the Case? (Ask SME how to enable and gather Debug logs if its for LMI Pro/Central or Gather HAR Logs):</pre>
+            <button id="cpbtn" data-clipboard-target="#escyfmt"><i class="fa fa-fw fa-clone"></i>    Copy</button>
             <script>
                 var cpbtn = document.getElementById('cpbtn');
                 var clipboard = new ClipboardJS(cpbtn);

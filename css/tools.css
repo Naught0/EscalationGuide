@@ -8,22 +8,32 @@
 
 label {
     font-family: "Roboto";
-    color: var(--color-blu);
+    color: var(--color-fg);
+}
+
+textarea {
+    font-family: "Fira Code", monospace;
 }
 input,
 textarea,
 select {
     padding: 5px;
     border-radius: 0.2em;
+    background: var(--lite-bg);
+}
+
+#prorate-result {
+    background: var(--lite-bg);
+    border-radius: 0.3em;
 }
 
 .result {
     width: auto;
-    background: var(--bg);
     padding: 5px;
     margin: 20px;
-    color: var(--color-blu);
+    color: var(--color-green);
 }
+
 .break {
     flex-basis: 100%;
     height: 0;
@@ -34,7 +44,6 @@ input {
     font-size: 1em;
     border: 0;
     color: var(--color-fg);
-    background: var(--bg);
     margin: 20px;
 }
 
@@ -43,9 +52,17 @@ input {
     flex-direction: column;
 }
 
+#calculator i {
+    color: var(--color-fg);
+    /* width: 100%; */
+    align-content: flex-start;
+}
+
 #calc-container {
     text-align: right;
-    left: 0;
+    border-radius: 0.3em;
+    padding: 2em;
+    background: var(--bg);
 }
 
 #prorate-button {
@@ -53,7 +70,8 @@ input {
 }
 
 h1 {
-    padding-top: 80px;
+    /* padding-top: 80px; */
+    padding: 30px;
 }
 
 code {
@@ -125,6 +143,9 @@ code {
     display: flex;
     flex-direction: row;
     justify-content: left;
+    background: var(--bg);
+    margin: 0.5em;
+    border-radius: 0.3em;
 }
 
 #escy-formatter-wrapper * {
@@ -136,14 +157,12 @@ code {
     max-width: 400px;
     min-height: 70px;
     max-height: 300px;
-    background-color: var(--bg);
     /* resize: none; */
     color: var(--color-fg);
     border: 0;
 }
 
 #escy-formatter-wrapper select {
-    background: var(--bg);
     border: 0;
     color: var(--color-fg);
 }
