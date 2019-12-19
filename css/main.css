@@ -65,7 +65,7 @@ code {
     padding: 3px;
     border: 1px solid var(--color-blu);
     box-shadow: 5px 3px 5px black;
-    border-radius: 0.5em;
+    border-radius: 0.3em;
 }
 pre {
     white-space: pre-wrap;       /* Since CSS 2.1 */
@@ -106,16 +106,16 @@ pre {
     padding: 10px;
     border: 2px solid var(--color-em);
 }
-#ul-lmi-pro > li {
+.ul-lmi-pro > li {
     list-style-image: url(../images/lmi.png);
 }
-#ul-lmi-av > li {
+.ul-lmi-av > li {
     list-style-image: url(../images/lmiav.png);
 }
-#ul-hamachi > li {
+.ul-hamachi > li {
     list-style-image: url(../images/hamachi.png);
 }
-#ul-g2p > li {
+.ul-g2p > li {
     list-style-image: url(../images/g2p.png);
 }
 
@@ -135,6 +135,12 @@ img {
 .em {
     color: var(--color-em);
     font-variant: sm;
+}
+
+.hidden {
+    left: -100vw;
+    position: absolute;
+    transition: 0.5s ease all;
 }
 
 #sectionPro,
@@ -268,6 +274,7 @@ button:hover {
     height: auto;
     padding: 0px 10px;
     background: var(--lite-bg);
+    transition: 0.5s ease all;
 }
 
 #menu {
