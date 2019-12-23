@@ -1,5 +1,5 @@
 $(function() {
-    $(document).find('.mac-wrapper').hide();
+    $('.mac-wrapper').hide();
 
     $('.btn-icon').click(function() {
         // Toggle icon

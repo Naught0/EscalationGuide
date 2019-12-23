@@ -5,17 +5,17 @@
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/main.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
-        <link href="css/simpleSnackbar.min.css" rel="stylesheet">
         <link href="css/hamburger.min.css" rel="stylesheet">
         <link rel="icon" type="image/png" href="images/favicon.png"/>
         <title>So you want to escalate, eh?</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="scripts/jquery-3.4.1.min.js"></script>
         <script src="scripts/article-toggle.js" type="text/javascript"></script>
         <script src="scripts/show-menu.js" type="text/javascript"></script>
         <script src="scripts/smoothscroll.min.js" type="text/javascript"></script>
         <script src="scripts/index.min.js" type="text/javascript"></script>
         <script src="scripts/jquery.min.js" type="text/javascript"></script>
         <script src="scripts/clipboard.min.js" type="text/javascript"></script>
+        <script src="scripts/notify.min.js"></script>
     </head>
     <body>
         <a href="#">
@@ -325,16 +325,36 @@ MM.      ,MP M   `MM.M        M  YM.P'  MM     AbmmmqMA  MM.             MM.    
             </div>
             <div class="mac-wrapper">
                 <ul class="ul-g2p">
-                    <li><note class="em">Important!</note> Make sure there are <b>no</b> active sessions when you run the GoToLogFiles program</li>
+                    <li><note class="em">Important!</note> Make sure there are <b>no</b> active GoToMyPC sessions when you collect logs</li>
                     <li>Ensure you are <b>directly</b> connected to the computer that is experiencing the issue</li>
                     <li>To collect the Mac logs</li>
                     <ol>
                         <li>Open the Terminal app</li>
                         <li>Copy and paste the below, follwed by <code>Enter</code>:</li>
-                        <div class="noteBox">
-                            <samp>
-                                zip -r ~/Desktop/GoToLogFiles$(date +%s).zip "/Library/Logs/com.logmein.GoToMyPC" "/Library/Logs/com.logmein.GoToOpener"
+                        <div id="noteBox-g2p-mac" class="noteBox">
+                            <samp id="g2p-mac-cmd">
+                                sw_vers > /tmp/sysinfo.txt; zip -r ~/Desktop/GoToLogFiles$(date +%s).zip "/Library/Logs/com.logmein.GoToMyPC" "/Library/Logs/com.logmein.GoToOpener" "/tmp/sysinfo.txt"
                             </samp>
+                            <button id="g2p-mac-cmd-copy" data-clipboard-target="#g2p-mac-cmd"><i class="fa fa-fw fa-copy"></i>  Copy</button>
+                            <script>
+                                var btn = $('#g2p-mac-cmd-copy');
+                                var clipboard = new ClipboardJS(btn);
+                                
+                                clipboard.on('success', function(e) {
+                                    console.log(e);
+                                });
+                                
+                                clipboard.on('error', function(e) {
+                                    console.log(e);
+                                });
+
+                                // Notify copied
+                                $(function() {
+                                    $('#g2p-mac-cmd-copy').click(function() {
+                                        $("#noteBox-g2p-mac").notify("Copied!", { className: "success", position: "right", autoHideDelay: 2000 });
+                                    });
+                                });
+                            </script>
                         </div>
                         <h3>Example output:</h3>
                         <img src="https://i.imgur.com/m36Ov4t.png">
@@ -395,6 +415,12 @@ OS (Client):
                 
                 clipboard.on('error', function(e) {
                     console.log(e);
+                });
+
+                $(function () {
+                    $('#cpbtn').click(function() {
+                        $(this).notify('Copied!', { className: 'success', position: 'left', autoHideDelay: 2000 });
+                    });
                 });
             </script>
         </div>

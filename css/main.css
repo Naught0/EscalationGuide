@@ -89,11 +89,15 @@ pre {
     right: 15px;
     opacity: 0.7;
     transition: 0.5s ease all;
+    z-index: 9;
 }
 .to-top:hover,
 .to-top:active {
     transition: 0.5s ease all;
     opacity: 1;
+}
+.to-top * {
+    color: var(--color-yellow);
 }
 .fade {
     color: var(--color-fg-faded) !important;
@@ -288,4 +292,8 @@ button:hover {
 #footer {
     background: var(--lite-bg);
     border-radius: 0.5em;
+}
+
+#g2p-mac-cmd-copy {
+    margin-top: 0.5em;
 }

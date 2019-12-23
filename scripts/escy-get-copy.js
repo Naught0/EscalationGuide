@@ -1,16 +1,18 @@
-function copyEscyForm() {
-    var inputs, index, resultArr;
+$(function () {
+    $('#escyCopyBtn').click(function () {
+        var inputs, index, resultArr;
 
-    var resultArr = [];
+        var resultArr = [];
 
-    container = document.getElementById("escy-formatter");
-    inputs = container.querySelectorAll('input,select,textarea');
-    
-    for (index = 0; index < inputs.length; ++index) {
-        resultArr.push(inputs[index].value.trim());
-    }
+        container = document.getElementById('escy-formatter');
+        inputs = container.querySelectorAll('input,select,textarea');
 
-    var toCopy = `*Description of Issue:*
+        for (index = 0; index < inputs.length; ++index) {
+            resultArr.push(inputs[index].value.trim());
+        }
+
+        var toCopy =
+            `*Description of Issue:*
 ${resultArr[0]}
 
 *Expected Results:* 
@@ -48,9 +50,31 @@ Anything else important involving this issue?
 *Salesforce Case #:*
 - ${resultArr[15]}
 `
+        var clip = new ClipboardJS('#escyCopyBtn', {
+            text: function() {
+                return toCopy;
+            }
+        })
 
-    elem = document.getElementById('escy-toCopy');
-    elem.value = toCopy;
-    elem.select();
-    document.execCommand('copy');
-}
+        $(this).notify('Copied', {
+            className: 'success',
+            position: 'left',
+            autoHideDelay: 2000
+        });
+    })
+
+    // Clear button
+    $('#escyClearBtn').click(function() {
+        container = document.getElementById('escy-formatter');
+        inputs = container.querySelectorAll('input,select,textarea');
+        inputs.forEach(element => {
+            element.value = "";
+        })
+
+        $(this).notify('Cleared', {
+            className: 'success',
+            position: 'right',
+            autoHideDelay: 2000
+        })
+    })
+})
