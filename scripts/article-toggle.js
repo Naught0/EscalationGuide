@@ -6,8 +6,8 @@ $(function() {
         var t = $(this).find('.is-toggle');
 
         // Icons for win & mac
-        var winIcon = $(this).find('.fa-windows');
-        var macIcon = $(this).find('.fa-apple');
+        // var winIcon = $(this).find('.fa-windows');
+        // var macIcon = $(this).find('.fa-apple');
 
         // Win vs mac content
         var win = $(this).siblings('.windows-wrapper');
