@@ -13,7 +13,6 @@
         <script src="scripts/show-menu.js" type="text/javascript"></script>
         <script src="scripts/smoothscroll.min.js" type="text/javascript"></script>
         <script src="scripts/index.min.js" type="text/javascript"></script>
-        <script src="scripts/jquery.min.js" type="text/javascript"></script>
         <script src="scripts/clipboard.min.js" type="text/javascript"></script>
         <script src="scripts/notify.min.js"></script>
     </head>
@@ -337,7 +336,7 @@ MM.      ,MP M   `MM.M        M  YM.P'  MM     AbmmmqMA  MM.             MM.    
                             </samp>
                             <button id="g2p-mac-cmd-copy" data-clipboard-target="#g2p-mac-cmd"><i class="fa fa-fw fa-copy"></i>  Copy</button>
                             <script>
-                                var btn = $('#g2p-mac-cmd-copy');
+                                var btn = $('#g2p-mac-cmd-copy')[0];
                                 var clipboard = new ClipboardJS(btn);
                                 
                                 clipboard.on('success', function(e) {
