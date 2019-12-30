@@ -147,16 +147,8 @@ img {
     transition: 0.5s ease all;
 }
 
-#sectionPro,
-#sectionLMIAV,
-#sectionHamachi,
-#sectionG2P,
-#sectionEscalationFmt {
-    height: auto;
-    padding: 80px 10px 10px 10px;
-    background-color: var(--lite-bg);
-    border-radius: 0.5em;
-    margin-bottom: 10px;
+.main {
+
 }
 
 #prorate-button,
@@ -276,9 +268,10 @@ button:hover {
     text-align: left;
     min-height: 100vh;
     height: auto;
-    padding: 0px 10px;
     background: var(--lite-bg);
     transition: 0.5s ease all;
+    padding: 80px 10px 10px 10px;
+    margin-bottom: 10px;
 }
 
 #menu {
