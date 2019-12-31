@@ -7,6 +7,7 @@
     <link href="css/main.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/hamburger.min.css" rel="stylesheet">
+    <link href="css/nord.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/favicon.png" />
     <title>So you want to escalate, eh?</title>
     <script src="scripts/jquery-3.4.1.min.js"></script>
@@ -24,7 +25,7 @@
     </a>
     <div class="top-menu">
         <a href="index.html"><i class="fa fa-fw fa-home"></i> Home</a>
-        <a href="#sectionPro"><i class="fa fa-fw fa-desktop"></i> LogMeIn Pro</a>
+        <a href="#sectionPro"><i class="fa fa-fw fa-desktop"></i> Pro (Host)</a>
         <a href="#sectionPro-client"><i class="fa fa-fw fa-desktop"></i> Pro (Client)</a>
         <a href="#sectionLMIAV"><i class="fa fa-fw fa-lock"></i> LogMeIn AV</a>
         <a href="#sectionHamachi"><i class="fa fa-fw fa-globe"></i> Hamachi</a>
@@ -135,7 +136,7 @@
         <button class="btn-icon"><i class="fa fa-fw fa-lg fa-windows"></i> <i
                 class="fa fa-fw fa-lg fa-toggle-off is-toggle"></i> <i class="fa fa-fw fa-lg fa-apple"></i></button>
         <div class="windows-wrapper">
-            <ul class="ul-lmi-pro">
+            <ul class="ul-lmi-pro-client">
                 <li>First, open the LogMeIn Client</li>
                 <li>Select <code>View</code> → <code>Options</code> → <code>Enable debug-level logging</code><br><img
                         src="https://i.imgur.com/SrPFfrF.png" alt="" /></li>
@@ -165,7 +166,7 @@
             </ul>
         </div>
         <div class="mac-wrapper">
-            <ul class="ul-lmi-pro">
+            <ul class="ul-lmi-pro-client">
                 <li>First, open the LogMeIn Client</li>
                 <li>At the top left of the screen, select <code>LogMeIn Client</code> →
                     <code>Preferences...</code><br><img src="https://i.imgur.com/ovdmmZc.jpg" alt="" /></li>
@@ -177,15 +178,16 @@
                 <li>To collect logs:
                     <ol>
                         <li>Open up the <code>Terminal</code> app</li>
-                        <li>Type in the following command<br>
+                        <li>Copy and paste the following command<br>
                             <div class="noteBox"><samp>sw_vers &gt; /tmp/sysinfo.txt; zip -r ~/Desktop/LogMeInClient.zip
                                     &quot;/Users/$(id -un)/Library/Logs/LogMeIn Client&quot;
                                     &quot;/tmp/sysinfo.txt&quot;</samp><br>
                             </div>
-                            <h3>Example output</h3><br><img src="https://i.imgur.com/d7RTqMY.png" alt="" />
+                            <h3>Example output</h3><img src="https://i.imgur.com/d7RTqMY.png" alt="" />
                         </li>
                         <li>You should now have a file called &quot;LogMeInClient.zip&quot; on the Desktop of the Mac
-                            computer<br></li>
+                            computer</li>
+                            <img src="https://i.imgur.com/eox82Xy.jpg" alt="" />
                     </ol>
                 </li>
                 <li>Now, use the File Manager feature within Rescue to collect the log files</li>

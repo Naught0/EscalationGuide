@@ -1,17 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:200,400|Roboto|Fira+Code&display=swap');
 /** Variables **/
+@import url('https://raw.githubusercontent.com/arcticicestudio/nord/develop/src/nord.css');
 
 :root {
-    --bg: #23272A;
-    --lite-bg: #2C2F33;
-    --color-blu: #7289DA;
-    --color-fg: #ccc;
-    --color-em: #da7289;
+    --bg: var(--nord0);
+    --lite-bg: #242933;
+    --bg-alt: var(--nord1);
+    --color-blu: var(--nord9);
+    --color-fg: var(--nord4);
+    --color-em: var(--nord11);
     --color-fg-bright: #fff;
-    --color-fg-faded: #999;
-    --color-yellow: #dac372;
-    --color-cyan: #72dac3;
-    --color-green: #89da72;
+    --color-fg-faded:var(--nord5);
+    --color-yellow: var(--nord13);
+    --color-cyan: var(--nord8);
+    --color-green: var(--nord14);
 }
 
 body {
@@ -62,9 +64,9 @@ code {
     font-size: 0.8em;
     background: var(--bg);
     color: var(--color-fg-bright);
-    padding: 3px;
-    border: 1px solid var(--color-blu);
-    box-shadow: 5px 3px 5px black;
+    padding: 0.2em;
+    border: 2px solid var(--bg-alt);
+    /* box-shadow: 3px 3px 5px black; */
     border-radius: 0.3em;
 }
 pre {
@@ -113,6 +115,9 @@ pre {
 .ul-lmi-pro > li {
     list-style-image: url(../images/lmi.png);
 }
+.ul-lmi-pro-client > li {
+    list-style-image: url(../images/client.png);
+}
 .ul-lmi-av > li {
     list-style-image: url(../images/lmiav.png);
 }
@@ -147,22 +152,20 @@ img {
     transition: 0.5s ease all;
 }
 
-.main {
-
-}
-
-#prorate-button,
-#cpbtn,
 button {
     position: relative;
     border-radius: 0.3em;
     padding: 0.5em;
-    font: 15px "Roboto", sans-serif;
-    background: var(--bg);
+    font: 1em "Roboto", sans-serif;
+    background: var(--bg-alt);
     color: var(--color-fg);
-    border: 2px solid var(--color-blu);
-    box-shadow: 3px 3px 5px black;
+    border: 2px solid var(--color-fg);
+    border: 0;
+    /* box-shadow: 3px 3px 5px black; */
     transition: 0.3s ease-in-out;
+}
+button:focus {
+    outline: 0;
 }
 
 #menu {
@@ -193,7 +196,7 @@ button {
     padding: 20px;
     height: 100vh;
     transition: 0.5s ease-in-out;
-    box-shadow: -2px 5px 5px black;
+    /* box-shadow: -2px 5px 5px black; */
     border-radius: 0.5em;
 }
 #sidebar-menu a {
@@ -237,7 +240,7 @@ button:hover {
     width: 100%;
     top: 0;
     left: 0;
-    border-radius: 0.5em;
+    border-radius: 0.3em;
     position: fixed;
     z-index: 2;
     background-color: var(--bg);
@@ -279,7 +282,7 @@ button:hover {
 }
 
 .shadow {
-    box-shadow: 5px 5px 5px black;
+    box-shadow: 3px 3px 5px var(--lite-bg);
 }
 
 #footer {

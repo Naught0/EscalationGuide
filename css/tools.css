@@ -1,4 +1,4 @@
-@import "main.css"; 
+/* @import "main.css";  */
 
 #calculator {
     flex-direction: column;
@@ -18,7 +18,7 @@ input,
 textarea,
 select {
     padding: 5px;
-    border-radius: 0.2em;
+    border-radius: 0.3em;
     background: var(--lite-bg);
 }
 
@@ -51,7 +51,7 @@ input {
 }
 
 #calculator i {
-    color: var(--color-fg);
+    color: var(--color-);
     /* width: 100%; */
     align-content: flex-start;
 }
@@ -141,7 +141,7 @@ code {
     display: flex;
     flex-direction: row;
     justify-content: left;
-    background: var(--bg);
+    background: var(--bg-alt);
     margin: 0.5em;
     border-radius: 0.3em;
 }
