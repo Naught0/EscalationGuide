@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway:200,400|Roboto|Fira+Code&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Quicksand:200,400|Roboto|Fira+Code|Rubik:400&dipslay=swap');
 /** Variables **/
-@import url('https://raw.githubusercontent.com/arcticicestudio/nord/develop/src/nord.css');
 
 :root {
     --bg: var(--nord0);
@@ -10,21 +9,21 @@
     --color-fg: var(--nord4);
     --color-em: var(--nord11);
     --color-fg-bright: #fff;
-    --color-fg-faded:var(--nord5);
+    --color-fg-faded: #81858c;
     --color-yellow: var(--nord13);
     --color-cyan: var(--nord8);
     --color-green: var(--nord14);
 }
 
 body {
-    font-family: "Roboto", sans-serif;
+    font-family: "Rubik","Roboto", sans-serif;
 }
 
 html {
     --scroll-behavior: smooth;
     scroll-behavior: smooth;
-    background-color: var(--bg);
     color: var(--color-fg);
+    background-color: var(--bg);
 }
 
 a {
@@ -48,13 +47,12 @@ h2,
 h3,
 h4,
 h5 {
-    font-family: "Raleway";
+    font-family: "Quicksand", "Raleway";
     font-weight: lighter;
     margin: 5px;
 }
 hr {
     border-style: solid;
-    border-bottom: 1px;
     color: var(--lite-bg);
     margin-top: 50px;
     margin-bottom: 50px;
@@ -66,7 +64,7 @@ code {
     color: var(--color-fg-bright);
     padding: 0.2em;
     border: 2px solid var(--bg-alt);
-    /* box-shadow: 3px 3px 5px black; */
+    box-shadow: 2px 2px 5px black;
     border-radius: 0.3em;
 }
 pre {
@@ -86,7 +84,7 @@ pre {
     padding: 10px;
     border-radius: 0.3em;
     position: fixed;
-    background: var(--bg);
+    background: var(--bg-alt);
     bottom: 15px;
     right: 15px;
     opacity: 0.7;
@@ -99,7 +97,7 @@ pre {
     opacity: 1;
 }
 .to-top * {
-    color: var(--color-yellow);
+    color: var(--color-em);
 }
 .fade {
     color: var(--color-fg-faded) !important;
@@ -156,12 +154,12 @@ button {
     position: relative;
     border-radius: 0.3em;
     padding: 0.5em;
-    font: 1em "Roboto", sans-serif;
+    font: 1em "Rubik", "Roboto", sans-serif;
     background: var(--bg-alt);
     color: var(--color-fg);
     border: 2px solid var(--color-fg);
     border: 0;
-    /* box-shadow: 3px 3px 5px black; */
+    box-shadow: 3px 3px 5px black;
     transition: 0.3s ease-in-out;
 }
 button:focus {
@@ -171,13 +169,15 @@ button:focus {
 #menu {
     position: fixed;
     color: var(--color-blu);
-    align-self: right;
+    align-self: top-right;
+    right: 0;
+    top: 0;
     background: transparent;
     border: 0;
     outline: none;
     display: inline-block;
+    margin: 5px;
     padding: 5px;
-    right: 0;
 }
 
 .hamburger-inner,
@@ -197,7 +197,7 @@ button:focus {
     height: 100vh;
     transition: 0.5s ease-in-out;
     /* box-shadow: -2px 5px 5px black; */
-    border-radius: 0.5em;
+    border-radius: 0em;
 }
 #sidebar-menu a {
     display: block;
@@ -244,6 +244,7 @@ button:hover {
     position: fixed;
     z-index: 2;
     background-color: var(--bg);
+    box-shadow: 3px 3px 5px var(--lite-bg);
     overflow-x: hidden;
     padding: 5px;
 }
@@ -261,7 +262,6 @@ button:hover {
 
 .main {
     margin: auto;
-    /* Same as the width of the sidenav */
     display: flex;
     width: auto;
     border-radius: 0.5em;

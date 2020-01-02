@@ -37,18 +37,41 @@ Get outta here... nerd
     <link href="css/index.css" rel="stylesheet">
     <link href="css/hamburger.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/favicon.png" />
-    <script src="scripts/smoothscroll.min.js" type="text/javascript"></script>
+    <script src="scripts/smoothscroll.min.js"></script>
     <script src="scripts/jquery-3.4.1.min.js"></script>
 </head>
 
 <body>
     <div id="main-center-me">
-        <div class="wave-container">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="1" d="M0,224L48,208C96,192,192,160,288,128C384,96,480,64,576,80C672,96,768,160,864,197.3C960,235,1056,245,1152,224C1248,203,1344,149,1392,122.7L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+        <div id="wave1" class="wave-container wave">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#0099ff" fill-opacity="1"
+                    d="M0,160L80,154.7C160,149,320,139,480,154.7C640,171,800,213,960,224C1120,235,1280,213,1360,202.7L1440,192L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z">
+                </path>
+            </svg>
         </div>
+        <div id="wave2" class="wave-container wave">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#0099ff" fill-opacity="0.4"
+                    d="M0,256L80,218.7C160,181,320,107,480,117.3C640,128,800,224,960,261.3C1120,299,1280,277,1360,266.7L1440,256L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z">
+                </path>
+            </svg>
+        </div>
+        <div id="wave3" class="wave-container wave">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#0099ff" fill-opacity="0.2"
+                    d="M0,64L80,90.7C160,117,320,171,480,213.3C640,256,800,288,960,293.3C1120,299,1280,277,1360,266.7L1440,256L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z">
+                </path>
+            </svg>
+        </div>
+        <div id="wave4" class="wave-container wave">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill-opacity="0.2" d="M0,192L30,208C60,224,120,256,180,256C240,256,300,224,360,218.7C420,213,480,235,540,245.3C600,256,660,256,720,256C780,256,840,256,900,250.7C960,245,1020,235,1080,202.7C1140,171,1200,117,1260,90.7C1320,64,1380,64,1410,64L1440,64L1440,0L1410,0C1380,0,1320,0,1260,0C1200,0,1140,0,1080,0C1020,0,960,0,900,0C840,0,780,0,720,0C660,0,600,0,540,0C480,0,420,0,360,0C300,0,240,0,180,0C120,0,60,0,30,0L0,0Z"></path></svg>
+            </svg> </div>
         <div class="main shadow" id="main-wrapper">
             <div id="main-title">
                 <h1 class="rainbow-text">ts & it worked&trade;</h1>
+                <h3>Never don't know what to do ever again, ever.</h3>
             </div>
             <div id="main-linkbox">
                 <a href="escalation.html"><i class="fa fa-fw fa-chevron-up"></i>&nbsp;Escalation Guides</a>
@@ -57,7 +80,7 @@ Get outta here... nerd
                 <!-- <a href="ts-guides.html"><i class="fa fa-fw fa-book"></i>&nbsp;Issue Guides</a>
                     <a href="known-issues.html"><i class="fa fa-fw fa-exclamation-triangle"></i>&nbsp;Known-issues</a> -->
             </div>
-            <p id="blurb"><em>Known-issues & troubleshooting guides coming soon</em></p>
+            <p id="blurb"><em>Known-issues & troubleshooting guides coming soon&trade;</em></p>
         </div>
     </div>
 </body>
@@ -65,7 +88,9 @@ Get outta here... nerd
     <p><a href="http://sageoutsource.com/">Property of Sage Outsource Solutions&reg; <img class="logo" id="logo-footer"
                 src="images/SageLogo.png" /></a></p>
     <p>Made with &#10084; by <a href="https://github.com/naught0">James</a></p>
-    <a href="mailto:james.euteneuer@logmein.com?subject=Site Feedback">Leave feedback</a>
+    <span>Feedback? <a href="mailto:james.euteneuer@logmein.com?subject=Site Feedback"><i
+                class="fa fa-fw fa-envelope"></i>E-mail me!</a> ~or~ <a
+            href="https://sageoutsource.slack.com/team/U3B3176BB"><i class="fa fa-fw fa-slack"></i>Slack me!</a></span>
 </div>
 
 </html>

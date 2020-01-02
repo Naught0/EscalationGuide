@@ -6,6 +6,21 @@
     flex-wrap: wrap;
 }
 
+h1 {
+    all: unset;
+    font-size: 2em;
+}
+
+button {
+    background-color: var(--bg) !important;
+}
+
+.main {
+    margin: 0 !important;
+    padding: 15px 0 0 0 !important;
+    /* padding-top: 20px; */
+}
+
 label {
     font-family: "Roboto";
     color: var(--color-fg);
@@ -14,12 +29,22 @@ label {
 textarea {
     font-family: "Fira Code", monospace;
 }
+
 input,
 textarea,
 select {
     padding: 5px;
     border-radius: 0.3em;
-    background: var(--lite-bg);
+    background: var(--bg);
+}
+input:active,
+textarea:active,
+select:active,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    box-shadow: 0 0 3px var(--color-cyan);
 }
 
 #prorate-result {
@@ -36,6 +61,7 @@ select {
     flex-basis: 100%;
     height: 0;
 }
+
 .date-picker,
 input {
     font-family: "Roboto", sans-serif;
@@ -46,12 +72,11 @@ input {
 }
 
 #calculator {
-    margin-top: 50px;
     flex-direction: column;
 }
 
 #calculator i {
-    color: var(--color-);
+    color: var(--color-fg);
     /* width: 100%; */
     align-content: flex-start;
 }
@@ -60,16 +85,11 @@ input {
     text-align: right;
     border-radius: 0.3em;
     padding: 2em;
-    background: var(--bg);
+    background: var(--bg-alt);
 }
 
 #prorate-button {
     margin: 20px;
-}
-
-h1 {
-    /* padding-top: 80px; */
-    padding: 30px;
 }
 
 code {
@@ -80,10 +100,11 @@ code {
 #log-analyzer h2 {
     text-align: left;
 }
+
 #log-analyzer-container,
 #editor-sidebar-container,
 #editor-sidebar-top,
-#editor-conatainer{
+#editor-conatainer {
     display: flex;
     align-items: stretch;
     margin: 3vh;
@@ -95,7 +116,7 @@ code {
     align-items: stretch;
 }
 
-#editor-sidebar-container{
+#editor-sidebar-container {
     flex-direction: column;
     align-items: stretch;
 }
@@ -109,6 +130,7 @@ code {
     justify-content: flex-start;
     align-items: stretch;
 }
+
 #editor-sidebar-bottom {
     width: 100%;
     align-items: stretch;
