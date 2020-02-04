@@ -52,7 +52,7 @@ $(function () {
             refundAmt = ppd * (365 - diffDays);
 
         // Set the output
-        $('#prorate-result').text(`\$${refundAmt.toFixed(2)}`);
+        $('#prorate-result').text(refundAmt.toFixed(2));
 
         new ClipboardJS('#prorate-button', {
             text: function () {

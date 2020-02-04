@@ -1,0 +1,36 @@
+@import "main.css";
+
+:root {
+    --menu-width: 10em;
+    --menu-pad: 1em;
+    --page-pad: 0.5em;
+    --shadow: 3px 3px 5px var(--lite-bg);
+}
+
+.main {
+    margin-left: calc(var(--menu-pad) * 2 + var(--menu-width) + var(--page-pad));
+}
+
+.vertical-menu{
+    /* Dimensions */
+    position: fixed;
+    left: 0.5em;
+    width: var(--menu-width);
+    min-height: 100vh;
+    padding: var(--menu-pad);
+    /* Colors */
+    background: var(--bg-alt);
+}
+.vertical-menu a {
+    border-radius: 0.3em;
+    display: block;
+    padding: 0.5em;
+    margin: 0.5em;
+    background: var(--bg);
+}
+.vertical-menu a:hover,
+.vertical-menu a:focus {
+    /* box-shadow: var(--shadow); */
+    margin-left: 1em;
+    margin-right: 0em;
+}

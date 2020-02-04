@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand:200,400|Roboto|Fira+Code|Rubik:400&dipslay=swap');
+@import url('nord.css');
+
 /** Variables **/
 
 :root {
@@ -23,13 +25,17 @@ html {
     --scroll-behavior: smooth;
     scroll-behavior: smooth;
     color: var(--color-fg);
-    background-color: var(--bg);
+    background: var(--bg);
 }
 
 a {
     transition: 0.3s ease-in-out;
     color: var(--color-blu);
     text-decoration: none;
+}
+
+.round {
+    border-radius: 0.3em;
 }
 
 a:hover,
