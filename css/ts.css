@@ -9,6 +9,20 @@
 
 .main {
     margin-left: calc(var(--menu-pad) * 2 + var(--menu-width) + var(--page-pad));
+    overflow-x: hidden;
+}
+
+.main h1,
+.main h2,
+.main h3,
+.main h4 {
+    text-align: center;
+}
+
+.main img {
+    max-width: 90%;
+    min-width: 10%;
+    height: auto;
 }
 
 .vertical-menu{
@@ -16,12 +30,13 @@
     position: fixed;
     left: 0.5em;
     width: var(--menu-width);
-    min-height: 100vh;
+    max-height: 100vh;
     padding: var(--menu-pad);
     /* Colors */
     background: var(--bg-alt);
 }
 .vertical-menu a {
+    box-shadow: var(--shadow);
     border-radius: 0.3em;
     display: block;
     padding: 0.5em;
@@ -31,6 +46,7 @@
 .vertical-menu a:hover,
 .vertical-menu a:focus {
     /* box-shadow: var(--shadow); */
+    box-shadow: none;
     margin-left: 1em;
     margin-right: 0em;
 }

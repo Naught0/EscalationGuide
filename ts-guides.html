@@ -6,12 +6,15 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/ts.css">
+        <link rel="stylesheet" href="css/featherlight.min.css">
+        <script src="scripts/jquery-3.4.1.min.js"></script>
+        <script src="scripts/featherlight.min.js"></script>
     </head>
 <html>
     <body>
         <div class='vertical-menu round shadow'>
             <h2>Hamachi</h2>
-            <a href="#">TEST</a>
+            <a href="#hamachi-ip">Gateway 0.0.0.0</a>
             <a href="#">TEST</a>
             <a href="#">TEST</a>
             <h2>LMI Pro</h2>
@@ -23,8 +26,56 @@
             <a href="#">TEST</a>
             <a href="#">TEST</a>
         </div>
-        <div class="main">
-
+        <div class="main" id="intro">
+            <h1>Use the menu to the left to jump to your issue</h1>
+            <h2>If you are unsure of any instructions, consult a SME</h2>
+            <h3>Happy troubleshooting :)</h3>
+        </div>
+        <hr/>
+        <div class="main" id="hamachi-ip">
+            <a href="#hamachi-ip"><h1>Hamachi assigns <code>0.0.0.0</code> IP addresses to all peers</h1></a>
+            <h2 id="explanation">Explanation:</h2>
+            <div class="noteBox">This can sometimes occur when Windows does not properly &quot;bridge&quot; the Hamachi adapter with the Internet adapter. This can happen at installation, during Windows updates, or randomly.</div>
+            <h2 id="solution-rebridge-the-adapters">Solution: Rebridge the adapters</h2>
+            <ol>
+                <li>Open the run prompt <code>Win</code> + <code>r</code></li>
+                <li>Enter <code>ncpa.cpl</code> to open Network Connections<br />
+                    <a href="#" data-featherlight="https://i.imgur.com/4SniXdQ.png">
+                        <img src="https://i.imgur.com/4SniXdQ.png"/>
+                    </a>
+                </li>
+                <li>You should see an adapter named <code>Hamachi</code> as well as <code>Hamachi - ###-###-###</code><br />
+                    <a href="#" data-featherlight="https://i.imgur.com/ivBYIB4.png">
+                        <img src="https://i.imgur.com/ivBYIB4.png" alt="" />
+                    </a>
+                </li>
+                <div class="noteBox"><span class="em">Pro tip:</span> You can tell the adapter is not bridged correctly if their Internet adapter does not say <code>Enabled, Bridged</code></div>
+                <li>The <code>Hamachi - ###-###-###</code> adapter is bridged with their regular internet adapter (typicaly labeled
+                    <code>Ethernet</code> or <code>WiFi</code>)</li>
+                <li>To re-bridge these adapters, hold <code>Ctrl</code> and click both <code>Hamachi - ###-###-###</code> and
+                    <code>Ethernet</code> (or similar)</li>
+                <li>Now, right click one of the adapters and select &quot;Remove from bridge&quot;<br />
+                    <a href="#" data-featherlight="https://i.imgur.com/cYd1dJ4.png">
+                        <img src="https://i.imgur.com/cYd1dJ4.png" alt="" />
+                    </a>
+                </li>
+                <li>Repeat step 5, this time right-clicking and selecting <code>Bridge Connections</code><br />
+                    <a href="#" data-featherlight="https://i.imgur.com/h4fytQB.png">
+                        <img src="https://i.imgur.com/h4fytQB.png" alt="" />
+                    </a>
+                </li>
+                <li>The internet will likely disconnect temporarily at this point, wait for it to come back</li>
+                <li>Re-test</li>
+            </ol>
+            <div class="noteBox">
+                <span class='em'>Note!</span> If you receive an error at any point, or this does not resolve the <code>0.0.0.0</code> IP issue, reach out to a SME.
+            </div>
+        </div>
+        <div class="shadow" id="footer">
+            <p><a href="http://sageoutsource.com/">Property of Sage Outsource Solutions&reg; <img class="logo" id="logo-footer"
+                        src="images/SageLogo.png" /></a></p>
+            <p>Made with &#10084; by <a href="https://github.com/naught0">James</a></p>
+            <span>Feedback? <a href="mailto:james.euteneuer@logmein.com?subject=Site Feedback"><i class="fa fa-fw fa-envelope"></i>E-mail me!</a> ~or~ <a href="https://sageoutsource.slack.com/team/U3B3176BB"><i class="fa fa-fw fa-slack"></i>Slack me!</a></span>
         </div>
     </body>
 </html>
