@@ -20,14 +20,15 @@
 }
 
 .main img {
-    max-width: 90%;
-    min-width: 10%;
+    max-width: 50em;
+    min-width: 1%;
     height: auto;
 }
 
 .vertical-menu{
     /* Dimensions */
     position: fixed;
+    top: 3.5em;
     left: 0.5em;
     width: var(--menu-width);
     max-height: 100vh;

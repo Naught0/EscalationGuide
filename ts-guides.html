@@ -7,10 +7,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/ts.css">
         <link rel="stylesheet" href="css/featherlight.min.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/hamburger.min.css">
         <script src="scripts/jquery-3.4.1.min.js"></script>
         <script src="scripts/featherlight.min.js"></script>
     </head>
 <html>
+    <a href="#">
+        <div class="to-top shadow"><i class="fa fa-fw fa-2x fa-angle-double-up"></i></div>
+    </a>
+    <div class="top-menu">
+        <a href="index.html"><i class="fa fa-fw fa-home"></i> Home</a>
+        <a href="escalation.html'"><i class="fa fa-fw fa-chevron-circle-up"></i> Escalation Guides</a>
+        <a href="tools.html"><i class="fa fa-fw fa-wrench"></i> Tools</a>
+        <button id="menu" class="hamburger hamburger--spin" type="button" onclick="showMenu()">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>
+    </div>
     <body>
         <div class='vertical-menu round shadow'>
             <h2>Hamachi</h2>
