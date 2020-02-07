@@ -11,7 +11,7 @@ $(function () {
             resultArr.push(inputs[index].value.trim());
         }
 
-        var toCopy =
+        var lmiToCopy =
             `*Description of Issue:*
 ${resultArr[0]}
 
@@ -52,7 +52,7 @@ Anything else important involving this issue?
 `
         var clip = new ClipboardJS('#escyCopyBtn', {
             text: function() {
-                return toCopy;
+                return lmiToCopy;
             }
         })
 

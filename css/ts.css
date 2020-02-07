@@ -7,6 +7,15 @@
     --shadow: 3px 3px 5px var(--lite-bg);
 }
 
+.cyan {
+    color: var(--color-cyan);
+}
+
+.bigger {
+    /* font-family: "Fira Code"; */
+    font-size: 2em;
+}
+
 .main {
     margin-left: calc(var(--menu-pad) * 2 + var(--menu-width) + var(--page-pad));
     overflow-x: hidden;
@@ -20,7 +29,7 @@
 }
 
 .main img {
-    max-width: 50em;
+    max-width: 80%;
     min-width: 1%;
     height: auto;
 }
@@ -50,4 +59,18 @@
     box-shadow: none;
     margin-left: 1em;
     margin-right: 0em;
+}
+
+#catalina-fourty #term-one,
+#catalina-fourty #term-two {
+    max-width: 100%;
+    min-width: 1%;
+    flex-shrink: 1;
+    flex-grow: 1;
+}
+
+#catalina-fourty .picturebox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }

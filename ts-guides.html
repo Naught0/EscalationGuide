@@ -10,7 +10,10 @@
         <link rel="stylesheet" href="css/font-awesome.min.css">
         <link rel="stylesheet" href="css/hamburger.min.css">
         <script src="scripts/jquery-3.4.1.min.js"></script>
+        <script src="scripts/clipboard.min.js"></script>
+        <script src="scripts/notify.min.js"></script>
         <script src="scripts/featherlight.min.js"></script>
+        <script src="scripts/ts.js"></script>
     </head>
 <html>
     <a href="#">
@@ -29,17 +32,17 @@
     <body>
         <div class='vertical-menu round shadow'>
             <h2>Hamachi</h2>
-            <a href="#hamachi-ip">Gateway 0.0.0.0</a>
-            <a href="#">TEST</a>
-            <a href="#">TEST</a>
+            <a href="#hamachi-ip"><i class="fa fa-fw fa-windows"></i> Hamachi 0.0.0.0</a>
+            <!-- <a href="#">TEST</a>
+            <a href="#">TEST</a> -->
             <h2>LMI Pro</h2>
+            <a href="#catalina-fourty"><i class="fa fa-fw fa-apple"></i> %40 Client</a>
+            <!-- <a href="#">TEST</a>
+            <a href="#">TEST</a> -->
+            <!-- <h2>GoToMyPC</h2> -->
+            <!-- <a href="#">TEST</a>
             <a href="#">TEST</a>
-            <a href="#">TEST</a>
-            <a href="#">TEST</a>
-            <h2>GoToMyPC</h2>
-            <a href="#">TEST</a>
-            <a href="#">TEST</a>
-            <a href="#">TEST</a>
+            <a href="#">TEST</a> -->
         </div>
         <div class="main" id="intro">
             <h1>Use the menu to the left to jump to your issue</h1>
@@ -51,7 +54,7 @@
             <a href="#hamachi-ip"><h1>Hamachi assigns <code>0.0.0.0</code> IP addresses to all peers</h1></a>
             <h2 id="explanation">Explanation:</h2>
             <div class="noteBox">This can sometimes occur when Windows does not properly &quot;bridge&quot; the Hamachi adapter with the Internet adapter. This can happen at installation, during Windows updates, or randomly.</div>
-            <h2 id="solution-rebridge-the-adapters">Solution: Rebridge the adapters</h2>
+            <h2 id="solution-rebridge-the-adapters">Solution: <span class="cyan">Rebridge the adapters</span></h2>
             <ol>
                 <li>Open the run prompt <code>Win</code> + <code>r</code></li>
                 <li>Enter <code>ncpa.cpl</code> to open Network Connections<br />
@@ -84,6 +87,59 @@
             </ol>
             <div class="noteBox">
                 <span class='em'>Note!</span> If you receive an error at any point, or this does not resolve the <code>0.0.0.0</code> IP issue, reach out to a SME.
+            </div>
+        </div>
+        <hr>
+        <div class="main" id="catalina-fourty">
+            <a href="#catalina-fourty"><h1><code>%40</code> Catalina Issue (Client)</h1></a>
+            <h2>Explanation:</h2>
+            <div class="noteBox">
+                This occurs due to an error in a component of the program on Mac computers and will be fixed by a future update of the Mac software.
+            </div>
+            <h2>Solution: <span class="cyan">Clear out the program cache and re-try</span></h2>
+            <ol>
+                <li><span class="em">Important!</span> Close the LogMeIn Client <span class="em">completely</span> before continuing</li>
+                <li>Open the <code>Terminal</code> app</li>
+                <li>
+                    Paste the following into terminal:
+                    <br>
+                    <br>
+                    <code id="cmd-catalina-fourty">rm -rfv /Users/$(id -un)/Library/Caches/com.logmein.ignition/fsCachedData/*</code>
+                    <br>
+                    <br>
+                    <button id="copy-catalina-fourty">Copy</button>
+                    <br>
+                    <br>
+                    <h3>It should look like this (terminal may be white instead):</h3>
+                    <div class="picturebox">
+                        <a href="#" data-featherlight="https://i.imgur.com/63U4OTj.png">
+                            <img id="term-one" src="https://i.imgur.com/63U4OTj.png" alt="" />
+                        </a>
+                        <span class="bigger">&rarr;</span>
+                        <a href="#" data-featherlight="https://i.imgur.com/UILHqAF.png">
+                            <img id="term-two" src="https://i.imgur.com/UILHqAF.png" alt="" />
+                        </a>
+                    </div>
+                </li>
+                <li>Now, re-open the LogMeIn Client</li>
+                <li>
+                    Head to the Preferences: 
+                    <a href="#" data-featherlight="https://i.imgur.com/YfP2h1L.png">
+                        <img src="https://i.imgur.com/YfP2h1L.png" alt="" style="display:block;"/>
+                    </a>
+                </li>
+                <li>
+                    Clear the saved credentials:
+                    <a href="#" data-featherlight="https://i.imgur.com/qEN9cQR.png">
+                        <img src="https://i.imgur.com/qEN9cQR.png" alt="" style="display:block;"/>
+                    </a>
+                </li>
+                <li>
+                    Now, login again and it should work!
+                </li>
+            </ol>
+            <div class="noteBox">
+                <span class='em'>Note!</span> If you are confused at any point, or if the steps do not work, please reach out to a SME.
             </div>
         </div>
         <div class="shadow" id="footer">
