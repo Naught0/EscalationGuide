@@ -74,3 +74,37 @@
     flex-direction: row;
     align-items: center;
 }
+
+#g2p-cannot-be-started h2 button:focus,
+#g2p-cannot-be-started h2 button:active {
+    box-shadow: none;
+}
+
+.hide {
+    transition: flex 0.3s ease-out;
+    height: 0;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.show {
+
+    transition: 0.3 opacity;
+    visibility: visible;
+    height: initial;
+}
+
+.accordian-container {
+    transition: 0.3 ease all;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.accordian {
+    transition: 0.3 ease all;
+    margin: 0.3em;
+    display: flex;
+    flex: 1;
+}
