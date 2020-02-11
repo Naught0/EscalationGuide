@@ -125,11 +125,11 @@
                 Paste the following into terminal:
                 <br>
                 <br>
-                <code id="cmd-catalina-fourty">rm -rfv /Users/$(id
+                <code id="cmd-catalina-fourty" >rm -rfv /Users/$(id
                     -un)/Library/Caches/com.logmein.ignition/fsCachedData/*</code>
                 <br>
                 <br>
-                <button id="copy-catalina-fourty">Copy</button>
+                <button class='cp-btn' id="copy-catalina-fourty">Copy</button>
                 <br>
                 <br>
                 <h3>It should look like this (terminal may be white instead):</h3>
@@ -177,7 +177,13 @@
             <li>
                 Open the Terminal app
             </li>
-            <li></li>
+            <li>
+                Copy & paste the following command into their terminal:
+                <br><br>
+                <code id="cmd-catalina-kb">tccutil reset All com.logmein.logmeinserver ; tccutil reset All com.logmein.logmeinguiagent</code>
+                <br><br>
+                <button class="cp-btn" id="btn-copy-catalina-kb" data-clipboard-action="copy" data-clipboard-target="#cmd-catalina-kb">Copy</button></div>
+            </li>
             <li></li>
             <li></li>
             <li></li>
