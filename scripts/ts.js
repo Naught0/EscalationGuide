@@ -31,7 +31,7 @@ $(function () {
     $('#btn-copy-catalina-kb').click(function() {
         $('#cmd-catalina-kb').notify('Copied!', {
             className: 'success',
-            position: 'right',
+            position: 'bottom-center',
             autoHideDelay: 2000
         })
     })

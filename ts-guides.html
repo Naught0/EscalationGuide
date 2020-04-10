@@ -178,18 +178,23 @@
                 Open the Terminal app
             </li>
             <li>
-                Copy & paste the following command into their terminal:
+                Copy & paste the following command into terminal:
                 <br><br>
                 <code id="cmd-catalina-kb">tccutil reset All com.logmein.logmeinserver ; tccutil reset All com.logmein.logmeinguiagent</code>
                 <br><br>
-                <button class="cp-btn" id="btn-copy-catalina-kb" data-clipboard-action="copy" data-clipboard-target="#cmd-catalina-kb">Copy</button></div>
+                <button class="cp-btn" id="btn-copy-catalina-kb" data-clipboard-action="copy" data-clipboard-target="#cmd-catalina-kb">Copy</button>
             </li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li>After the command runs, quit the LogMeIn host software <i>completely</i> from the top menu bar</li>
+            <li>Re-open the host software</li>
+            <li>You should now be prompted for each permission it requires</li>
+            <li>Check off each permission that appears</li>
+            <li>Re-connect to the host&mdash;you should now be able to control!</li>
         </ol>
+        <div class="noteBox">
+            <span class="em">Note! </span>If you are confused at any point, or not comfortable running terminal commands, reach out to a SME.
+        </div>
     </div>
+    <hr>
     <div class="main" id="g2p-cannot-be-started">
         <a href="#g2p-cannot-be-started">
             <h1>"GoToMyPC Cannot Be Started At This Time"</h1>
@@ -205,7 +210,7 @@
             <div class="solution-article show" id="article1">
                 <ul>
                     <li>This works the majority of the time</li>
-                <div class="noteBox"><span class="em">Note!</span> Continue to the next steps only if the user reports that this happens to them frequently</div>
+                <div class="noteBox"><span class="em">Note!</span> Continue to the next steps <i>only</i> if the user reports that this happens to them frequently</div>
                 </ul>
             </div>
             <button class="accordian solution-btn" onclick="showHide('article2')" id="btn2">Solution 2: Permissions Fix
@@ -236,7 +241,7 @@
                         <li>Otherwise, click the 'x' on the window and allow them to save their work / reboot later</li>
                     </ul>
                 </ul>
-                <h3>Creating desktop shortcuts</h3>
+                <h3><span class="cyan">Avoiding this issue: </span>Create desktop shortcuts</h3>
                 <ol>
                     <li>Connect to the host machine via the website</li>
                     <li>Once in session, click <code>File</code> &rarr; <code>Create shortcut to...</code></li>
@@ -249,6 +254,7 @@
             </div>
         </div>
     </div>
+    <hr>
     <div class="shadow" id="footer">
         <p><a href="http://sageoutsource.com/">Property of Sage Outsource Solutions&reg; <img class="logo"
                     id="logo-footer" src="images/SageLogo.png" /></a></p>
