@@ -1,56 +1,53 @@
 $(function () {
     $('#escyCopyBtn').click(function () {
-        var inputs, index, resultArr;
+        let container = document.getElementById('escy-formatter')
+            inputs = container.querySelectorAll('input,select,textarea')
+            results = []
 
-        var resultArr = [];
-
-        container = document.getElementById('escy-formatter');
-        inputs = container.querySelectorAll('input,select,textarea');
-
-        for (index = 0; index < inputs.length; ++index) {
-            resultArr.push(inputs[index].value.trim());
+        for (let i = 0; i < inputs.length; i++) {
+            results.push(inputs[i].value.trim());
         }
 
-        var lmiToCopy =
+        let lmiToCopy =
             `*Description of Issue:*
-${resultArr[0]}
+${results[0]}
 
 *Expected Results:* 
-${resultArr[1]}
+${results[1]}
 
 *Affected Account(s):* 
-- User email: ${resultArr[2]} 
-- Date/Time/Time zone: ${resultArr[3]} 
+- User email: ${results[2]} 
+- Date/Time/Time zone: ${results[3]} 
 
 *Environment:*
-- Product build: ${resultArr[4]} 
-- OS: ${resultArr[5]}
-- Browser Version: ${resultArr[6]}
+- Product build: ${results[4]} 
+- OS: ${results[5]}
+- Browser Version: ${results[6]}
 
 *Steps to Recreate:*\n- \
-${resultArr[7].split('\n').join("\n- ")}
+${results[7].split('\n').join("\n- ")}
 
 *Troubleshooting Done:*\n- \
-${resultArr[8].split('\n').join('\n- ')}
+${results[8].split('\n').join('\n- ')}
 
 *Additional detail:*
 Is the issue impacting a single user or multiple?
-- ${resultArr[9]}
+- ${results[9]}
 When did the problem start?
-- ${resultArr[10]}
+- ${results[10]}
 Does it happen every time or intermittent?
-- ${resultArr[11]}
+- ${results[11]}
 Can you recreate?
-- ${resultArr[12]}
+- ${results[12]}
 Did the user (or you) find a workaround? What is it?
-- ${resultArr[13]}
+- ${results[13]}
 Anything else important involving this issue?
-- ${resultArr[14]}
+- ${results[14]}
 
 *Salesforce Case #:*
-- ${resultArr[15]}
+- ${results[15]}
 `
-        var clip = new ClipboardJS('#escyCopyBtn', {
+        let _ = new ClipboardJS('#escyCopyBtn', {
             text: function() {
                 return lmiToCopy;
             }
@@ -65,6 +62,8 @@ Anything else important involving this issue?
 
     // Clear button
     $('#escyClearBtn').click(function() {
+        if (confirm("Are you sure?"))
+
         container = document.getElementById('escy-formatter');
         inputs = container.querySelectorAll('input,select,textarea');
         inputs.forEach(element => {

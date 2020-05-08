@@ -4,215 +4,306 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
     <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/hamburger.min.css" rel="stylesheet">
-    <link href="css/tools.css" rel="stylesheet">
-    <link href="css/nord.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/favicon.png" />
     <title>Sage Tools</title>
     <script src="scripts/jquery-3.4.1.min.js"></script>
     <script src="scripts/clipboard.min.js" type="text/javascript"></script>
-    <script src="scripts/show-menu.js" type="text/javascript"></script>
+    <script src="scripts/tech-room.js" type="text/javascript"></script>
     <script src="scripts/escy-get-copy.js" type="text/javascript"></script>
     <script src="scripts/prorate-calculator.js" type="text/javascript"></script>
     <script src="scripts/smoothscroll.min.js" type="text/javascript"></script>
     <script src="scripts/notify.min.js"></script>
 </head>
 
-<body>
-    <a href="#">
-        <div class="to-top shadow"><i class="fa fa-fw fa-2x fa-angle-double-up"></i></div>
-    </a>
-    <div class="top-menu">
-        <a href="index.html"><i class="fa fa-fw fa-home"></i>&nbsp;Home</a>
-        <a href="#"><i class="fa fa-fw fa-calendar"></i> Proration Calculator</a>
-        <a href="#escy-formatter"><i class="fa fa-fw fa-arrow-circle-up"></i>&nbsp;Escy Formatter</a>
-        <!-- <a href="#log-analyzer"><i class="fa fa-fw fa-file-text"></i> Log Analyzer</a> -->
-        <button id="menu" class="hamburger hamburger--spin" type="button" onclick="showMenu()">
-            <span class="hamburger-box">
-                <span class="hamburger-inner"></span>
-            </span>
-        </button>
-    </div>
-    <div id="sidebar-menu">
-        <h2>Some fun bits</h2>
-        <a href="escalation.html">Escalation Guides</a>
-        <a class="fade" href="#">Known-issues (Coming soon&trade;)</a>
-        <a class="fade" href="#">Helpful links (Coming soon&trade;)</a>
-        <a href="ts-guides.html">Troubleshooting guides</a>
-    </div>
-    <div class="main" id="calculator">
-        <h1><a href="#calculator">Proration Calculator</a></h1>
-        <div id="calc-container">
-            <div id="start-date-container">
-                Renewal Date: <input type="date" name="start-date" id="start-date" class="date-picker">
+<body class="has-navbar-fixed-top">
+    <script>
+        $(document).ready(function () {
+            // Check for click events on the navbar burger icon
+            $(".navbar-burger").click(function () {
+
+                // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                $(".navbar-burger").toggleClass("is-active");
+                $(".navbar-menu").toggleClass("is-active");
+
+            });
+        });
+    </script>
+    <nav class="navbar is-info is-fixed-top has-shadow">
+        <div class="navbar-brand">
+            <div class="navbar-item">
+                <img src="images/logmein-large.png" />
             </div>
-            <div id="end-date-container">
-                End Date: <input type="date" name="end-date" id="end-date" class="date-picker">
-            </div>
-            <div class="break"></div>
-            Amount (<i class="fa fa-fw fa-dollar" style="color:var(--color-green);"></i>): <input type="number"
-                id="calc-amount">
-            <div id="calc-result">
-                Refund (<i class="fa fa-fw fa-dollar" style="color:var(--color-green);")></i>): <span id="prorate-result"
-                    class="result">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            </div>
-            <button id="prorate-button"><i class="fa fa-fw fa-calculator fa-lg"></i> Calculate</button>
-        </div>
-    </div>
-    <hr />
-    <div class="main" id="escy-formatter">
-        <h1>
-            <a href="#escy-formatter">
-                Escy Formatter
+            <a role="button" class="navbar-burger" aria-label="menu" data-target="navMenu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
             </a>
-        </h1>
-        <div id="escy-formatter-wrapper">
-            <div id="escy-formatter-wrapper-left">
-                <label for="escy-desc">Description of Issue</label>
-                <textarea spellcheck="true" id="escy-desc" id="escy-desc" placeholder="Well, what happened?"></textarea>
-                <label for="escy-expected">Expected Results</label>
-                <textarea name="escy-expected" id="escy-expected" placeholder="What shoulda happened?"></textarea>
-                <label for="escy-email">User Email</label>
-                <input name="escy-email" placeholder="Email" required>
-                <label for="escy-datetime">Customer Timezone</label>
-                <input name="escy-datetime" placeholder="EST">
-                <label for="escy-build">Product build</label>
-                <input name="escy-build" placeholder="ex. Host 13058">
-                <label for="escy-os">Operating System</label>
-                <input name="escy-os" placeholder="ex. Windows 10 b.1903">
-                <label for="escy-browser">Browser Version</label>
-                <input name="escy-browser" placeholder="ex. Latest Chrome">
-                <label>Steps to Recreate</label>
-                <textarea name="escy-steps"
-                    placeholder="Enter each step on a newline (no bullet points, dashes, etc.)"></textarea>
-            </div>
-            <div id="escy-formatter-wrapper-right">
-                <label>Troubleshooting Done</label>
-                <textarea name="escy-ts"
-                    placeholder="Enter each step on a newline (no bullet points, dashes, etc.)"></textarea>
-                <label for="escy-impact">Is this impacting a single or multiple users?</label>
-                <select name="escy-impact">
-                    <option value="Single">Single</option>
-                    <option value="Multiple">Multiple</option>
-                </select>
-                <label for="escy-when-start">When did the issue start?</label>
-                <input name="escy-when-start" type="text" placeholder="After X update / 12/2/2019 / etc.">
-                <label for="escy-intermittent">Does it happen every time or intermittently?</label>
-                <select name="escy-intermittent">
-                    <option value="Intermittent">Intermittent</option>
-                    <option value="Every time">Every time</option>
-                </select>
-                <label for="escy-can-recreate">Can you recreate?</label>
-                <select name="escy-can-recreate">
-                    <option value="Yes, only on their machine">Yes, only on their machine</option>
-                    <option value="Yes, on my machine">Yes, on my machine</option>
-                    <option value="No">No</option>
-                </select>
-                <label for="escy-workaround">Did you find a workaround? What is it?</label>
-                <textarea name="escy-workaround"></textarea>
-                <label for="escy-anything">Anything else important?</label>
-                <textarea name="escy-anything"></textarea>
-                <label for="escy-caseno">SalesForce case #</label>
-                <input name="escy-caseno">
-            </div>
         </div>
-        <div id="escy-formatter-wrapper-bottom">
-            <button id="escyCopyBtn"><i class="fa fa-fw fa-clone"></i> Copy</button>
-            <button id="escyClearBtn"><i class="fa fa-fw fa-trash-o"></i> Clear</button>
-        </div>
-    </div>
-    </div>
-    <!-- <div class="main" id="log-analyzer">
-        <h1><a href="#log-analyzer">Log Analyzer</a></h1>
-        <div id="log-analyzer-container">
-            <!-- Flex row L - R 
-            <div id="editor-sidebar-container">
-                <!-- Flex Col 
-                <h2>Filters</h2>
-                <div id="editor-sidebar-container-top">
-                    <!-- Flex row L - R 
-                    <div class="la-filter-list-wrapper">
-                        <select class="la-filter-list" id="la-filters-main" multiple="multiple" size=10>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                        </select>
-                    </div>
-                    <div class="la-filter-list-wrapper">
-                        <select class="la-filter-list" id="la-filters-more" multiple="multiple" size=10>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                            <option>Test</option>
-                        </select>
+        <div class="navbar-menu" id="navMenu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="index.html">
+                    <span class="icon"><i class="fa fa-fw fa-home"></i></span>
+                    <span>Home</span>
+                </a>
+
+
+                <a class="navbar-item" href="#">
+                    <span class="icon">
+                        <i class="fa fa-fw fa-calendar"></i>
+                    </span>
+                    <span>Proration Calculator</span>
+                </a>
+
+                <a href="#tech-formatter" class="navbar-item">
+                    <span class="icon"><i class="fa fa-fw fa-question-circle"></i></span>
+                    <span>Tech Room Formatter</span>
+                </a>
+
+                <a class="navbar-item" href="#escy-formatter">
+                    <span class="icon">
+                        <i class="fa fa-fw fa-arrow-circle-up"></i>
+                    </span>
+                    <span>Escy Formatter</span>
+                </a>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="" class="navbar-link">
+                        More
+                    </a>
+                    <div class="navbar-dropdown is-right">
+                        <a class="navbar-item" href="escalation.html">Escalation Guides</a>
+                        <a class="navbar-item" href="">Known-issues (Coming soon&trade;)</a>
+                        <a class="navbar-item" href="">Helpful links (Coming soon&trade;)</a>
+                        <a class="navbar-item" href="ts-guides.html">Troubleshooting guides</a>
                     </div>
                 </div>
-                <div id="editor-sidebar-bottom">
-                    <!--                        stuff 
-                    <h2>Analysis</h2>
-                        <pre>
-        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
-                    </pre>
-                </div>
             </div>
-            <div id="editor-container">
-                <!-- This would be flex-column to stack the divs 
-                <script src="scripts/monaco-editor/min/vs/loader.js"></script>
-                <script>
-                    window.onload=function(){
-                        require.config({ paths: { 'vs': 'scripts/monaco-editor/min/vs' }});
-                        require(['vs/editor/editor.main'], function() {
-                            var editor = monaco.editor.create(document.getElementById('editor-container'), {
-                                value: '',
-                                language: 'auto',
-                                minimap: {
-                                    enabled: false
-                                },
-                                wordWrap: "on",
-                                theme: "vs-dark"
-                            });
-                        });
-                    }
-                </script>
-                <div id="la-options-right">
-                    <button>Clear Filters</button>
+        </div>
+    </nav>
+
+    <section class="section hero is-fullheight is-light" id="calculator">
+        <div class="hero-body">
+            <div class="container">
+                <a class="title" href="#">Proration Calculator</a>
+                <hr class="has-background-info">
+
+                <div class="container columns" id="calc-container">
+
+                    <div class="column">
+                        <div id="start-date-container">
+                            <div class="field">
+                                <label for="" class="label">
+                                    Renewal Date:
+                                </label>
+                                <input type="date" name="start-date" id="start-date" class="date-picker input">
+                            </div>
+                        </div>
+
+                        <div id="end-date-container">
+                            <div class="field">
+                                <label for="" class="label">End Date:</label>
+                                <input type="date" name="end-date" id="end-date" class="date-picker input">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+
+                        <div>
+                            <div class="field">
+                                <label for="" class="label">Amount (<span class="icon"><i
+                                            class="fa fa-fw fa-dollar has-text-success"></i></span>):</label>
+                                <input class="input" type="number" id="calc-amount">
+                            </div>
+                        </div>
+
+                        <div id="calc-result">
+                            <div class="field">
+                                <label for="" class="label">
+                                    Refund (<span class="icon">
+                                        <i class="fa fa-fw fa-dollar has-text-success"></i>
+                                    </span>):
+                                </label>
+                                <span id="prorate-result" class="result input"></span>
+                            </div>
+                        </div>
+
+                        <div class="field"></div>
+
+
+                    </div>
+                </div>
+                <div class="buttons is-centered">
+                    <button id="prorate-button" class="button is-success is-centered">
+                        <span class="icon">
+                            <i class="fa fa-fw fa-calculator fa-lg"></i>
+                        </span>
+                        <span>Calculate</span>
+                    </button>
                 </div>
             </div>
         </div>
-        </div> -->
-    <hr />
+    </section>
+    <section class="section hero is-fullheight is-white" id="tech-formatter">
+        <div class="hero-body">
+            <div class="container">
+                <a href="#tech-formatter" class="title">Tech Room Formatter</a>
+                <hr class="has-background-info">
+
+                <div class="columns">
+                    <div class="column">
+                        <div class="field">
+                            <label class="label" for="product">Product</label>
+                            <div class="select">
+                                <select name="product" id="">
+                                    <option value="LogMeIn Pro">LogMeIn Pro</option>
+                                    <option value="LogMeIn Central">LogMeIn Central</option>
+                                    <option value="LogMeIn Hamachi">LogMeIn Hamachi</option>
+                                    <option value="GoToMyPC">GoToMyPC</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label" for="email">Email</label>
+                            <input class="input" type="email" name="email">
+                        </div>
+                        <div class="field">
+                            <label class="label" for="case">Case #</label>
+                            <input class="input" type="text" name="case-num">
+                        </div>
+                    </div>
+
+                    <div class="column">
+
+                        <div class="field">
+                            <label for="" class="label">Issue</label>
+                            <textarea class="textarea" name="issue"></textarea>
+                        </div>
+
+                        <div class="field">
+                            <label for="" class="label">What have you tried?</label>
+                            <p class="help">Enter each step on a new line</p>
+                            <textarea class="textarea" name="steps-tried"></textarea>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="buttons is-centered">
+                    <button id="techBtnCopy" class="button is-success">
+                        <span class="icon"><i class="fa fa-fw fa-clone"></i></span>
+                        <span>Copy</span>
+                    </button>
+                    <button id="techBtnClear" class="button is-danger">
+                        <span class="icon"><i class="fa fa-fw fa-trash-o"></i></span>
+                        <span>Clear</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="section hero is-fullheight is-light" id="escy-formatter">
+        <div class="hero-body">
+            <div class="container">
+                <a class="title" href="#escy-formatter">
+                    Escy Formatter
+                </a>
+                <hr class="has-background-info">
+                <div class="columns" id="escy-formatter-wrapper">
+                    <div class="column" id="escy-formatter-wrapper-left">
+                        <label class="label" for="escy-desc">Description of Issue</label>
+                        <textarea class="textarea" spellcheck="true" id="escy-desc" id="escy-desc"
+                            placeholder="Well, what happened?"></textarea>
+                        <label class="label" for="escy-expected">Expected Results</label>
+                        <textarea class="textarea" name="escy-expected" id="escy-expected"
+                            placeholder="What shoulda happened?"></textarea>
+                        <label class="label" for="escy-email">User Email</label>
+                        <input class="input" name="escy-email" placeholder="Email" required>
+                        <label class="label" for="escy-datetime">Customer Timezone</label>
+                        <input class="input" name="escy-datetime" placeholder="EST">
+                        <label class="label" for="escy-build">Product build</label>
+                        <input class="input" name="escy-build" placeholder="ex. Host 13058">
+                        <label class="label" for="escy-os">Operating System</label>
+                        <input class="input" name="escy-os" placeholder="ex. Windows 10 b.1903">
+                        <label class="label" for="escy-browser">Browser Version</label>
+                        <input class="input" name="escy-browser" placeholder="ex. Latest Chrome">
+                        <label class="label">Steps to Recreate</label>
+                        <p class="help">Enter each step on a new line</p>
+                        <textarea class="textarea" name="escy-steps"></textarea>
+                    </div>
+                    <div class="column" id="escy-formatter-wrapper-right">
+                        <label class="label">Troubleshooting Done</label>
+                        <p class="help">Enter each step on a new line</p>
+                        <textarea class="textarea" name="escy-ts"></textarea>
+                        <label class="label" for="escy-impact">Is this impacting a single or multiple users?</label>
+                        <div class="select">
+                            <select name="escy-impact">
+                                <option value="Single">Single</option>
+                                <option value="Multiple">Multiple</option>
+                            </select>
+                        </div>
+                        <label class="label" for="escy-when-start">When did the issue start?</label>
+                        <input class="input" name="escy-when-start" type="text"
+                            placeholder="After X update / 12/2/2019 / etc.">
+                        <label class="label" for="escy-intermittent">Does it happen every time or
+                            intermittently?</label>
+                        <div class="select">
+                            <select name="escy-intermittent">
+                                <option value="Intermittent">Intermittent</option>
+                                <option value="Every time">Every time</option>
+                            </select>
+                        </div>
+                        <label class="label" for="escy-can-recreate">Can you recreate?</label>
+                        <div class="select">
+                            <select name="escy-can-recreate">
+                                <option value="Yes, only on their machine">Yes, only on their machine</option>
+                                <option value="Yes, on my machine">Yes, on my machine</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                        <label class="label" for="escy-workaround">Did you find a workaround? What is it?</label>
+                        <textarea class="textarea" name="escy-workaround"></textarea>
+                        <label class="label" for="escy-anything">Anything else important?</label>
+                        <textarea class="textarea" name="escy-anything"></textarea>
+                        <label class="label" for="escy-caseno">SalesForce case #</label>
+                        <input class="input" name="escy-caseno">
+                    </div>
+                </div>
+                <div class="buttons is-centered" id="escy-formatter-wrapper-bottom">
+                    <button class="button is-success" id="escyCopyBtn">
+                        <span class="icon"><i class="fa fa-fw fa-clone"></i></span>
+                        <span>Copy</span>
+                    </button>
+                    <button class="button is-danger" id="escyClearBtn">
+                        <span class="icon"><i class="fa fa-fw fa-trash-o"></i></span>
+                        <span>Clear</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="footer">
+
+        <div class="content has-text-centered">
+            <p>Made with &#10084; by <a href="https://github.com/naught0">James</a></p>
+
+            <span>Feedback? 
+                <a href="mailto:james.euteneuer@logmein.com?subject=Site Feedback">
+                    <i class="fa fa-fw fa-envelope"></i>
+                    E-mail me!
+                </a> ~or~ 
+                <a href="https://sageoutsource.slack.com/team/U3B3176BB">
+                    <span class="icon"><i class="fa fa-fw fa-slack"></i></span>
+                    Slack me!
+                </a>
+                </span>
+        </div>
+    </footer>
+
 </body>
-<div class="shadow" id="footer">
-    <p><a href="http://sageoutsource.com/">Property of Sage Outsource Solutions&reg; <img class="logo" id="logo-footer"
-                src="images/SageLogo.png" /></a></p>
-    <p>Made with &#10084; by <a href="https://github.com/naught0">James</a></p>
-    <span>Feedback? <a href="mailto:james.euteneuer@logmein.com?subject=Site Feedback"><i class="fa fa-fw fa-envelope"></i>E-mail me!</a> ~or~ <a href="https://sageoutsource.slack.com/team/U3B3176BB"><i class="fa fa-fw fa-slack"></i>Slack me!</a></span>
-</div>
 
 </html>

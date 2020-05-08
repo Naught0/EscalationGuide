@@ -22,15 +22,18 @@ $(function () {
 
         // Sanity checks for user
         if (startDate === null) {
-            $('#start-date').notify("Enter a valid Start Date");
+            $('#start-date').notify("Enter a valid Start Date",
+                { position: "bottom-right" });
             return;
         }
         if (endDate === null) {
-            $('#end-date').notify("Enter a valid End Date");
+            $('#end-date').notify("Enter a valid End Date",
+                { position: "bottom-right" });
             return;
         }
         if (price === null || price < 1) {
-            $('#calc-amount').notify("Enter a valid amount");
+            $('#calc-amount').notify("Enter a valid amount",
+                { position: "bottom-right" });
             return;
         }
 
@@ -41,7 +44,8 @@ $(function () {
             diffTime = endDate.getTime() - startDate.getTime();
 
         if (diffTime < DAY_MS) {
-            $('#end-date').notify("Check your days and try again");
+            $('#end-date').notify("Check your days and try again",
+                { position: "bottom-right" });
             return;
         }
 
@@ -59,6 +63,6 @@ $(function () {
                 return $('#prorate-result').text();
             }
         })
-        $('#prorate-result').notify('Copied', 'success');
+        $('#prorate-result').notify('Copied', { className: "success", position: "bottom-right" });
     })
 })
