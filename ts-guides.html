@@ -4,12 +4,15 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Troubleshooting Guides</title>
+    <link rel="icon" type="image/png" href="images/favicon.png" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/ts.css">
+    <link rel="stylesheet" href="css/image-fix.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
     <link rel="stylesheet" href="css/featherlight.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/hamburger.min.css">
+    <link rel="stylesheet" href="css/sticky.css">
+    <!-- <link rel="stylesheet" href="css/hamburger.min.css"> -->
     <script src="scripts/jquery-3.4.1.min.js"></script>
     <script src="scripts/clipboard.min.js"></script>
     <script src="scripts/notify.min.js"></script>
@@ -19,251 +22,473 @@
     <script src="scripts/show-menu.js"></script>
 </head>
 <html>
-<a href="#">
-    <div class="to-top shadow"><i class="fa fa-fw fa-2x fa-angle-double-up"></i></div>
-</a>
-<div id="sidebar-menu">
-    <h2>Some fun bits</h2>
-    <a href="tools.html">Tools</a>
-    <a class="fade" href="#">Known-issues (Coming soon&trade;)</a>
-    <a class="fade" href="#">Helpful links (Coming soon&trade;)</a>
-    <a href="ts-guides.html">Troubleshooting guides</a>
-</div>
-<div class="top-menu">
-    <a href="index.html"><i class="fa fa-fw fa-home"></i> Home</a>
-    <a href="escalation.html"><i class="fa fa-fw fa-chevron-circle-up"></i> Escalation Guides</a>
-    <a href="tools.html"><i class="fa fa-fw fa-wrench"></i> Tools</a>
-    <button id="menu" class="hamburger hamburger--spin" type="button" onclick="showMenu()">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-</div>
 
 <body>
-    <div class='vertical-menu round shadow'>
-        <h2>Hamachi</h2>
-        <a href="#hamachi-ip"><i class="fa fa-fw fa-windows"></i> Hamachi 0.0.0.0</a>
-        <!-- <a href="#">TEST</a>
-            <a href="#">TEST</a> -->
-        <h2>LMI Pro</h2>
-        <a href="#catalina-fourty"><i class="fa fa-fw fa-apple"></i> %40 Client</a>
-        <a href="#lmi-mac-kb-mouse"><i class="fa fa-fw fa-apple"></i> No KB/Mouse</a>
-            <!-- <a href="#">TEST</a> -->
-        <h2>GoToMyPC</h2>
-        <a href="#g2p-cannot-be-started"><i class="fa fa-fw fa-windows"></i> Cannot be started at this time</a>
-    </div>
-    <div class="main" id="intro">
-        <h1>Use the menu to the left to jump to your issue</h1>
-        <h2>If you are unsure of any instructions, consult a SME</h2>
-        <h3>Happy troubleshooting :)</h3>
-    </div>
-    <hr />
-    <div class="main" id="hamachi-ip">
-        <a href="#hamachi-ip">
-            <h1>Hamachi assigns <code>0.0.0.0</code> IP addresses to all peers</h1>
-        </a>
-        <h2 id="explanation">Explanation:</h2>
-        <div class="noteBox">This can sometimes occur when Windows does not properly &quot;bridge&quot; the Hamachi
-            adapter with the Internet adapter. This can happen at installation, during Windows updates, or randomly.
+    <script>
+        $(document).ready(function () {
+            // Check for click events on the navbar burger icon
+            $(".navbar-burger").click(function () {
+
+                // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                $(".navbar-burger").toggleClass("is-active");
+                $(".navbar-menu").toggleClass("is-active");
+
+            });
+        });
+    </script>
+
+    <nav class="navbar is-info has-shadow">
+        <div class="navbar-brand">
+            <div class="navbar-item">
+                <img src="images/logmein-large.png" />
+            </div>
+            <a role="button" class="navbar-burger" aria-label="menu" data-target="navMenu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
         </div>
-        <h2 id="solution-rebridge-the-adapters">Solution: <span class="cyan">Rebridge the adapters</span></h2>
-        <ol>
-            <li>Open the run prompt <code>Win</code> + <code>r</code></li>
-            <li>Enter <code>ncpa.cpl</code> to open Network Connections<br />
-                <a href="#" data-featherlight="https://i.imgur.com/4SniXdQ.png">
-                    <img src="https://i.imgur.com/4SniXdQ.png" />
+        <div class="navbar-menu" id="navMenu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="index.html">
+                    <span class="icon"><i class="fa fa-fw fa-home"></i></span>
+                    <span>Home</span>
                 </a>
-            </li>
-            <li>You should see an adapter named <code>Hamachi</code> as well as <code>Hamachi - ###-###-###</code><br />
-                <a href="#" data-featherlight="https://i.imgur.com/ivBYIB4.png">
-                    <img src="https://i.imgur.com/ivBYIB4.png" alt="" />
+                <!-- <a class="navbar-item" href="escalation.html">
+                    <span class="icon"><i class="fa fa-fw fa-chevron-circle-up"></i></span>
+                    <span>Escalation Guides</span>
                 </a>
-            </li>
-            <div class="noteBox"><span class="em">Pro tip:</span> You can tell the adapter is not bridged correctly if
-                their Internet adapter does not say <code>Enabled, Bridged</code></div>
-            <li>The <code>Hamachi - ###-###-###</code> adapter is bridged with their regular internet adapter (typicaly
-                labeled
-                <code>Ethernet</code> or <code>WiFi</code>)</li>
-            <li>To re-bridge these adapters, hold <code>Ctrl</code> and click both <code>Hamachi - ###-###-###</code>
-                and
-                <code>Ethernet</code> (or similar)</li>
-            <li>Now, right click one of the adapters and select &quot;Remove from bridge&quot;<br />
-                <a href="#" data-featherlight="https://i.imgur.com/cYd1dJ4.png">
-                    <img src="https://i.imgur.com/cYd1dJ4.png" alt="" />
-                </a>
-            </li>
-            <li>Repeat step 5, this time right-clicking and selecting <code>Bridge Connections</code><br />
-                <a href="#" data-featherlight="https://i.imgur.com/h4fytQB.png">
-                    <img src="https://i.imgur.com/h4fytQB.png" alt="" />
-                </a>
-            </li>
-            <li>The internet will likely disconnect temporarily at this point, wait for it to come back</li>
-            <li>Re-test</li>
-        </ol>
-        <div class="noteBox">
-            <span class='em'>Note!</span> If you receive an error at any point, or this does not resolve the
-            <code>0.0.0.0</code> IP issue, reach out to a SME.
-        </div>
-    </div>
-    <hr>
-    <div class="main" id="catalina-fourty">
-        <a href="#catalina-fourty">
-            <h1><code>%40</code> Catalina Issue (Client)</h1>
-        </a>
-        <h2>Explanation:</h2>
-        <div class="noteBox">
-            This occurs due to an error in a component of the program on Mac computers and will be fixed by a future
-            update of the Mac software.
-        </div>
-        <h2>Solution: <span class="cyan">Clear out the program cache and re-try</span></h2>
-        <ol>
-            <li><span class="em">Important!</span> Close the LogMeIn Client <span class="em">completely</span> before
-                continuing</li>
-            <li>Open the <code>Terminal</code> app</li>
-            <li>
-                Paste the following into terminal:
-                <br>
-                <br>
-                <code id="cmd-catalina-fourty" >rm -rfv /Users/$(id
-                    -un)/Library/Caches/com.logmein.ignition/fsCachedData/*</code>
-                <br>
-                <br>
-                <button class='cp-btn' id="copy-catalina-fourty" data-clipboard-action="copy" data-clipboard-target="#cmd-catalina-fourty">Copy</button>
-                <br>
-                <br>
-                <h3>It should look like this (terminal may be white instead):</h3>
-                <div class="picturebox">
-                    <a href="#" data-featherlight="https://i.imgur.com/63U4OTj.png">
-                        <img id="term-one" src="https://i.imgur.com/63U4OTj.png" alt="" />
+                <a class="navbar-item" href="tools.html">
+                    <span class="icon"><i class="fa fa-fw fa-wrench"></i></span>
+                    <span>Tools</span>
+                </a> -->
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="" class="navbar-link">
+                        More
                     </a>
-                    <span class="bigger">&rarr;</span>
-                    <a href="#" data-featherlight="https://i.imgur.com/UILHqAF.png">
-                        <img id="term-two" src="https://i.imgur.com/UILHqAF.png" alt="" />
-                    </a>
+                    <div class="navbar-dropdown is-right">
+                        <a class="navbar-item" href="tools.html">Tools</a>
+                        <a class="navbar-item" href="escalation.html">Escalation Guides</a>
+                        <a class="navbar-item" href="">Known-issues (Coming soon&trade;)</a>
+                        <a class="navbar-item" href="">Helpful links (Coming soon&trade;)</a>
+                    </div>
                 </div>
-            </li>
-            <li>Now, re-open the LogMeIn Client</li>
-            <li>
-                In the top-left of your screen, click "LogMeIn Client", then Preferences:
-                <a href="#" data-featherlight="https://i.imgur.com/YfP2h1L.png">
-                    <img src="https://i.imgur.com/YfP2h1L.png" alt="" style="display:flex;" />
-                </a>
-            </li>
-            <li>
-                Clear the saved credentials:
-                <a href="#" data-featherlight="https://i.imgur.com/qEN9cQR.png">
-                    <img src="https://i.imgur.com/qEN9cQR.png" alt="" style="display:flex;" />
-                </a>
-            </li>
-            <li>
-                Now, login again and it should work!
-            </li>
-        </ol>
-        <div class="noteBox">
-            <span class='em'>Note!</span> If you are confused at any point, or if the steps do not work, please reach
-            out to a SME.
-        </div>
-    </div>
-    <hr>
-    <div class="main" id="lmi-mac-kb-mouse">
-        <a href="#lmi-mac-kb-mouse"><h1>MacOS Catalina host - keyboard / mouse not working</h1></a>
-        <h2>Explanation:</h2>
-        <div class="noteBox">
-            Keyboard & mouse do not work when connecting to a Catalina host due to corrupt / improper permissions set through MacOS
-        </div>
-        <h2>Solution: <span class="cyan">Reset the permissions</span></h2>
-        <ol>
-            <li>
-                Open the Terminal app
-            </li>
-            <li>
-                Copy & paste the following command into terminal:
-                <br><br>
-                <code id="cmd-catalina-kb">tccutil reset All com.logmein.logmeinserver ; tccutil reset All com.logmein.logmeinguiagent</code>
-                <br><br>
-                <button class="cp-btn" id="btn-copy-catalina-kb" data-clipboard-action="copy" data-clipboard-target="#cmd-catalina-kb">Copy</button>
-            </li>
-            <li>After the command runs, quit the LogMeIn host software <i>completely</i> from the top menu bar</li>
-            <li>Re-open the host software</li>
-            <li>You should now be prompted for each permission it requires</li>
-            <li>Check off each permission that appears</li>
-            <li>Re-connect to the host&mdash;you should now be able to control!</li>
-        </ol>
-        <div class="noteBox">
-            <span class="em">Note! </span>If you are confused at any point, or not comfortable running terminal commands, reach out to a SME.
-        </div>
-    </div>
-    <hr>
-    <div class="main" id="g2p-cannot-be-started">
-        <a href="#g2p-cannot-be-started">
-            <h1>"GoToMyPC Cannot Be Started At This Time"</h1>
-        </a>
-        <h2>Explanation:</h2>
-        <div class="noteBox">
-            This occurs when Windows reports that GoToMyPC viewer files are "in-use"
-        </div>
-        <h2>Solutions:</h2>
-        <div class="accordian-container">
-            <button class="accordian solution-btn" onclick="showHide('article1')" id="btn1">Solution 1: Reboot the
-                Client Computer</button>
-            <div class="solution-article show" id="article1">
-                <ul>
-                    <li>This works the majority of the time</li>
-                <div class="noteBox"><span class="em">Note!</span> Continue to the next steps <i>only</i> if the user reports that this happens to them frequently</div>
-                </ul>
             </div>
-            <button class="accordian solution-btn" onclick="showHide('article2')" id="btn2">Solution 2: Permissions Fix
-                Tool</button>
-            <div class="solution-article show" id="article2">
-                <ul>
-                    <li>Download the Permissions Fix Tool <a
-                            href="https://github.com/41m33/g2ptools/releases/download/latest/GoToOpener_PermissionsFix.zip"><button style="color:var(--color-blu);">Here</button></a>
-                    </li>
-                    <li>Right click the download and extract it</li>
-                    <li>
-                        Right click the <code>GoToOpener_PermissionsFix.bat</code> file, and select <code>Run as administrator</code>
-                    </li>
-                    <li>A window should quickly appear and disappear</li>
-                    <li>Attempt to connect to the computer again</li>
-                </ul>
-            </div>
-            <button class="accordian solution-btn" onclick="showHide('article3')" id="btn3">Solution 3: Delete Old Viewer Files And Use Desktop Shortcuts</button>
-            <div class="solution-article show" id="article3">
-                <h3>Running the Script</h3>
-                <ul>
-                    <li>Download the <code>GoToMyPC_Client_Fixit.bat</code> tool from <a href="https://www.dropbox.com/s/mwuyknzjb96exad/GoToMyPC_Client_Fixit.bat?dl=1"><button>Here</button></a></li>
-                    <li>Double-click it to run</li>
-                    <li>Press Enter to begin & allow it to run</li>
-                    <li><span class="em">Note!</span> After it is done running, it will ask whether you would like to reboot the machine</li>
+        </div>
+    </nav>
+
+    <div class="columns">
+        <div class='column has-background-light is-marginless is-one-fifth'>
+            <script>
+                $(function () {
+                    var quickLinks = document.querySelectorAll(".menu-list a");
+
+                    for (var i = 0; i < quickLinks.length; i++) {
+                        quickLinks[i].addEventListener('click', function (event) {
+
+                            //check if a link is currently selected, remove is-active class if yes
+                            isActive = document.getElementsByClassName('is-active')[0];
+
+                            if (isActive != undefined) {
+                                isActive.classList.remove('is-active');
+                            }
+
+                            //then add is-active class to the most recent selected link
+                            this.classList.add('is-active');
+
+                        });
+
+                    }
+                })
+            </script>
+            <aside class="sticky box menu">
+                <div class="menu-list">
                     <ul>
-                        <li>If the customer is okay with rebooting, you may press enter to reboot the machine</li>
-                        <li>Otherwise, click the 'x' on the window and allow them to save their work / reboot later</li>
+                        <li>
+                            <a href="#"">
+                                <span class="icon"><i class="class fa fa-fw fa-arrow-up"></i></span>
+                                <span>To top</span>
+                            </a>
+                        </li>
                     </ul>
+                </div>
+                <p class="menu-label">Hamachi</p>
+                <ul class="menu-list">
+                    <li>
+                        <a href="#hamachi-ip">
+                            <span class="icon"><i class="fa fa-fw fa-windows"></i></span>
+                            <span>Hamachi 0.0.0.0</span>
+                        </a>
+                    </li>
                 </ul>
-                <h3><span class="cyan">Avoiding this issue: </span>Create desktop shortcuts</h3>
-                <ol>
-                    <li>Connect to the host machine via the website</li>
-                    <li>Once in session, click <code>File</code> &rarr; <code>Create shortcut to...</code></li>
-                    <li>Click <code>Yes</code> to continue</li>
-                    <li>Have them enter their GoToMyPC account password</li>
-                    <li>Click <code>Continue</code> then <code>OK</code></li>
-                    <img src="https://assets.cdngetgo.com/7b/23/2c4dfe5b4c8e910828c57e736781/rtaimage-eid-kac1b0000004epk-feoid-00n1b00000b8tsp-refid-0em1b000000b0zc">
-                </ol>
-                <div class="noteBox"><span class="em">Explanation: </span>The desktop shortcut does not use the GoToOpener in order to connect to the session. If a customer uses this method to connect to the machine, it is faster and will avoid this problem in the future.</div>
-            </div>
+
+                <p class="menu-label">LMI Pro</p>
+                <ul class="menu-list">
+                    <li>
+                        <a href="#catalina-fourty">
+                            <span class="icon"><i class="fa fa-fw fa-apple"></i></span>
+                            <span>%40 Client</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#lmi-mac-kb-mouse">
+                            <span class="icon"><i class="fa fa-fw fa-apple"></i></span>
+                            <span>No KB/Mouse</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <p class="menu-label">GoToMyPC</p>
+                <ul class="menu-list">
+                    <li>
+                        <a href="#g2p-cannot-be-started">
+                            <span class="icon"><i class="fa fa-fw fa-windows"></i></span>
+                            <span>Cannot be started at this time</span>
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+        </div>
+
+        <div class="column is-marginless is-paddingless">
+
+            <section class="hero is-fullheight is-light section" id="intro">
+                <div class="hero-body">
+                    <div class="container">
+                        <p class="title">Use the menu to the left to jump to your issue</p>
+                        <p class="subtitle">If you are unsure of any instructions, consult a SME</p>
+                        <p class="subtitle">Happy troubleshooting :)</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="hero section is-fullheight" id="hamachi-ip">
+                <div class="hero-body">
+                    <div class="container content">
+                        <a class="title" href="#hamachi-ip">
+                            Hamachi assigns <code>0.0.0.0</code> IP addresses to all peers
+                        </a>
+                        <div class="subtitle"></div>
+                        <p class="subtitle">Explanation:</p>
+                        <div class="box notification">This can sometimes occur when Windows does not properly
+                            &quot;bridge&quot;
+                            the Hamachi
+                            adapter with the Internet adapter. This can happen at installation, during Windows updates,
+                            or randomly.
+                        </div>
+                        <p class="subtitle">Solution:</p>
+                        <div class="box notification">Rebridge the adapters</div>
+                        <hr class="has-background-info">
+                        <ol>
+                            <li>Open the run prompt <code>Win</code> + <code>r</code></li>
+                            <li>Enter <code>ncpa.cpl</code> to open Network Connections<br />
+                                <a href="#" data-featherlight="https://i.imgur.com/4SniXdQ.png">
+                                    <img src="https://i.imgur.com/4SniXdQ.png" />
+                                </a>
+                            </li>
+                            <li>You should see an adapter named <code>Hamachi</code> as well as
+                                <code>Hamachi - ###-###-###</code><br />
+                                <a href="#" data-featherlight="https://i.imgur.com/ivBYIB4.png">
+                                    <img src="https://i.imgur.com/ivBYIB4.png" alt="" />
+                                </a>
+                            </li>
+                            <div class="box notification"><span class="has-text-weight-bold has-text-danger">Pro
+                                    tip:</span> You can tell the adapter is not
+                                bridged correctly if
+                                their Internet adapter does not say <code>Enabled, Bridged</code></div>
+                            <li>The <code>Hamachi - ###-###-###</code> adapter is bridged with their regular internet
+                                adapter (typicaly
+                                labeled
+                                <code>Ethernet</code> or <code>WiFi</code>)</li>
+                            <li>To re-bridge these adapters, hold <code>Ctrl</code> and click both
+                                <code>Hamachi - ###-###-###</code>
+                                and
+                                <code>Ethernet</code> (or similar)</li>
+                            <li>Now, right click one of the adapters and select &quot;Remove from bridge&quot;<br />
+                                <a href="#" data-featherlight="https://i.imgur.com/cYd1dJ4.png">
+                                    <img src="https://i.imgur.com/cYd1dJ4.png" alt="" />
+                                </a>
+                            </li>
+                            <li>Repeat step 5, this time right-clicking and selecting
+                                <code>Bridge Connections</code><br />
+                                <a href="#" data-featherlight="https://i.imgur.com/h4fytQB.png">
+                                    <img src="https://i.imgur.com/h4fytQB.png" alt="" />
+                                </a>
+                            </li>
+                            <li>The internet will likely disconnect temporarily at this point, wait for it to come back
+                            </li>
+                            <li>Re-test</li>
+                        </ol>
+                        <div class="box notification">
+                            <span class="has-text-weight-bold has-text-danger">Note!</span> If you receive an error at
+                            any point, or this does not resolve
+                            the
+                            <code>0.0.0.0</code> IP issue, reach out to a SME.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section hero is-fullheight is-light" id="catalina-fourty">
+                <div class="hero-body">
+                    <div class="container content">
+                        <a class="title" href="#catalina-fourty">
+                            <code>%40</code> Catalina Issue (Client)
+                        </a>
+                        <div class="subtitle"></div>
+                        <p class="subtitle">Explanation:</p>
+                        <div class="box notification">
+                            This occurs due to an error in a component of the program on Mac computers and will be fixed
+                            by a
+                            future
+                            update of the Mac software.
+                        </div>
+                        <p class="subtitle">Solution:</p>
+
+                        <div class="box notification">Clear out the program cache and re-try</div>
+
+                        <hr class="has-background-info">
+
+                        <ol>
+                            <li><span class="has-text-weight-bold has-text-danger">Important!</span> Close the LogMeIn
+                                Client <span class="has-text-weight-bold has-text-danger">completely</span>
+                                before
+                                continuing</li>
+                            <li>Open the <code>Terminal</code> app</li>
+                            <li>
+                                <p>
+                                    Paste the following into terminal:
+                                </p>
+
+                                <p>
+                                    <code id="cmd-catalina-fourty">rm -rfv /Users/$(id
+                                        -un)/Library/Caches/com.logmein.ignition/fsCachedData/*</code>
+                                </p>
+
+                                <button class="button is-link cp-btn" id="copy-catalina-fourty"
+                                    data-clipboard-action="copy"
+                                    data-clipboard-target="#cmd-catalina-fourty">Copy</button>
+                                <div class="subtitle"></div>
+                                <p class="subtitle">It should look like this (terminal may be white instead):</p>
+                                <div class="picturebox">
+                                    <a href="#" data-featherlight="https://i.imgur.com/63U4OTj.png">
+                                        <img id="term-one" src="https://i.imgur.com/63U4OTj.png" alt="" />
+                                    </a>
+                                    <span class="icon">
+                                        <i class="fa fa-fw fa-arrow-right"></i>
+                                    </span>
+                                    <a href="#" data-featherlight="https://i.imgur.com/UILHqAF.png">
+                                        <img id="term-two" src="https://i.imgur.com/UILHqAF.png" alt="" />
+                                    </a>
+                                </div>
+                            </li>
+                            <li>Now, re-open the LogMeIn Client</li>
+                            <li>
+                                In the top-left of your screen, click "LogMeIn Client", then Preferences:
+                                <a href="#" data-featherlight="https://i.imgur.com/YfP2h1L.png">
+                                    <img src="https://i.imgur.com/YfP2h1L.png" alt="" style="display:flex;" />
+                                </a>
+                            </li>
+                            <li>
+                                Clear the saved credentials:
+                                <a href="#" data-featherlight="https://i.imgur.com/qEN9cQR.png">
+                                    <img src="https://i.imgur.com/qEN9cQR.png" alt="" style="display:flex;" />
+                                </a>
+                            </li>
+                            <li>
+                                Now, login again and it should work!
+                            </li>
+                        </ol>
+                        <div class="box notification">
+                            <span class="has-text-weight-bold has-text-danger">Note!</span> If you are confused at any
+                            point, or if the steps do not work,
+                            please
+                            reach
+                            out to a SME.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section hero is-fullheight" id="lmi-mac-kb-mouse">
+                <div class="hero-body">
+                    <div class="container content">
+                        <a class="title" href="#lmi-mac-kb-mouse">
+                            MacOS Catalina host - keyboard / mouse not working
+                        </a>
+                        <div class="subitlte"></div>
+                        <p class="subtitle">Explanation:</p>
+                        <div class="box notification">
+                            Keyboard & mouse do not work when connecting to a Catalina host due to corrupt / improper
+                            permissions set
+                            through MacOS
+                        </div>
+                        <p class="subtitle">Solution:</p>
+                        <div class="box notification">Reset the permissions</div>
+                        <hr class="has-background-info">
+
+                        <ol>
+                            <li>
+                                Open the Terminal app
+                            </li>
+                            <li>
+                                <p>
+                                    Copy & paste the following command into terminal:
+                                </p>
+                                <p>
+                                    <code
+                                        id="cmd-catalina-kb">tccutil reset All com.logmein.logmeinserver ; tccutil reset All com.logmein.logmeinguiagent</code>
+                                </p>
+                                <button class="button is-link cp-btn" id="btn-copy-catalina-kb"
+                                    data-clipboard-action="copy" data-clipboard-target="#cmd-catalina-kb">Copy</button>
+                            </li>
+                            <li>After the command runs, quit the LogMeIn host software <i>completely</i> from the top
+                                menu bar
+                            </li>
+                            <li>Re-open the host software</li>
+                            <li>You should now be prompted for each permission it requires</li>
+                            <li>Check off each permission that appears</li>
+                            <li>Re-connect to the host&mdash;you should now be able to control!</li>
+                        </ol>
+                        <div class="box notification">
+                            <span class="has-text-weight-bold has-text-danger">Note! </span>If you are confused at any
+                            point, or
+                            not comfortable running terminal
+                            commands, reach out to a SME.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section hero is-light is-fullheight" id="g2p-cannot-be-started">
+                <div class="hero-body">
+                    <div class="container content">
+                        <a class="title" href="#g2p-cannot-be-started">
+                            "GoToMyPC Cannot Be Started At This Time"
+                        </a>
+                        <div class="subtitle"></div>
+                        <p class="subtitle">Explanation:</p>
+                        <div class="box notification">
+                            This occurs when Windows reports that GoToMyPC viewer files are "in-use"
+                        </div>
+                        <p class="subtitle">Solutions:</p>
+                        <div class="container">
+                            <article class="message">
+                                <div class="message-header">
+                                    Solution 1: Reboot
+                                    the Client Computer
+                                </div>
+                                <div class="container solution-article show" id="article1">
+                                    <ul>
+                                        <li>This works the majority of the time</li>
+                                        <div class="box notification">
+                                            <span class="has-text-weight-bold has-text-danger">
+                                                Note!
+                                            </span>
+                                            Continue to the next steps
+                                            <i>only</i> if
+                                            the
+                                            user reports that this happens to them frequently</div>
+                                    </ul>
+                                </div>
+                            </article>
+
+                            <article class="message">
+                                <div class="message-header">
+                                    Solution 2: Permissions Fix Tool
+                                </div>
+                                <div class="message-body" id="article2">
+                                    <ul>
+                                        <li>
+                                            <span>Download the Permissions Fix Tool</span>
+                                            <a class="button is-link is-small"
+                                                href="https://github.com/41m33/g2ptools/releases/download/latest/GoToOpener_PermissionsFix.zip">here
+                                            </a>
+                                        </li>
+                                        <li>Right click the download and extract it</li>
+                                        <li>
+                                            Right click the <code>GoToOpener_PermissionsFix.bat</code> file, and select
+                                            <code>Run as administrator</code>
+                                        </li>
+                                        <li>A window should quickly appear and disappear</li>
+                                        <li>Attempt to connect to the computer again</li>
+                                    </ul>
+                                </div>
+                            </article>
+
+                            <article class="message">
+                                <div class="message-header">
+                                    Solution 3: Delete Old Viewer Files And Use Desktop Shortcuts
+                                </div>
+                                <div class="message-body content" id="article3">
+                                    <h3>Running the Script</h3>
+                                    <ul>
+                                        <li>Download the <code>GoToMyPC_Client_Fixit.bat</code> tool from <a
+                                                class="button is-link is-small"
+                                                href="https://www.dropbox.com/s/mwuyknzjb96exad/GoToMyPC_Client_Fixit.bat?dl=1">here</a>
+                                        </li>
+                                        <li>Double-click it to run</li>
+                                        <li>Press Enter to begin & allow it to run</li>
+                                        <li><span class="has-text-weight-bold has-text-danger">Note!</span> After it is
+                                            done
+                                            running, it will ask whether you would
+                                            like to
+                                            reboot the machine</li>
+                                        <ul>
+                                            <li>If the customer is okay with rebooting, you may press enter to reboot
+                                                the machine
+                                            </li>
+                                            <li>Otherwise, click the 'x' on the window and allow them to save their work
+                                                / reboot
+                                                later</li>
+                                        </ul>
+                                    </ul>
+                                    <h3><span class="cyan">Avoiding this issue: </span>Create desktop shortcuts</h3>
+                                    <ol>
+                                        <li>Connect to the host machine via the website</li>
+                                        <li>Once in session, click <code>File</code> &rarr;
+                                            <code>Create shortcut to...</code></li>
+                                        <li>Click <code>Yes</code> to continue</li>
+                                        <li>Have them enter their GoToMyPC account password</li>
+                                        <li>Click <code>Continue</code> then <code>OK</code></li>
+                                        <img
+                                            src="https://assets.cdngetgo.com/7b/23/2c4dfe5b4c8e910828c57e736781/rtaimage-eid-kac1b0000004epk-feoid-00n1b00000b8tsp-refid-0em1b000000b0zc">
+                                    </ol>
+                                    <div class="box notification"><span
+                                            class="has-text-weight-bold has-text-danger">Explanation:
+                                        </span>The desktop shortcut does not use the
+                                        GoToOpener in order to connect to the session. If a customer uses this method to
+                                        connect to
+                                        the
+                                        machine, it is faster and will avoid this problem in the future.</div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
-    <hr>
-    <div class="shadow" id="footer">
-        <p><a href="http://sageoutsource.com/">Property of Sage Outsource Solutions&reg; <img class="logo"
-                    id="logo-footer" src="images/SageLogo.png" /></a></p>
-        <p>Made with &#10084; by <a href="https://github.com/naught0">James</a></p>
-        <span>Feedback? <a href="mailto:james.euteneuer@logmein.com?subject=Site Feedback"><i
-                    class="fa fa-fw fa-envelope"></i>E-mail me!</a> ~or~ <a
-                href="https://sageoutsource.slack.com/team/U3B3176BB"><i class="fa fa-fw fa-slack"></i>Slack
-                me!</a></span>
-    </div>
+
+    <footer class="footer" id="footer">
+
+        <div class="content has-text-centered">
+            <p>Made with &#10084; by <a href="https://github.com/naught0">James</a></p>
+
+            <span>Feedback?
+                <a href="mailto:james.euteneuer@logmein.com?subject=Site Feedback">
+                    <i class="fa fa-fw fa-envelope"></i>
+                    E-mail me!
+                </a> ~or~
+                <a href="https://sageoutsource.slack.com/team/U3B3176BB">
+                    <span class="icon"><i class="fa fa-fw fa-slack"></i></span>
+                    Slack me!
+                </a>
+            </span>
+        </div>
+    </footer>
 </body>
 
 </html>

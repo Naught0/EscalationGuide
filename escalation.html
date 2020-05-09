@@ -4,494 +4,658 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
-    <link href="css/hamburger.min.css" rel="stylesheet">
+    <!-- <link href="css/main.css" rel="stylesheet"> -->
+    <link id="light-theme" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+    <link rel="stylesheet" href="css/image-fix.css">
+    <!-- <link href="css/hamburger.min.css" rel="stylesheet"> -->
     <link rel="icon" type="image/png" href="images/favicon.png" />
     <title>So you want to escalate, eh?</title>
     <script src="scripts/jquery-3.4.1.min.js"></script>
     <script src="scripts/article-toggle.js" type="text/javascript"></script>
-    <script src="scripts/show-menu.js" type="text/javascript"></script>
     <script src="scripts/smoothscroll.min.js" type="text/javascript"></script>
     <script src="scripts/clipboard.min.js" type="text/javascript"></script>
     <script src="scripts/notify.min.js"></script>
 </head>
 
-<body>
-    <a href="#">
-        <div class="to-top shadow"><i class="fa fa-fw fa-2x fa-angle-double-up"></i></div>
-    </a>
-    <div class="top-menu">
-        <a href="index.html"><i class="fa fa-fw fa-home"></i> Home</a>
-        <a href="#sectionPro"><i class="fa fa-fw fa-desktop"></i> Pro (Host)</a>
-        <a href="#sectionPro-client"><i class="fa fa-fw fa-desktop"></i> Pro (Client)</a>
-        <a href="#sectionLMIAV"><i class="fa fa-fw fa-lock"></i> LogMeIn AV</a>
-        <a href="#sectionHamachi"><i class="fa fa-fw fa-globe"></i> Hamachi</a>
-        <a href="#sectionG2P"><i class="fa fa-fw fa-laptop"></i> GoToMyPC</a>
-        <a href="#sectionEscalationFmt"><i class="fa fa-fw fa-sticky-note"></i> Escy Format</a>
-        <button id="menu" class="hamburger hamburger--spin" type="button" onclick="showMenu()">
-            <span class="hamburger-box">
-                <span class="hamburger-inner"></span>
-            </span>
-        </button>
-    </div>
-    <div id="sidebar-menu">
-        <h2>Some fun bits</h2>
-        <a href="tools.html">Tools</a>
-        <a class="fade" href="#">Known-issues (Coming soon&trade;)</a>
-        <a class="fade" href="#">Helpful links (Coming soon&trade;)</a>
-        <a href="ts-guides.html">Troubleshooting guides</a>
-    </div>
-    <div class="main" id="home">
-        <h1>I need to escalate a case for...</h1>
-        <p>Use the links above to jump to your issue</p>
-        <p>
-            <note class="em">Always get approval from an L2 before escalating a case</note>
-        </p>
-    </div>
-    <hr />
-    <div class="main" id="sectionPro">
-        <a href="#sectionPro">
-            <h2>LogMeIn Pro</h2>
-        </a>
-        <button id="pro-btn" class="btn-icon"><i class="fa fa-fw fa-lg fa-windows"></i> <i
-                class="fa fa-fw fa-lg fa-toggle-off is-toggle"></i> <i class="fa fa-fw fa-lg fa-apple"></i></button>
-        <div class="windows-wrapper">
-            <ul class="ul-lmi-pro">
-                <li>First, enable debug-level logging</li>
-                <ol>
-                    <li>Open the LogMeIn Control Panel on the host machine</li>
-                    <li>Navigate to <code>Options</code> &rarr; <code>Preferences</code> &rarr; <code>Advanced</code>
-                    </li>
-                    <li>Check off <code>Enable debug-level logging</code> and press <code>OK</code></li>
-                    <img src="https://i.imgur.com/9AJRNLp.png" />
-                </ol>
-                <li>
-                    <note class="em">Important!</note>
-                    Recreate the issue you are escalating <strong>after</strong> you have enabled debug
-                </li>
-                <li>Now, to collect the log files</li>
-                <ol>
-                    <li>Open Windows Explorer</li>
-                    <li>In the address bar, type <code>%programdata%</code>, and press Enter</li>
-                    <img src="https://i.imgur.com/AqP0WWj.png" />
-                    <li>Right click the <code>LogMeIn</code> folder &rarr; <code>Send to</code> &rarr; <code>Compressed
-                            (zipped) folder</code></li>
-                    <img src="https://i.imgur.com/PMwHdSy.png" />
-                    <li>Use the file-transfer option in LogMeIn Rescue to transfer the <code>LogMeIn.zip</code> file to
-                        your machine</li>
-                </ol>
-                <li>Now, upload the file to your SalesForce case</li>
-                <li>Be sure to fill out the <a href="#sectionEscalationFmt">escalation format</a> in your case notes
-                </li>
-                <li>
-                    Once you have finished your case
-                    <note class="em">do not close it!</note>
-                    &mdash;change the case owner to <code>IAM Sage Advanced</code>
-                </li>
-            </ul>
+<body class="has-navbar-fixed-top">
+    <script>
+        $(document).ready(function () {
+            // Check for click events on the navbar burger icon
+            $(".navbar-burger").click(function () {
+
+                // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                $(".navbar-burger").toggleClass("is-active");
+                $(".navbar-menu").toggleClass("is-active");
+
+            });
+        });
+    </script>
+
+    <nav class="navbar is-fixed-top has-shadow is-info">
+        <div class="navbar-brand">
+            <div class="navbar-item">
+                <img src="images/logmein-large.png" />
+            </div>
+            <a role="button" class="navbar-burger" aria-label="menu" data-target="navMenu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
         </div>
-        <div class="mac-wrapper">
-            <ul class="ul-lmi-pro">
-                <li>First, enable debug-level logging</li>
-                <ol>
-                    <li>Open the LogMeIn Control Panel on the host machine</li>
-                    <li>Navigate to <code>Options</code> &rarr; <code>Preferences</code> &rarr; <code>Advanced</code>
-                    </li>
-                    <li>Check off <code>Enable debug-level logging</code></li>
-                    <img src="https://imgur.com/PcVxrqy.png" />
-                </ol>
-                <li>
-                    <note class="em">Important!</note>
-                    Recreate the issue you are escalating <b>after</b> you have enabled debug
-                </li>
-                <li>Now, collect the log files</li>
-                <ol>
-                    <li>Open the <code>File Manager</code> within your Rescue session</li>
-                    <li>Navigate to <code>/</code> &rarr; <code>Library</code> &rarr; <code>Logs</code> &rarr;
-                        <code>LogMeIn</code></li>
-                    <li>Find the files called <code>LogMeIn.log</code>, <code>stderr</code>, and <code>stdout</code>
-                    </li>
-                    <li>Transfer these files to your machine</li>
-                    <img src="https://i.imgur.com/qryb6ZL.gif" />
-                </ol>
-                <li>Now, upload the files to your SalesForce case</li>
-                <li>Be sure to fill out the <a href="#sectionEscalationFmt">escalation format</a> in your case notes
-                </li>
-                <li>
-                    Once you have finished your case
-                    <note class="em">do not close it!</note>
-                    &mdash;change the case owner to <code>IAM Sage Advanced</code>
-                </li>
-            </ul>
+
+        <div class="navbar-menu" id="navMenu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="index.html">
+                    <span class="icon">
+                        <i class="fa fa-fw fa-home"></i>
+                    </span>
+                    <span>Home</span>
+                </a>
+                <a class="navbar-item" href="#sectionPro">
+                    <span class="icon">
+                        <i class="fa fa-fw fa-desktop"></i>
+                    </span>
+                    <span>Pro (Host)</span>
+                </a>
+                <a class="navbar-item" href="#sectionPro-client">
+                    <span class="icon">
+                        <i class="fa fa-fw fa-desktop"></i>
+                    </span>
+                    <span>Pro (Client)</span>
+                </a>
+                <a class="navbar-item" href="#sectionLMIAV">
+                    <span class="icon">
+                        <i class="fa fa-fw fa-lock"></i>
+                    </span>
+                    <span>LogMeIn AV</span>
+                </a>
+                <a class="navbar-item" href="#sectionHamachi">
+                    <span class="icon">
+                        <i class="fa fa-fw fa-globe"></i>
+                    </span>
+                    <span>Hamachi</span>
+                </a>
+                <a class="navbar-item" href="#sectionG2P">
+                    <span class="icon">
+                        <i class="fa fa-fw fa-laptop"></i>
+                    </span>
+                    <span>GoToMyPC</span>
+                </a>
+                <a class="navbar-item" href="#sectionEscalationFmt">
+                    <span class="icon">
+                        <i class="fa fa-fw fa-sticky-note"></i>
+                    </span>
+                    <span>Escy Format</span>
+                </a>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a href="" class="navbar-link">
+                        More
+                    </a>
+                    <div class="navbar-dropdown is-right">
+                        <a class="navbar-item" href="tools.html">Tools</a>
+                        <a class="navbar-item" href="ts-guides.html">Troubleshooting guides</a>
+                        <a class="navbar-item" href="">Known-issues (Coming soon&trade;)</a>
+                        <a class="navbar-item" href="">Helpful links (Coming soon&trade;)</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <hr />
-    <div class="main" id="sectionPro-client">
-        <a href="#sectionPro-client">
-            <h2>LogMeIn Pro Client</h2>
-        </a>
-        <button class="btn-icon"><i class="fa fa-fw fa-lg fa-windows"></i> <i
-                class="fa fa-fw fa-lg fa-toggle-off is-toggle"></i> <i class="fa fa-fw fa-lg fa-apple"></i></button>
-        <div class="windows-wrapper">
-            <ul class="ul-lmi-pro-client">
-                <li>First, open the LogMeIn Client</li>
-                <li>Select <code>View</code> → <code>Options</code> → <code>Enable debug-level logging</code><br><img
-                        src="https://i.imgur.com/SrPFfrF.png" alt="" /></li>
-                <li>
-                    <note class="em">Important!</note> Be sure to recreate the issue <em>before</em> moving to the next
-                    steps
-                </li>
-                <li>Now, collect the logs:
-                    <ol>
-                        <li>Open up Windows Explorer (<code>Win</code> + <code>E</code>)</li>
-                        <li>At the top, type: <code>%localappdata%</code></li>
-                        <li>In the list of folders, find <code>LogMeInIgnition</code><br><img
-                                src="https://i.imgur.com/qJUKdX7.png" alt="" /></li>
-                        <li>Right-click the folder and choose <code>Send to</code> → <code>Compressed (zipped)
-                                folder</code><br><img src="https://i.imgur.com/MKMGc3S.png" alt="" /></li>
-                        <li>Move the file to the Desktop folder for easy access <br><img
-                                src="https://i.imgur.com/E8fDB2x.png" alt="" /></li>
-                    </ol>
-                </li>
-                <li>Now, use Rescue's File Manager to transfer the file to your machine</li>
-                <li>Upload the files to your SalesForce case</li>
-                <li>Be sure to fill out the <a href="#sectionEscalationFmt">escalation format</a> in your case notes
-                </li>
-                <li>Once you have finished your case
-                    <note class="em">do not close it!</note>
-                    —change the case owner to <code>IAM Sage Advanced</code></li>
-            </ul>
+    </nav>
+
+    <section class="hero is-light is-fullheight" id="home">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">I need to escalate a case for...</h1>
+                <p class="subtitle">Use the links above to jump to your issue</p>
+                <p class="subtitle has-text-weight-bold has-text-danger">
+                    Always get approval from an L2 before escalating a case
+                </p>
+            </div>
         </div>
-        <div class="mac-wrapper">
-            <ul class="ul-lmi-pro-client">
-                <li>First, open the LogMeIn Client</li>
-                <li>At the top left of the screen, select <code>LogMeIn Client</code> →
-                    <code>Preferences...</code><br><img src="https://i.imgur.com/ovdmmZc.jpg" alt="" /></li>
-                <li>Check off the box for <code>Debug level logging</code><br><img src="https://i.imgur.com/M4v9c4W.jpg"
-                        alt="" /></li>
-                <li>
-                    <note class="em">Important!</note> Be sure to recreate the issue before continuing
-                </li>
-                <li>To collect logs:
-                    <ol>
-                        <li>Open up the <code>Terminal</code> app</li>
-                        <li>Copy and paste the following command<br>
-                            <div class="noteBox"><samp>sw_vers &gt; /tmp/sysinfo.txt; zip -r ~/Desktop/LogMeInClient.zip
-                                    &quot;/Users/$(id -un)/Library/Logs/LogMeIn Client&quot;
-                                    &quot;/tmp/sysinfo.txt&quot;</samp><br>
-                            </div>
-                            <h3>Example output</h3><img src="https://i.imgur.com/d7RTqMY.png" alt="" />
+    </section>
+
+    <section class="section hero is-fullheight" id="sectionPro">
+        <div class="hero-body">
+            <div class="container">
+                <a class="title has-text-link" href="#sectionPro">
+                    LogMeIn Pro
+                </a>
+                <div class="subtitle"></div>
+                <h2 class="subtitle">Click below to change the OS of the instructions</h2>
+                <button id="pro-btn" class="btn-icon button is-link">
+                    <span class="icon"><i class="fa fa-fw fa-lg fa-windows"></i></span>
+                    <span class="icon"><i class="fa fa-fw fa-lg fa-toggle-off is-toggle"></i></span>
+                    <span class="icon"><i class="fa fa-fw fa-lg fa-apple"></i></span>
+                </button>
+                <hr class="has-background-info">
+
+                <div class="container content windows-wrapper">
+                    <ul class="ul-lmi-pro">
+                        <li>First, enable debug-level logging</li>
+                        <ol>
+                            <li>Open the LogMeIn Control Panel on the host machine</li>
+                            <li>Navigate to <code>Options</code> &rarr; <code>Preferences</code> &rarr;
+                                <code>Advanced</code>
+                            </li>
+                            <li>Check off <code>Enable debug-level logging</code> and press <code>OK</code></li>
+                            <img src="https://i.imgur.com/9AJRNLp.png" />
+                        </ol>
+                        <li>
+                            <span class="has-text-danger has-text-weight-bold">Important!</span>
+                            Recreate the issue you are escalating <strong>after</strong> you have enabled debug
                         </li>
-                        <li>You should now have a file called &quot;LogMeInClient.zip&quot; on the Desktop of the Mac
-                            computer</li>
-                            <img src="https://i.imgur.com/eox82Xy.jpg" alt="" />
-                    </ol>
-                </li>
-                <li>Now, use the File Manager feature within Rescue to collect the log files</li>
-                <li>Upload the files to your SalesForce case</li>
-                <li>Be sure to fill out the <a href="#sectionEscalationFmt">escalation format</a> in your case notes
-                </li>
-                <li>Once you have finished your case <note class="em">do not close it!</note>—change the case owner to
-                    <code>IAM Sage Advanced</code></li>
-            </ul>
+                        <li>Now, to collect the log files</li>
+                        <ol>
+                            <li>Open Windows Explorer</li>
+                            <li>In the address bar, type <code>%programdata%</code>, and press Enter</li>
+                            <img src="https://i.imgur.com/AqP0WWj.png" />
+                            <li>Right click the <code>LogMeIn</code> folder &rarr; <code>Send to</code> &rarr; <code>Compressed
+                                    (zipped) folder</code></li>
+                            <img src="https://i.imgur.com/PMwHdSy.png" />
+                            <li>Use the file-transfer option in LogMeIn Rescue to transfer the <code>LogMeIn.zip</code>
+                                file to
+                                your machine</li>
+                        </ol>
+                        <li>Now, upload the file to your SalesForce case</li>
+                        <li>Be sure to fill out the <a href="#sectionEscalationFmt">escalation format</a> in your case
+                            notes
+                        </li>
+                        <li>
+                            Once you have finished your case
+                            <span class="has-text-danger has-text-weight-bold">do not close it!</span>
+                            &mdash;change the case owner to <code>IAM Sage Advanced</code>
+                        </li>
+                    </ul>
+                </div>
+                <div class="container content mac-wrapper">
+                    <ul class="ul-lmi-pro">
+                        <li>First, enable debug-level logging</li>
+                        <ol>
+                            <li>Open the LogMeIn Control Panel on the host machine</li>
+                            <li>Navigate to <code>Options</code> &rarr; <code>Preferences</code> &rarr;
+                                <code>Advanced</code>
+                            </li>
+                            <li>Check off <code>Enable debug-level logging</code></li>
+                            <img src="https://imgur.com/PcVxrqy.png" />
+                        </ol>
+                        <li>
+                            <span class="has-text-danger has-text-weight-bold">Important!</span>
+                            Recreate the issue you are escalating <b>after</b> you have enabled debug
+                        </li>
+                        <li>Now, collect the log files</li>
+                        <ol>
+                            <li>Open the <code>File Manager</code> within your Rescue session</li>
+                            <li>Navigate to <code>/</code> &rarr; <code>Library</code> &rarr; <code>Logs</code> &rarr;
+                                <code>LogMeIn</code></li>
+                            <li>Find the files called <code>LogMeIn.log</code>, <code>stderr</code>, and
+                                <code>stdout</code>
+                            </li>
+                            <li>Transfer these files to your machine</li>
+                            <img src="https://i.imgur.com/qryb6ZL.gif" />
+                        </ol>
+                        <li>Now, upload the files to your SalesForce case</li>
+                        <li>Be sure to fill out the <a href="#sectionEscalationFmt">escalation format</a> in your case
+                            notes
+                        </li>
+                        <li>
+                            Once you have finished your case
+                            <span class="has-text-danger has-text-weight-bold">do not close it!</span>
+                            &mdash;change the case owner to <code>IAM Sage Advanced</code>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </div>
-    <hr>
-    <div class="main" id="sectionLMIAV">
-        <a href="#sectionLMIAV">
-            <h2>LogMeIn AV</h2>
-        </a>
-        <button class="btn-icon"><i class="fa fa-fw fa-lg fa-windows"></i> <i
-                class="fa fa-fw fa-lg fa-toggle-off is-toggle"></i> <i class="fa fa-fw fa-lg fa-apple"></i></button>
-        <div class="windows-wrapper">
-            <ul class="ul-lmi-av">
-                <li>First, enable debug-level logging</li>
-                <ol>
-                    <li>Open the LogMeIn Control Panel on the host machine</li>
-                    <li>Navigate to <code>Options</code> &rarr; <code>Preferences</code> &rarr;
-                        <code>Advanced</code></li>
-                    <li>Check off <code>Enable debug-level logging</code> and press <code>OK</code></li>
-                    <img src="https://i.imgur.com/9AJRNLp.png" />
-                </ol>
-                <li>
-                    <note class="em">Important!</note>
-                    Recreate the issue you are escalating <strong>after</strong> you have enabled debug
-                </li>
-                <li>Now, gather the Support Tool logs</li>
-                <ol>
-                    <li>Download the LogMeIn AV Support Tool on the customer's machine. You can find it <button class="pro-btn"><a
-                        href="http://download.bitdefender.com/oem/logmein/BEST/sptool/SupportTool_x64_silent.exe">here</a></button>
-                    </li>
-                    <li>Once the tool is downloaded, double-click it and allow it to run</li>
-                    <div class="noteBox">
-                        <p>
-                            <note class="em">Note!</note>
-                            The tool will run <em>silently</em> (you won't see it doing anything)
-                        </p>
-                        <p>It will place a zipped folder on the customer's desktop</p>
-                    </div>
-                </ol>
-                <li>Once the tool has finished running, collect the debug-level logs and Support Tool logs</li>
-                <li>To collect the debug logs</li>
-                <ol>
-                    <li>Open Windows Explorer</li>
-                    <li>In the address bar, type <code>%programdata%</code>, and press Enter</li>
-                    <img src="https://i.imgur.com/AqP0WWj.png" />
-                    <li>Right click the <code>LogMeIn</code> folder &rarr; <code>Send to</code> &rarr;
-                        <code>Compressed (zipped) folder</code></li>
-                    <img src="https://i.imgur.com/PMwHdSy.png" />
-                    <li>Use the file-transfer option in LogMeIn Rescue to transfer the <code>LogMeIn.zip</code> file
-                        to your machine</li>
-                </ol>
-                <li>To collect the support tool logs</li>
-                <ul id="ul-lmi-av">
-                    <li>Use the file-transfer option in LogMeIn Rescue to transfer the
-                        <code>supporttoolXXXXX.zip</code> from their desktop</li>
-                </ul>
-                <li>Now, upload the files to your SalesForce case</li>
-                <li>Be sure to fill out the <a href="#sectionEscalationFmt">escalation format</a> in your case notes
-                </li>
-                <li>
-                    Once you have finished your case
-                    <note class="em">do not close it!</note>
-                    &mdash;change the case owner to <code>IAM Sage Advanced</code>
-                </li>
-            </ul>
+
+    </section>
+
+    <section class="section hero is-light is-fullheight" id="sectionPro-client">
+        <div class="hero-body">
+            <div class="container">
+                <a class="title" href="#sectionPro-client">
+                    <h2>LogMeIn Pro Client</h2>
+                </a>
+                <div class="subtitle"></div>
+                <h2 class="subtitle">Click below to change the OS of the instructions</h2>
+                <button class="btn-icon button is-link">
+                    <span class="icon"><i class="fa fa-fw fa-lg fa-windows"></i></span>
+                    <span class="icon"><i class="fa fa-fw fa-lg fa-toggle-off is-toggle"></i></span>
+                    <span class="icon"><i class="fa fa-fw fa-lg fa-apple"></i></span>
+                </button>
+                <hr class="has-background-info">
+
+                <div class="container content windows-wrapper">
+                    <ul class="ul-lmi-pro-client">
+                        <li>First, open the LogMeIn Client</li>
+                        <li>Select <code>View</code> → <code>Options</code> →
+                            <code>Enable debug-level logging</code><br><img src="https://i.imgur.com/SrPFfrF.png"
+                                alt="" /></li>
+                        <li>
+                            <span class="has-text-danger has-text-weight-bold">Important!</span> Be sure to recreate the
+                            issue <em>before</em> moving to the next
+                            steps
+                        </li>
+                        <li>Now, collect the logs:
+                            <ol>
+                                <li>Open up Windows Explorer (<code>Win</code> + <code>E</code>)</li>
+                                <li>At the top, type: <code>%localappdata%</code></li>
+                                <li>In the list of folders, find <code>LogMeInIgnition</code><br><img
+                                        src="https://i.imgur.com/qJUKdX7.png" alt="" /></li>
+                                <li>Right-click the folder and choose <code>Send to</code> → <code>Compressed (zipped)
+                                        folder</code><br><img src="https://i.imgur.com/MKMGc3S.png" alt="" /></li>
+                                <li>Move the file to the Desktop folder for easy access <br><img
+                                        src="https://i.imgur.com/E8fDB2x.png" alt="" /></li>
+                            </ol>
+                        </li>
+                        <li>Now, use Rescue's File Manager to transfer the file to your machine</li>
+                        <li>Upload the files to your SalesForce case</li>
+                        <li>Be sure to fill out the <a href="#sectionEscalationFmt">escalation format</a> in your case
+                            notes
+                        </li>
+                        <li>Once you have finished your case
+                            <span class="has-text-danger has-text-weight-bold">do not close it!</span>
+                            —change the case owner to <code>IAM Sage Advanced</code></li>
+                    </ul>
+                </div>
+                <div class="container content mac-wrapper">
+                    <ul class="ul-lmi-pro-client">
+                        <li>First, open the LogMeIn Client</li>
+                        <li>At the top left of the screen, select <code>LogMeIn Client</code> →
+                            <code>Preferences...</code><br><img src="https://i.imgur.com/ovdmmZc.jpg" alt="" /></li>
+                        <li>Check off the box for <code>Debug level logging</code><br><img
+                                src="https://i.imgur.com/M4v9c4W.jpg" alt="" /></li>
+                        <li>
+                            <span class="has-text-danger has-text-weight-bold">Important!</span> Be sure to recreate the
+                            issue before continuing
+                        </li>
+                        <li>To collect logs:
+                            <ol>
+                                <li>Open up the <code>Terminal</code> app</li>
+                                <li>Copy and paste the following command<br>
+                                    <div class="box notification"><samp id="pro-client-cmd">sw_vers &gt;
+                                            /tmp/sysinfo.txt; zip -r
+                                            ~/Desktop/LogMeInClient.zip
+                                            &quot;/Users/$(id -un)/Library/Logs/LogMeIn Client&quot;
+                                            &quot;/tmp/sysinfo.txt&quot;</samp>
+                                    </div>
+                                    <button class="button is-link" id="proClientBtnCopy"
+                                        data-clipboard-target="#pro-client-cmd">
+                                        <span class="icon">
+                                            <i class="fa fa-fw fa-copy"></i>
+                                        </span>
+                                        <span>Copy</span>
+                                    </button>
+                                    <script>
+                                        var btn = $('#proClientBtnCopy')[0];
+                                        var clipboard = new ClipboardJS(btn);
+
+                                        clipboard.on('success', function (e) {
+                                            console.log(e);
+                                        });
+
+                                        clipboard.on('error', function (e) {
+                                            console.log(e);
+                                        });
+
+                                        // Notify copied
+                                        $(function () {
+                                            $('#proClientBtnCopy').click(function () {
+                                                $(this).notify("Copied!", {
+                                                    className: "success",
+                                                    position: "right",
+                                                    autoHideDelay: 2000
+                                                });
+                                            });
+                                        });
+                                    </script>
+                                    <h3>Example output</h3>
+                                    <p><span class="has-text-weight-bold has-text-danger">Note!</span> Terminal may
+                                        instead be white; this is normal.</p>
+                                    <img src="https://i.imgur.com/d7RTqMY.png" alt="" />
+                                </li>
+                                <li>You should now have a file called &quot;LogMeInClient.zip&quot; on the Desktop of
+                                    the Mac
+                                    computer</li>
+                                <img src="https://i.imgur.com/eox82Xy.jpg" alt="" />
+                            </ol>
+                        </li>
+                        <li>Now, use the File Manager feature within Rescue to collect the log files</li>
+                        <li>Upload the files to your SalesForce case</li>
+                        <li>Be sure to fill out the <a href="#sectionEscalationFmt">escalation format</a> in your case
+                            notes
+                        </li>
+                        <li>Once you have finished your case <span class="has-text-danger has-text-weight-bold">do not
+                                close it!</span>—change the case owner to
+                            <code>IAM Sage Advanced</code></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="mac-wrapper" style="font-size: 0.7em;color: var(--color-em);">
-            <pre>
+    </section>
+
+    <section class="hero section is-fullheight" id="sectionLMIAV">
+        <div class="hero-body">
+            <div class="container">
+                <a class="title" href="#sectionLMIAV">
+                    LogMeIn AV
+                </a>
+                <div class="subtitle"></div>
+                <h2 class="subtitle">Click below to change the OS of the instructions</h2>
+                <button class="btn-icon button is-link">
+                    <span class="icon"><i class="fa fa-fw fa-lg fa-windows"></i></span>
+                    <span class="icon"><i class="fa fa-fw fa-lg fa-toggle-off is-toggle"></i></span>
+                    <span class="icon"><i class="fa fa-fw fa-lg fa-apple"></i></span>
+                </button>
+                <hr class="has-background-info">
+
+                <div class="container content windows-wrapper">
+                    <ul class="ul-lmi-av">
+                        <li>First, enable debug-level logging</li>
+                        <ol>
+                            <li>Open the LogMeIn Control Panel on the host machine</li>
+                            <li>Navigate to <code>Options</code> &rarr; <code>Preferences</code> &rarr;
+                                <code>Advanced</code></li>
+                            <li>Check off <code>Enable debug-level logging</code> and press <code>OK</code></li>
+                            <img src="https://i.imgur.com/9AJRNLp.png" />
+                        </ol>
+                        <li>
+                            <span class="has-text-danger has-text-weight-bold">Important!</span>
+                            Recreate the issue you are escalating <strong>after</strong> you have enabled debug
+                        </li>
+                        <li>Now, gather the Support Tool logs</li>
+                        <ol>
+                            <li>Download the LogMeIn AV Support Tool on the customer's machine. You can find it
+                                <a class="button is-small is-link"
+                                    href="http://download.bitdefender.com/oem/logmein/BEST/sptool/SupportTool_x64_silent.exe">here</a>
+                            </li>
+                            <li>Once the tool is downloaded, double-click it and allow it to run</li>
+                            <div class="box notification">
+                                <p>
+                                    <span class="has-text-danger has-text-weight-bold">Note!</span>
+                                    The tool will run <em>silently</em> (you won't see it doing anything)
+                                </p>
+                                <p>It will place a zipped folder on the customer's desktop</p>
+                            </div>
+                        </ol>
+                        <li>Once the tool has finished running, collect the debug-level logs and Support Tool logs</li>
+                        <li>To collect the debug logs</li>
+                        <ol>
+                            <li>Open Windows Explorer</li>
+                            <li>In the address bar, type <code>%programdata%</code>, and press Enter</li>
+                            <img src="https://i.imgur.com/AqP0WWj.png" />
+                            <li>Right click the <code>LogMeIn</code> folder &rarr; <code>Send to</code> &rarr;
+                                <code>Compressed (zipped) folder</code></li>
+                            <img src="https://i.imgur.com/PMwHdSy.png" />
+                            <li>Use the file-transfer option in LogMeIn Rescue to transfer the <code>LogMeIn.zip</code>
+                                file
+                                to your machine</li>
+                        </ol>
+                        <li>To collect the support tool logs</li>
+                        <ul id="ul-lmi-av">
+                            <li>Use the file-transfer option in LogMeIn Rescue to transfer the
+                                <code>supporttoolXXXXX.zip</code> from their desktop</li>
+                        </ul>
+                        <li>Now, upload the files to your SalesForce case</li>
+                        <li>Be sure to fill out the <a href="#sectionEscalationFmt">escalation format</a> in your case
+                            notes
+                        </li>
+                        <li>
+                            Once you have finished your case
+                            <span class="has-text-danger has-text-weight-bold">do not close it!</span>
+                            &mdash;change the case owner to <code>IAM Sage Advanced</code>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mac-wrapper" style="font-size: 0.7em;color: var(--color-em);">
+                    <pre>
 
 
 
- .M"""bgd `7MMF'  `7MMF'      db      `7MMM.     ,MMF'`7MM"""YMM  OO                                                                                                                   
-,MI    "Y   MM      MM       ;MM:       MMMb    dPMM    MM    `7  88                                                                                                                   
-`MMb.       MM      MM      ,V^MM.      M YM   ,M MM    MM   d    ||                                                                                                                   
-  `YMMNq.   MMmmmmmmMM     ,M  `MM      M  Mb  M' MM    MMmmMM    ||                                                                                                                   
-.     `MM   MM      MM     AbmmmqMA     M  YM.P'  MM    MM   Y  , `'                                                                                                                   
-Mb     dM   MM      MM    A'     VML    M  `YM'   MM    MM     ,M ,,                                                                                                                   
-P"Ybmmd"  .JMML.  .JMML..AMA.   .AMMA..JML. `'  .JMML..JMMmmmmMMM db                                                                                                                   
-                                                                                                                                                                                       
-                                                                                                                                                                                       
-                                                                                                                                                                                       
-                                                                                                                                                                                       
-`7MMF'      `7MMM.     ,MMF'`7MMF'          db `7MMF'   `7MF'                                                                                                                          
-  MM          MMMb    dPMM    MM           ;MM:  `MA     ,V                                                                                                                            
-  MM          M YM   ,M MM    MM          ,V^MM.  VM:   ,V                                                                                                                             
-  MM          M  Mb  M' MM    MM         ,M  `MM   MM.  M'                                                                                                                             
-  MM      ,   M  YM.P'  MM    MM         AbmmmqMA  `MM A'                                                                                                                              
-  MM     ,M   M  `YM'   MM    MM        A'     VML  :MM;                                                                                                                               
-.JMMmmmmMMM .JML. `'  .JMML..JMML.    .AMA.   .AMMA. VF                                                                                                                                
-                                                                                                                                                                                       
-                                                                                                                                                                                       
-                                                                                                                                                                                       
-                                                                                                                                                                                       
-`7MM"""Yb.     .g8""8q. `7MM"""YMM   .M"""bgd     `7MN.   `7MF' .g8""8q.  MMP""MM""YMM     `7MMF'     A     `7MF' .g8""8q. `7MM"""Mq.  `7MMF' `YMM'                                    
-  MM    `Yb. .dP'    `YM. MM    `7  ,MI    "Y       MMN.    M .dP'    `YM.P'   MM   `7       `MA     ,MA     ,V .dP'    `YM. MM   `MM.   MM   .M'                                      
-  MM     `Mb dM'      `MM MM   d    `MMb.           M YMb   M dM'      `MM     MM             VM:   ,VVM:   ,V  dM'      `MM MM   ,M9    MM .d"                                        
-  MM      MM MM        MM MMmmMM      `YMMNq.       M  `MN. M MM        MM     MM              MM.  M' MM.  M'  MM        MM MMmmdM9     MMMMM.                                        
-  MM     ,MP MM.      ,MP MM   Y  , .     `MM       M   `MM.M MM.      ,MP     MM              `MM A'  `MM A'   MM.      ,MP MM  YM.     MM  VMA                                       
-  MM    ,dP' `Mb.    ,dP' MM     ,M Mb     dM       M     YMM `Mb.    ,dP'     MM               :MM;    :MM;    `Mb.    ,dP' MM   `Mb.   MM   `MM.                                     
-.JMMmmmdP'     `"bmmd"' .JMMmmmmMMM P"Ybmmd"      .JML.    YM   `"bmmd"'     .JMML.              VF      VF       `"bmmd"' .JMML. .JMM..JMML.   MMb.                                   
-                                                                                                                                                                                       
-                                                                                                                                                                                       
-                                                                                                                                                                                       
-                                                                                                                                                                                       
-  .g8""8q. `7MN.   `7MF'    `7MMM.     ,MMF'      db       .g8"""bgd       .g8"""bgd   .g8""8q. `7MMM.     ,MMF'`7MM"""Mq.`7MMF'   `7MF'MMP""MM""YMM `7MM"""YMM  `7MM"""Mq.   .M"""bgd 
-.dP'    `YM. MMN.    M        MMMb    dPMM       ;MM:    .dP'     `M     .dP'     `M .dP'    `YM. MMMb    dPMM    MM   `MM. MM       M  P'   MM   `7   MM    `7    MM   `MM. ,MI    "Y 
-dM'      `MM M YMb   M        M YM   ,M MM      ,V^MM.   dM'       `     dM'       ` dM'      `MM M YM   ,M MM    MM   ,M9  MM       M       MM        MM   d      MM   ,M9  `MMb.     
-MM        MM M  `MN. M        M  Mb  M' MM     ,M  `MM   MM              MM          MM        MM M  Mb  M' MM    MMmmdM9   MM       M       MM        MMmmMM      MMmmdM9     `YMMNq. 
-MM.      ,MP M   `MM.M        M  YM.P'  MM     AbmmmqMA  MM.             MM.         MM.      ,MP M  YM.P'  MM    MM        MM       M       MM        MM   Y  ,   MM  YM.   .     `MM 
-`Mb.    ,dP' M     YMM        M  `YM'   MM    A'     VML `Mb.     ,'     `Mb.     ,' `Mb.    ,dP' M  `YM'   MM    MM        YM.     ,M       MM        MM     ,M   MM   `Mb. Mb     dM 
-  `"bmmd"' .JML.    YM      .JML. `'  .JMML..AMA.   .AMMA. `"bmmmd'        `"bmmmd'    `"bmmd"' .JML. `'  .JMML..JMML.       `bmmmmd"'     .JMML.    .JMMmmmmMMM .JMML. .JMM.P"Ybmmd"  
-                                                                                                                                                                                       
-                                                                                                                                                                                       
-
-            </pre>
+         .M"""bgd `7MMF'  `7MMF'      db      `7MMM.     ,MMF'`7MM"""YMM  OO                                                                                                                   
+        ,MI    "Y   MM      MM       ;MM:       MMMb    dPMM    MM    `7  88                                                                                                                   
+        `MMb.       MM      MM      ,V^MM.      M YM   ,M MM    MM   d    ||                                                                                                                   
+          `YMMNq.   MMmmmmmmMM     ,M  `MM      M  Mb  M' MM    MMmmMM    ||                                                                                                                   
+        .     `MM   MM      MM     AbmmmqMA     M  YM.P'  MM    MM   Y  , `'                                                                                                                   
+        Mb     dM   MM      MM    A'     VML    M  `YM'   MM    MM     ,M ,,                                                                                                                   
+        P"Ybmmd"  .JMML.  .JMML..AMA.   .AMMA..JML. `'  .JMML..JMMmmmmMMM db                                                                                                                   
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+        `7MMF'      `7MMM.     ,MMF'`7MMF'          db `7MMF'   `7MF'                                                                                                                          
+          MM          MMMb    dPMM    MM           ;MM:  `MA     ,V                                                                                                                            
+          MM          M YM   ,M MM    MM          ,V^MM.  VM:   ,V                                                                                                                             
+          MM          M  Mb  M' MM    MM         ,M  `MM   MM.  M'                                                                                                                             
+          MM      ,   M  YM.P'  MM    MM         AbmmmqMA  `MM A'                                                                                                                              
+          MM     ,M   M  `YM'   MM    MM        A'     VML  :MM;                                                                                                                               
+        .JMMmmmmMMM .JML. `'  .JMML..JMML.    .AMA.   .AMMA. VF                                                                                                                                
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+        `7MM"""Yb.     .g8""8q. `7MM"""YMM   .M"""bgd     `7MN.   `7MF' .g8""8q.  MMP""MM""YMM     `7MMF'     A     `7MF' .g8""8q. `7MM"""Mq.  `7MMF' `YMM'                                    
+          MM    `Yb. .dP'    `YM. MM    `7  ,MI    "Y       MMN.    M .dP'    `YM.P'   MM   `7       `MA     ,MA     ,V .dP'    `YM. MM   `MM.   MM   .M'                                      
+          MM     `Mb dM'      `MM MM   d    `MMb.           M YMb   M dM'      `MM     MM             VM:   ,VVM:   ,V  dM'      `MM MM   ,M9    MM .d"                                        
+          MM      MM MM        MM MMmmMM      `YMMNq.       M  `MN. M MM        MM     MM              MM.  M' MM.  M'  MM        MM MMmmdM9     MMMMM.                                        
+          MM     ,MP MM.      ,MP MM   Y  , .     `MM       M   `MM.M MM.      ,MP     MM              `MM A'  `MM A'   MM.      ,MP MM  YM.     MM  VMA                                       
+          MM    ,dP' `Mb.    ,dP' MM     ,M Mb     dM       M     YMM `Mb.    ,dP'     MM               :MM;    :MM;    `Mb.    ,dP' MM   `Mb.   MM   `MM.                                     
+        .JMMmmmdP'     `"bmmd"' .JMMmmmmMMM P"Ybmmd"      .JML.    YM   `"bmmd"'     .JMML.              VF      VF       `"bmmd"' .JMML. .JMM..JMML.   MMb.                                   
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+          .g8""8q. `7MN.   `7MF'    `7MMM.     ,MMF'      db       .g8"""bgd       .g8"""bgd   .g8""8q. `7MMM.     ,MMF'`7MM"""Mq.`7MMF'   `7MF'MMP""MM""YMM `7MM"""YMM  `7MM"""Mq.   .M"""bgd 
+        .dP'    `YM. MMN.    M        MMMb    dPMM       ;MM:    .dP'     `M     .dP'     `M .dP'    `YM. MMMb    dPMM    MM   `MM. MM       M  P'   MM   `7   MM    `7    MM   `MM. ,MI    "Y 
+        dM'      `MM M YMb   M        M YM   ,M MM      ,V^MM.   dM'       `     dM'       ` dM'      `MM M YM   ,M MM    MM   ,M9  MM       M       MM        MM   d      MM   ,M9  `MMb.     
+        MM        MM M  `MN. M        M  Mb  M' MM     ,M  `MM   MM              MM          MM        MM M  Mb  M' MM    MMmmdM9   MM       M       MM        MMmmMM      MMmmdM9     `YMMNq. 
+        MM.      ,MP M   `MM.M        M  YM.P'  MM     AbmmmqMA  MM.             MM.         MM.      ,MP M  YM.P'  MM    MM        MM       M       MM        MM   Y  ,   MM  YM.   .     `MM 
+        `Mb.    ,dP' M     YMM        M  `YM'   MM    A'     VML `Mb.     ,'     `Mb.     ,' `Mb.    ,dP' M  `YM'   MM    MM        YM.     ,M       MM        MM     ,M   MM   `Mb. Mb     dM 
+          `"bmmd"' .JML.    YM      .JML. `'  .JMML..AMA.   .AMMA. `"bmmmd'        `"bmmmd'    `"bmmd"' .JML. `'  .JMML..JMML.       `bmmmmd"'     .JMML.    .JMMmmmmMMM .JMML. .JMM.P"Ybmmd"  
+                                                                                                                                                                                               
+                                                                                                                                                                                               
+        
+                    </pre>
+                </div>
+            </div>
         </div>
-    </div>
-    <hr />
-    <div class="main" id="sectionHamachi">
-        <a href="#sectionHamachi">
-            <h2>LogMeIn Hamachi</h2>
-        </a>
-        <button class="btn-icon"><i class="fa fa-fw fa-lg fa-windows"></i> <i
-                class="fa fa-fw fa-lg fa-toggle-off is-toggle"></i> <i class="fa fa-fw fa-lg fa-apple"></i></button>
-        <div class="windows-wrapper">
-            <ul class="ul-hamachi">
-                <li>Hamachi logs are a bit tricky to get to</li>
-                <li>They are located in <code>C:\Windows\ServiceProfiles\LocalService\AppData\Local\LogMeIn
-                        Hamachi</code></li>
-                <li>
-                    <note class="em">Important!</note>
-                    You will need to <b>manually</b> navigate to this location
-                </li>
-                <ol>
-                    <li>Open Windows Explorer</li>
-                    <li>Select <code>View</code> &rarr; <code>Hidden items</code> (click the checkbox)</li>
-                    <img id="hidden-items-img" src="https://i.imgur.com/tz3yBXq.png" />
-                    <li>Start in <code>C:\Windows</code> and click each folder in the path</li>
-                    <p><code>ServiceProfiles</code> &rarr; <code>LocalService</code> &rarr; <code>AppData</code>
-                        &rarr; <code>Local</code> &rarr; <code>LogMeIn Hamachi</code></p>
-                    <div class="noteBox">
-                        <p>
-                            <note class="em">Note!</note>
-                        </p>
-                        <p>You will likely receive admin prompts clicking on each of these folders&mdash;just click
-                            <code>OK</code></p>
-                    </div>
-                </ol>
-                <li>
-                    <p>Now, locate the file that says <code>h2-engine</code> or <code>h2-engine.log</code></p>
-                    <img id="hamachi-folder-img" src="https://i.imgur.com/onFbFTD.png" />
-                </li>
-                <li>Drag this file to the desktop</li>
-                <li>Use the file-transfer feature in LogMeIn Rescue to transfer the file to your machine</li>
-                <li>Upload the file to your SalesForce case</li>
-                <li>Be sure to fill out the <a href="#sectionEscalationFmt">escalation format</a> in your case notes
-                </li>
-                <li>
-                    Once you have finished your case
-                    <note class="em">do not close it!</note>
-                    &mdash;change the case owner to <code>IAM Sage Advanced</code>
-                </li>
-            </ul>
+    </section>
+    <section class="hero section is-light is-fullheight" id="sectionHamachi">
+        <div class="hero-body">
+            <div class="container">
+                <a class="title" href="#sectionHamachi">
+                    LogMeIn Hamachi
+                </a>
+                <div class="subtitle"></div>
+                <h2 class="subtitle">Click below to change the OS of the instructions</h2>
+                <button class="btn-icon button is-link">
+                    <span class="icon"><i class="fa fa-fw fa-lg fa-windows"></i></span>
+                    <span class="icon"><i class="fa fa-fw fa-lg fa-toggle-off is-toggle"></i></span>
+                    <span class="icon"><i class="fa fa-fw fa-lg fa-apple"></i></span>
+                </button>
+                <hr class="has-background-info">
+                <div class="container content windows-wrapper">
+                    <ul class="ul-hamachi">
+                        <li>Hamachi logs are a bit tricky to get to</li>
+                        <li>They are located in <code>C:\Windows\ServiceProfiles\LocalService\AppData\Local\LogMeIn
+                                Hamachi</code></li>
+                        <li>
+                            <span class="has-text-danger has-text-weight-bold">Important!</span>
+                            You will need to <b>manually</b> navigate to this location
+                        </li>
+                        <ol>
+                            <li>Open Windows Explorer</li>
+                            <li>Select <code>View</code> &rarr; <code>Hidden items</code> (click the checkbox)</li>
+                            <img id="hidden-items-img" src="https://i.imgur.com/tz3yBXq.png" />
+                            <li>Start in <code>C:\Windows</code> and click each folder in the path</li>
+                            <p><code>ServiceProfiles</code> &rarr; <code>LocalService</code> &rarr; <code>AppData</code>
+                                &rarr; <code>Local</code> &rarr; <code>LogMeIn Hamachi</code></p>
+                            <div class="box notification">
+                                <p>
+                                    <span class="has-text-danger has-text-weight-bold">Note!</span>
+                                </p>
+                                <p>You will likely receive admin prompts clicking on each of these folders&mdash;just
+                                    click
+                                    <code>OK</code></p>
+                            </div>
+                        </ol>
+                        <li>
+                            <p>Now, locate the file that says <code>h2-engine</code> or <code>h2-engine.log</code></p>
+                            <img id="hamachi-folder-img" src="https://i.imgur.com/onFbFTD.png" />
+                        </li>
+                        <li>Drag this file to the desktop</li>
+                        <li>Use the file-transfer feature in LogMeIn Rescue to transfer the file to your machine</li>
+                        <li>Upload the file to your SalesForce case</li>
+                        <li>Be sure to fill out the <a href="#sectionEscalationFmt">escalation format</a> in your case
+                            notes
+                        </li>
+                        <li>
+                            Once you have finished your case
+                            <span class="has-text-danger has-text-weight-bold">do not close it!</span>
+                            &mdash;change the case owner to <code>IAM Sage Advanced</code>
+                        </li>
+                    </ul>
+                </div>
+                <div class="container content mac-wrapper">
+                    <ul class="ul-hamachi">
+                        <li>Hamachi logs can be gathered directly through your Rescue Session pretty easily</li>
+                        <ol>
+                            <li>Open the <code>File Manager</code> in LogMeIn Rescue</li>
+                            <li>Navigate to <code>/</code> &rarr; <code>Library</code> &rarr; <code>Logs</code> &rarr;
+                                <code>LogMeIn Hamachi</code></li>
+                            <li>Gather the files called <code>h2-engine.log</code>, <code>stderr.log</code>, and
+                                <code>stdout.log</code></li>
+                            <img src="https://i.imgur.com/hCjBkoB.gif">
+                        </ol>
+                        <li>Once the files are on your machine, upload them to your SalesForce case</li>
+                        <li>Be sure to fill out the <a href="#sectionEscalationFmt">escalation format</a> in your case
+                            notes
+                        </li>
+                        <li>
+                            Once you have finished your case
+                            <span class="has-text-danger has-text-weight-bold">do not close it!</span>
+                            &mdash;change the case owner to <code>IAM Sage Advanced</code>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="mac-wrapper">
-            <ul class="ul-hamachi">
-                <li>Hamachi logs can be gathered directly through your Rescue Session pretty easily</li>
-                <ol>
-                    <li>Open the <code>File Manager</code> in LogMeIn Rescue</li>
-                    <li>Navigate to <code>/</code> &rarr; <code>Library</code> &rarr; <code>Logs</code> &rarr;
-                        <code>LogMeIn Hamachi</code></li>
-                    <li>Gather the files called <code>h2-engine.log</code>, <code>stderr.log</code>, and
-                        <code>stdout.log</code></li>
-                    <img src="https://i.imgur.com/hCjBkoB.gif">
-                </ol>
-                <li>Once the files are on your machine, upload them to your SalesForce case</li>
-                <li>Be sure to fill out the <a href="#sectionEscalationFmt">escalation format</a> in your case notes
-                </li>
-                <li>
-                    Once you have finished your case
-                    <note class="em">do not close it!</note>
-                    &mdash;change the case owner to <code>IAM Sage Advanced</code>
-                </li>
-            </ul>
+    </section>
+    <section class="section hero is-fullheight" id="sectionG2P">
+        <div class="hero-body">
+            <div class="container">
+                <a class="title" href="#sectionG2P">
+                    GoToMyPC
+                </a>
+                <div class="subtitle"></div>
+                <h2 class="subtitle">Click below to change the OS of the instructions</h2>
+                <button class="btn-icon button is-link">
+                    <span class="icon"><i class="fa fa-fw fa-lg fa-windows"></i></span>
+                    <span class="icon"><i class="fa fa-fw fa-lg fa-toggle-off is-toggle"></i></span>
+                    <span class="icon"><i class="fa fa-fw fa-lg fa-apple"></i></span>
+                </button>
+                <hr class="has-background-info">
+                <div class="container content windows-wrapper">
+                    <ul class="ul-g2p">
+                        <li>
+                            <span class="has-text-danger has-text-weight-bold">Important!</span>
+                            In order to gather logs, there must be <b>no</b> active sessions
+                        </li>
+                        <li>Ensure you are <b>directly </b>connected to the computer that is experiencing the problem
+                            before
+                            continuing</li>
+                        <li>To collect GoToMyPC logs</li>
+                        <ol>
+                            <li>Download <a
+                                    href="https://assets.cdngetgo.com/19/13/3dac3d14482c99b6c47a90df6b86/gotologfiles.zip">GoToLogFiles</a>
+                                on the customer's computer</li>
+                            <li>
+                                <p>Right click the downloaded file and select <code>Extract All...</code></p>
+                                <img src="https://i.imgur.com/QfP9b6I.png" />
+                            </li>
+                            <li>Now double-click the <code>GoToLogFiles</code> file to run it</li>
+                            <li>
+                                <p>Check off any item that says <em>"GoToMyPC"</em></p>
+                                <img src="https://i.imgur.com/adoo4yu.png" />
+                            </li>
+                            <li>Click <code>Archive logs to ZIP</code></li>
+                        </ol>
+                        <li>The logs will automatically be collected and placed on the customer's desktop</li>
+                        <li>
+                            <p>Collect the <code>GoToLogFilesXXXXX.zip</code> file from the customer's desktop using
+                                Rescue's file-transfer option</p>
+                            <img src="https://i.imgur.com/ALoYXje.png" />
+                        </li>
+                        <li>Upload the file to your SalesForce case</li>
+                        <li>Be sure to fill out the <a href="#sectionEscalationFmt">escalation format</a> in your case
+                            notes
+                        </li>
+                        <li>
+                            Once you have finished your case
+                            <span class="has-text-danger has-text-weight-bold">do not close it!</span>
+                            &mdash;change the case owner to <code>IAM Sage Advanced</code>
+                        </li>
+                    </ul>
+                </div>
+                <div class="container content mac-wrapper">
+                    <ul class="ul-g2p">
+                        <li>
+                            <span class="has-text-danger has-text-weight-bold">Important!</span> Make sure there are
+                            <b>no</b>
+                            active GoToMyPC sessions when
+                            you collect logs
+                        </li>
+                        <li>Ensure you are <b>directly</b> connected to the computer that is experiencing the issue</li>
+                        <li>To collect the Mac logs</li>
+                        <ol>
+                            <li>
+                                Download GoToLogFiles from
+                                <a href="https://support.logmeininc.com/gotowebinar/downloaddocument/gotologfiles-mac-g2md00268"
+                                    class="button is-link is-small">here</a>
+                            </li>
+                            <li>Once downloaded, double-click to extract it</li>
+                            <li>Right-click the <code>GoToLogFiles.app</code></li>
+                            <li>Select <code>Open</code></li>
+                            <li>Check off all entries related to <code>GoToMyPC</code> and <code>GoToOpener</code> if
+                                applicable</li>
+                            <li>Click <code>OK</code></li>
+                        </ol>
+                        <li>Now, you should see a <code>GoToLogFiles_########.tgz</code> file on the customer's desktop,
+                            similar to below</li>
+                        <img src="https://i.imgur.com/eGaIHbT.jpg">
+                        <li>Now, use Rescue's File Manager to transfer the file to your machine</li>
+                        <li>Upload the files to your SalesForce case</li>
+                        <li>Be sure to fill out the <a href="#sectionEscalationFmt">escalation format</a> in your case
+                            notes
+                        </li>
+                        <li>
+                            Once you have finished your case
+                            <span class="has-text-danger has-text-weight-bold">do not close it!</span>
+                            &mdash;change the case owner to <code>IAM Sage Advanced</code>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </div>
-    <hr />
-    <div class="main" id="sectionG2P">
-        <a href="#sectionG2P">
-            <h2>GoToMyPC</h2>
-        </a>
-        <button class="btn-icon"><i class="fa fa-fw fa-lg fa-windows"></i> <i
-                class="fa fa-fw fa-lg fa-toggle-off is-toggle"></i> <i class="fa fa-fw fa-lg fa-apple"></i></button>
-        <div class="windows-wrapper">
-            <ul class="ul-g2p">
-                <li>
-                    <note class="em">Important!</note>
-                    In order to gather logs, there must be <b>no</b> active sessions
-                </li>
-                <li>Ensure you are <b>directly </b>connected to the computer that is experiencing the problem before
-                    continuing</li>
-                <li>To collect GoToMyPC logs</li>
-                <ol>
-                    <li>Download <a
-                            href="https://assets.cdngetgo.com/19/13/3dac3d14482c99b6c47a90df6b86/gotologfiles.zip">GoToLogFiles</a>
-                        on the customer's computer</li>
-                    <li>
-                        <p>Right click the downloaded file and select <code>Extract All...</code></p>
-                        <img src="https://i.imgur.com/QfP9b6I.png" />
-                    </li>
-                    <li>Now double-click the <code>GoToLogFiles</code> file to run it</li>
-                    <li>
-                        <p>Check off any item that says <em>"GoToMyPC"</em></p>
-                        <img src="https://i.imgur.com/adoo4yu.png" />
-                    </li>
-                    <li>Click <code>Archive logs to ZIP</code></li>
-                </ol>
-                <li>The logs will automatically be collected and placed on the customer's desktop</li>
-                <li>
-                    <p>Collect the <code>GoToLogFilesXXXXX.zip</code> file from the customer's desktop using
-                        Rescue's file-transfer option</p>
-                    <img src="https://i.imgur.com/ALoYXje.png" />
-                </li>
-                <li>Upload the file to your SalesForce case</li>
-                <li>Be sure to fill out the <a href="#sectionEscalationFmt">escalation format</a> in your case notes
-                </li>
-                <li>
-                    Once you have finished your case
-                    <note class="em">do not close it!</note>
-                    &mdash;change the case owner to <code>IAM Sage Advanced</code>
-                </li>
-            </ul>
-        </div>
-        <div class="mac-wrapper">
-            <ul class="ul-g2p">
-                <li>
-                    <note class="em">Important!</note> Make sure there are <b>no</b> active GoToMyPC sessions when
-                    you collect logs
-                </li>
-                <li>Ensure you are <b>directly</b> connected to the computer that is experiencing the issue</li>
-                <li>To collect the Mac logs</li>
-                <ol>
-                    <li>Open the Terminal app</li>
-                    <li>Copy and paste the below, follwed by <code>Enter</code>:</li>
-                    <div id="noteBox-g2p-mac" class="noteBox">
-                        <samp id="g2p-mac-cmd">
-                            sw_vers > /tmp/sysinfo.txt; zip -r ~/Desktop/GoToLogFiles$(date +%s).zip
-                            "/Library/Logs/com.logmein.GoToMyPC" "/Library/Logs/com.logmein.GoToOpener"
-                            "/tmp/sysinfo.txt"
-                        </samp>
-                        <button id="g2p-mac-cmd-copy" data-clipboard-target="#g2p-mac-cmd"><i
-                                class="fa fa-fw fa-copy"></i> Copy</button>
-                        <script>
-                            var btn = $('#g2p-mac-cmd-copy')[0];
-                            var clipboard = new ClipboardJS(btn);
-
-                            clipboard.on('success', function (e) {
-                                console.log(e);
-                            });
-
-                            clipboard.on('error', function (e) {
-                                console.log(e);
-                            });
-
-                            // Notify copied
-                            $(function () {
-                                $('#g2p-mac-cmd-copy').click(function () {
-                                    $("#noteBox-g2p-mac").notify("Copied!", {
-                                        className: "success",
-                                        position: "right",
-                                        autoHideDelay: 2000
-                                    });
-                                });
-                            });
-                        </script>
-                    </div>
-                    <h3>Example output:</h3>
-                    <img style="width: 700px;" src="https://i.imgur.com/m36Ov4t.png">
-                </ol>
-                <li>Now, you should see a <code>GoToLogFilesXXXXX.zip</code> file on the customer's desktop</li>
-                <img src="https://i.imgur.com/eGaIHbT.jpg">
-                <li>Now, use Rescue's File Manager to transfer the file to your machine</li>
-                <li>Upload the files to your SalesForce case</li>
-                <li>Be sure to fill out the <a href="#sectionEscalationFmt">escalation format</a> in your case notes
-                </li>
-                <li>
-                    Once you have finished your case
-                    <note class="em">do not close it!</note>
-                    &mdash;change the case owner to <code>IAM Sage Advanced</code>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <hr />
-    <div class="main" id="sectionEscalationFmt">
-        <a href="#sectionEscalationFmt">
-            <h2>Escalation Format</h2>
-        </a>
-        <p class="fade">Lazy like me? Check out the <a href="tools.html#escy-formatter">escalation formatter</a></p>
-        <pre id="escyfmt">
+    </section>
+    <section class="hero is-light is-fullheight" id="sectionEscalationFmt">
+        <div class="hero-body">
+            <div class="container">
+                <a class="title" href="#sectionEscalationFmt">
+                    Escalation Format
+                </a>
+                <div class="subtitle"></div>
+                <p class="subtitle">
+                    Lazy like me? Check out the
+                    <a class="button is-small is-link" href="tools.html#escy-formatter">
+                        Escalation Formatter
+                    </a>
+                </p>
+                <p class="help">(No, seriously, use the Escy Formatter)</p>
+                <hr class="has-background-info">
+                <pre id="escyfmt">
 1) Description of Issue:
 
 2) Expected Results:
@@ -516,38 +680,57 @@ MM.      ,MP M   `MM.M        M  YM.P'  MM     AbmmmqMA  MM.             MM.    
 OS (Client):
 - Web Browser(s):
 
-8) Did you make sure to Attach Logs to the Case? (Ask SME how to enable and gather Debug logs if its for LMI Pro/Central or Gather HAR Logs):</pre>
-        <button id="cpbtn" data-clipboard-target="#escyfmt"><i class="fa fa-fw fa-clone"></i> Copy</button>
-        <script>
-            var cpbtn = document.getElementById('cpbtn');
-            var clipboard = new ClipboardJS(cpbtn);
+8) Did you make sure to Attach Logs to the Case? (Ask SME how to enable and gather Debug logs if its for LMI Pro/Central or Gather HAR Logs):
+    </pre>
+                <button id="cpbtn" class="button is-link" data-clipboard-target="#escyfmt">
+                    <span class="icon">
+                        <i class="fa fa-fw fa-clone"></i>
+                    </span>
+                    <span>Copy</span>
+                </button>
+                <script>
+                    var cpbtn = document.getElementById('cpbtn');
+                    var clipboard = new ClipboardJS(cpbtn);
 
-            clipboard.on('success', function (e) {
-                console.log(e);
-            });
-
-            clipboard.on('error', function (e) {
-                console.log(e);
-            });
-
-            $(function () {
-                $('#cpbtn').click(function () {
-                    $(this).notify('Copied!', {
-                        className: 'success',
-                        position: 'left',
-                        autoHideDelay: 2000
+                    clipboard.on('success', function (e) {
+                        console.log(e);
                     });
-                });
-            });
-        </script>
-    </div>
-    <hr />
-    <div class="shadow" id="footer">
-        <p><a href="http://sageoutsource.com/">Property of Sage Outsource Solutions&reg; <img class="logo" id="logo-footer"
-                    src="images/SageLogo.png" /></a></p>
-        <p>Made with &#10084; by <a href="https://github.com/naught0">James</a></p>
-        <span>Feedback? <a href="mailto:james.euteneuer@logmein.com?subject=Site Feedback"><i class="fa fa-fw fa-envelope"></i>E-mail me!</a> ~or~ <a href="https://sageoutsource.slack.com/team/U3B3176BB"><i class="fa fa-fw fa-slack"></i>Slack me!</a></span>
-    </div>
+
+                    clipboard.on('error', function (e) {
+                        console.log(e);
+                    });
+
+                    $(function () {
+                        $('#cpbtn').click(function () {
+                            $(this).notify('Copied!', {
+                                className: 'success',
+                                position: 'right',
+                                autoHideDelay: 2000
+                            });
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="footer">
+
+        <div class="content has-text-centered">
+            <p>Made with &#10084; by <a href="https://github.com/naught0">James</a></p>
+
+            <span>Feedback?
+                <a href="mailto:james.euteneuer@logmein.com?subject=Site Feedback">
+                    <i class="fa fa-fw fa-envelope"></i>
+                    E-mail me!
+                </a> ~or~
+                <a href="https://sageoutsource.slack.com/team/U3B3176BB">
+                    <span class="icon"><i class="fa fa-fw fa-slack"></i></span>
+                    Slack me!
+                </a>
+            </span>
+        </div>
+    </footer>
 </body>
 
 </html>

@@ -1,0 +1,12 @@
+.content img {
+    margin-top: 0.5em;
+    border-radius: 0.3em;
+}
+html {
+    scroll-behavior: smooth;
+}
+.picturebox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
