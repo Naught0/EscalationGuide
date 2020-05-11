@@ -12,14 +12,10 @@
     <link rel="stylesheet" href="css/featherlight.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/sticky.css">
-    <!-- <link rel="stylesheet" href="css/hamburger.min.css"> -->
     <script src="scripts/jquery-3.4.1.min.js"></script>
     <script src="scripts/clipboard.min.js"></script>
     <script src="scripts/notify.min.js"></script>
     <script src="scripts/featherlight.min.js"></script>
-    <script src="scripts/ts.js"></script>
-    <script src="scripts/showhide.js"></script>
-    <script src="scripts/show-menu.js"></script>
 </head>
 <html>
 
@@ -108,7 +104,7 @@
                     <ul>
                         <li>
                             <a href="#"">
-                                <span class="icon"><i class="class fa fa-fw fa-arrow-up"></i></span>
+                                <span class=" icon"><i class="class fa fa-fw fa-arrow-up"></i></span>
                                 <span>To top</span>
                             </a>
                         </li>
@@ -136,6 +132,12 @@
                         <a href="#lmi-mac-kb-mouse">
                             <span class="icon"><i class="fa fa-fw fa-apple"></i></span>
                             <span>No KB/Mouse</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#lmi-certs">
+                            <span class="icon"><i class="fa fa-fw fa-windows"></i></span>
+                            <span>LogMeIn certificate errors</span>
                         </a>
                     </li>
                 </ul>
@@ -362,7 +364,87 @@
                 </div>
             </section>
 
-            <section class="section hero is-light is-fullheight" id="g2p-cannot-be-started">
+            <section class="section hero is-light is-fullheight" id="lmi-certs">
+                <div class="hero-body">
+                    <div class="container content">
+                        <a href="#lmi-certs" class="title">LogMeIn reports that you must be connected to the internet,
+                            despite an internet connection</a>
+                        <div class="subtitle"></div>
+                        <p class="subtitle">Explanation:</p>
+                        <div class="box notification">
+                            <p>
+                                This error occurs when you do not have the proper certificates installed on your machine
+                            </p>
+                            <p>
+                                <span class="has-text-weight-bold has-text-danger">Note!</span> These instructions also
+                                apply to "Disconnected at verifying identity", and similar issues.
+                            </p>
+                        </div>
+                        <p class="subtitle">Solution:</p>
+                        <div class="box notification">
+                            <p>Install and properly place the certificates on the machine experiencing the error.</p>
+                            <p class="help">These instructions can be used for either client, or host machines. If you're unsure where to try these steps, reach out to a SME</p>
+                        </div>
+                        <hr class="has-background-info">
+                        <ol>
+                            <li>
+                                <p>Download the certificates to the machine experiencing the issue</p>
+                                <ul>
+                                    <li><a
+                                            href="https://secure.globalsign.net/cacert/Root-R1.crt">https://secure.globalsign.net/cacert/Root-R1.crt</a>
+                                    </li>
+                                    <li><a
+                                            href="https://secure.globalsign.net/cacert/Root-R3.crt">https://secure.globalsign.net/cacert/Root-R3.crt</a>
+                                    </li>
+                                    <li><a
+                                            href="https://secure.globalsign.com/cacert/gsorganizationvalsha2g2r1.crt">https://secure.globalsign.com/cacert/gsorganizationvalsha2g2r1.crt</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <p>
+                                    <span class="has-text-weight-bold">In the order above</span>, double-click the certificates to begin importing.
+                                </p>
+                                <img src="https://i.imgur.com/tCOJsax.png" alt="" />
+                            </li>
+                            <li>
+                                <p>If given the choice between &quot;Current User&quot; or &quot;Local Machine,&quot;
+                                    choose <strong>Local
+                                        Machine</strong> and click <strong>Next</strong>
+                                </p>
+                                <div class="box notification">
+                                    <span class="has-text-weight-bold has-text-danger">Note!</span> If you're on a Windows 7 machine, the below screen will not appear. Simply continue to the next step.
+                                </div>
+                                <img src="https://i.imgur.com/tSrYEud.png" alt="" />
+                            </li>
+                            <li>
+                                <p>For <strong>Root-R1</strong> and <strong>Root-R3</strong>, Browse to and place the
+                                    certificates in
+                                    <strong>Trusted Root Certification Authorities</strong> like below</p>
+                                <ul>
+                                    <li><span class="has-text-weight-bold has-text-danger">Note!</span> <strong>gsorganizationvalsha2g2r1.crt</strong> can be placed
+                                        &quot;Automatically&quot;
+                                        <em>after</em> the root certificates are installed
+                                        <img src="https://i.imgur.com/IqtIQbM.png" alt="" /></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <p>Click <strong>Next</strong> and then <strong>Finish</strong></p>
+                            </li>
+                        </ol>
+                        <ul>
+                            <li>If the above was done on a <strong>Host</strong> computer, restart the LogMeIn service before
+                                attempting another
+                                connection.</li>
+                            <li>If the above was done on a <strong>Client</strong> computer, restart your computer before
+                                attempting another
+                                connection.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section hero is-fullheight" id="g2p-cannot-be-started">
                 <div class="hero-body">
                     <div class="container content">
                         <a class="title" href="#g2p-cannot-be-started">
