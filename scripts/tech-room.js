@@ -10,11 +10,11 @@ $(function () {
 
         let toCopy =
             `
-*Product:* ${results[0]}
-*Email:* ${results[1]}
-*Case:* ${results[2]}
-*Issue:* ${results[3]}
-*Steps Taken:* 
+Product: ${results[0]}
+Email: ${results[1]}
+Case: ${results[2]}
+Issue: ${results[3]}
+Steps Taken: 
 - ${results[4].split('\n').join('\n- ')}
 
 `
