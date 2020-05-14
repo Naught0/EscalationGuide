@@ -8,18 +8,25 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/image-fix.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+    <link id="cssTheme" rel="stylesheet" href="css/flatly.min.css">
     <link rel="stylesheet" href="css/featherlight.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/sticky.css">
+
+    <!-- React stuff -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossorigin=""></script>
+
     <script src="scripts/jquery-3.4.1.min.js"></script>
+    <script src="scripts/theme-toggle.js" type="text/babel"></script>
     <script src="scripts/clipboard.min.js"></script>
     <script src="scripts/notify.min.js"></script>
     <script src="scripts/featherlight.min.js"></script>
 </head>
 <html>
 
-<body>
+<body style="visibility: hidden;">
     <script>
         $(document).ready(function () {
             // Check for click events on the navbar burger icon
@@ -30,10 +37,11 @@
                 $(".navbar-menu").toggleClass("is-active");
 
             });
+            $('body').css('visibility', 'visible')
         });
     </script>
 
-    <nav class="navbar is-info has-shadow">
+    <nav class="navbar has-shadow">
         <div class="navbar-brand">
             <div class="navbar-item">
                 <img src="images/logmein-large.png" />
@@ -60,6 +68,8 @@
                 </a> -->
             </div>
             <div class="navbar-end">
+                <div id="themeToggleBtnContainer" class="navbar-item">
+                </div>
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a href="" class="navbar-link">
                         More
@@ -76,7 +86,7 @@
     </nav>
 
     <div class="columns">
-        <div class='column has-background-light is-marginless is-one-fifth'>
+        <div class='column is-marginless is-one-fifth'>
             <script>
                 $(function () {
                     var quickLinks = document.querySelectorAll(".menu-list a");
@@ -383,7 +393,8 @@
                         <p class="subtitle">Solution:</p>
                         <div class="box notification">
                             <p>Install and properly place the certificates on the machine experiencing the error.</p>
-                            <p class="help">These instructions can be used for either client, or host machines. If you're unsure where to try these steps, reach out to a SME</p>
+                            <p class="help">These instructions can be used for either client, or host machines. If
+                                you're unsure where to try these steps, reach out to a SME</p>
                         </div>
                         <hr class="has-background-info">
                         <ol>
@@ -403,7 +414,8 @@
                             </li>
                             <li>
                                 <p>
-                                    <span class="has-text-weight-bold">In the order above</span>, double-click the certificates to begin importing.
+                                    <span class="has-text-weight-bold">In the order above</span>, double-click the
+                                    certificates to begin importing.
                                 </p>
                                 <img src="https://i.imgur.com/tCOJsax.png" alt="" />
                             </li>
@@ -413,7 +425,9 @@
                                         Machine</strong> and click <strong>Next</strong>
                                 </p>
                                 <div class="box notification">
-                                    <span class="has-text-weight-bold has-text-danger">Note!</span> If you're on a Windows 7 machine, the below screen will not appear. Simply continue to the next step.
+                                    <span class="has-text-weight-bold has-text-danger">Note!</span> If you're on a
+                                    Windows 7 machine, the below screen will not appear. Simply continue to the next
+                                    step.
                                 </div>
                                 <img src="https://i.imgur.com/tSrYEud.png" alt="" />
                             </li>
@@ -422,7 +436,8 @@
                                     certificates in
                                     <strong>Trusted Root Certification Authorities</strong> like below</p>
                                 <ul>
-                                    <li><span class="has-text-weight-bold has-text-danger">Note!</span> <strong>gsorganizationvalsha2g2r1.crt</strong> can be placed
+                                    <li><span class="has-text-weight-bold has-text-danger">Note!</span>
+                                        <strong>gsorganizationvalsha2g2r1.crt</strong> can be placed
                                         &quot;Automatically&quot;
                                         <em>after</em> the root certificates are installed
                                         <img src="https://i.imgur.com/IqtIQbM.png" alt="" /></li>
@@ -433,10 +448,12 @@
                             </li>
                         </ol>
                         <ul>
-                            <li>If the above was done on a <strong>Host</strong> computer, restart the LogMeIn service before
+                            <li>If the above was done on a <strong>Host</strong> computer, restart the LogMeIn service
+                                before
                                 attempting another
                                 connection.</li>
-                            <li>If the above was done on a <strong>Client</strong> computer, restart your computer before
+                            <li>If the above was done on a <strong>Client</strong> computer, restart your computer
+                                before
                                 attempting another
                                 connection.</li>
                         </ul>
@@ -462,17 +479,18 @@
                                     Solution 1: Reboot
                                     the Client Computer
                                 </div>
-                                <div class="container solution-article show" id="article1">
+                                <div class="message-body">
                                     <ul>
                                         <li>This works the majority of the time</li>
-                                        <div class="box notification">
+                                        <li>
                                             <span class="has-text-weight-bold has-text-danger">
                                                 Note!
                                             </span>
                                             Continue to the next steps
                                             <i>only</i> if
                                             the
-                                            user reports that this happens to them frequently</div>
+                                            user reports that this happens to them frequently
+                                        </li>
                                     </ul>
                                 </div>
                             </article>
