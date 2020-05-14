@@ -33,7 +33,9 @@ class ThemeControl extends React.Component {
     }
 
     swapStyleSheet(sheet) {
+        $('body').fadeOut(100);
         document.getElementById("cssTheme").setAttribute("href", sheet);
+        $('body').fadeIn();
     }
 
     toDarkMode() {
