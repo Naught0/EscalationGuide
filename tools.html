@@ -15,7 +15,15 @@
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
+
     <script src="scripts/jquery-3.4.1.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.50.2/codemirror.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.50.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.50.2/theme/material.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="scripts/code-mirror.js"></script>
+
     <script src="scripts/theme-toggle.js" type="text/babel"></script>
     <script src="scripts/clipboard.min.js" type="text/javascript"></script>
     <script src="scripts/tech-room.js" type="text/javascript"></script>
@@ -36,7 +44,7 @@
                 $(".navbar-menu").toggleClass("is-active");
 
             });
-            $('body').css('visibility', 'visible')
+            $('body').css('visibility', 'visible');
         });
     </script>
     <nav class="navbar is-fixed-top has-shadow">
@@ -70,6 +78,13 @@
                     <span>Tech Room Formatter</span>
                 </a>
 
+                <a href="#lmiav" class="navbar-item">
+                    <span class="icon">
+                        <i class="fa fa-fw fa-warning"></i>
+                    </span>
+                    <span>LMI AV Install</span>
+
+                </a>
                 <a class="navbar-item" href="#escy-formatter">
                     <span class="icon">
                         <i class="fa fa-fw fa-arrow-circle-up"></i>
@@ -158,6 +173,7 @@
             </div>
         </div>
     </section>
+
     <section class="section hero is-fullheight" id="tech-formatter">
         <div class="hero-body">
             <div class="container">
@@ -216,7 +232,54 @@
 
         </div>
     </section>
-    <section class="section hero is-fullheight is-light" id="escy-formatter">
+
+    <section class="section hero is-light is-fullheight" id="lmiav">
+        <div class="hero-body">
+            <div class="container">
+                <a href="#lmiav" class="title">Why did LogMeIn AV fail to install?</a>
+                <hr class="has-background-info">
+
+                <div class="columns">
+                    <div class="column is-one-third">
+                        <div class="box">
+                            <p id="logFileName" class="subtitle is-6">Upload a file</p>
+                            <div class="file is-primary">
+                                <label class="file-label">
+                                    <input class="file-input" type="file" id="logFileInput" accept=".txt,.log">
+                                    <span class="file-cta">
+                                        <span class="file-icon">
+                                            <i class="fa fa-upload"></i>
+                                        </span>
+                                        <span class="file-label">
+                                            Upload a log
+                                        </span>
+                                    </span>
+                                </label>
+                            </div>
+                            <hr class="has-background-info">
+                            <div id="lmiavErrors">
+                                <div class="tags are-medium has-addons">
+                                    <span class="tag is-info">Exit code</span>
+                                    <span id="logFileExitCode" class="has-text-weight-bold tag is-primary">&hellip;</span>
+                                </div>
+                                <span class="subtitle is-5">Reason</span>
+                                <p id="logFileReason"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="control">
+                            <textarea id="logEditor" class="textarea"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section hero is-fullheight" id="escy-formatter">
         <div class="hero-body">
             <div class="container">
                 <a class="title" href="#escy-formatter">
@@ -298,7 +361,6 @@
     </section>
 
     <footer class="footer" id="footer">
-
         <div class="content has-text-centered">
             <p>Made with &#10084; by <a href="https://github.com/naught0">James</a></p>
 

@@ -1,0 +1,6 @@
+.CodeMirror {
+    height: auto;
+    width: auto;
+    border-radius: 0.5em;
+    max-height: 50vh;
+}
